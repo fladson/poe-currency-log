@@ -27,5 +27,9 @@ module PoeCurrencyLog
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    Raven.configure do |config|
+      config.dsn = "https://a1e587f51d2647778d3a0f85aedf81e5:bd1eabbef3c142498ca426629365370f@sentry.io/293471"
+      config.sanitize_fields = Rails.application.config.filter_parameters.map(&:to_s)
+    end
   end
 end
