@@ -2,6 +2,10 @@ language: ruby
 cache: bundler
 rvm:
  - 2.5
+addons:
+  postgresql: "9.6"
 script:
+  - bundle exec rake db:create db:migrate
+  - bundle exec rails db:schema:load
   - bundle exec rspec
   - bundle exec rubocop
