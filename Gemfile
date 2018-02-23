@@ -22,13 +22,12 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "dotenv-rails"
   gem "guard"
-  gem "guard-brakeman"
-  gem "guard-fasterer"
   gem "guard-livereload"
   gem "guard-rspec"
   gem "meta_request"
   gem "pry-rails"
   gem "reek", require: false
+  gem "rspec-rails", "~> 3.7"
   gem "rubocop-github", require: false
   gem "rubocop-rspec", require: false
 end
@@ -41,4 +40,14 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"
+end
+
+group :test do
+  gem "capybara"
+  gem "coveralls", require: false
+  gem "database_cleaner"
+  gem "factory_bot_rails"
+  gem "ffaker"
+  gem "shoulda-matchers", "~> 3.1"
+  gem "simplecov", require: false
 end
