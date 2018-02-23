@@ -1,7 +1,9 @@
 FactoryBot.define do
   factory :user do
     email FFaker::Internet.email
-    password FFaker::Internet.password
+    password "password"
+    password_confirmation "password"
+    confirmed_at Date.today
     account_name FFaker::Internet.user_name
     session FFaker::Internet.password
     chars {
