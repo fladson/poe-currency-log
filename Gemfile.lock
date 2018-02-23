@@ -111,6 +111,11 @@ GEM
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
     ffaker (2.8.1)
+    faraday (0.14.0)
+      multipart-post (>= 1.2, < 3)
+    fasterer (0.4.0)
+      colorize (~> 0.7)
+      ruby_parser (~> 3.9)
     ffi (1.9.21)
     formatador (0.2.5)
     globalid (0.4.1)
@@ -136,6 +141,7 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    honeybadger (3.3.0)
     http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -169,9 +175,11 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
+    multipart-post (2.0.0)
     mustermann (1.0.2)
     nenv (0.3.0)
     netrc (0.11.0)
+    newrelic_rpm (4.8.0.341)
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -238,6 +246,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rollbar (2.15.5)
+      multi_json
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -289,9 +299,12 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    scout_apm (2.4.8)
     sendgrid-ruby (5.2.0)
       ruby_http_client (~> 3.2)
       sinatra (>= 1.4.7, < 3)
+    sentry-raven (2.7.2)
+      faraday (>= 0.7.6, < 1.0)
     sexp_processor (4.10.1)
     shellany (0.0.1)
     shoulda-matchers (3.1.2)
@@ -370,22 +383,27 @@ DEPENDENCIES
   guard
   guard-livereload
   guard-rspec
+  honeybadger (~> 3.1)
   jbuilder (~> 2.5)
   letter_opener
   listen (>= 3.0.5, < 3.2)
   meta_request
+  newrelic_rpm
   pg (>= 0.18, < 2.0)
   pry-rails
   puma (~> 3.7)
   rails (~> 5.1.5)
   reek
   rspec-rails (~> 3.7)
+  rollbar
   rubocop-github
   rubocop-rspec
   sass-rails (~> 5.0)
+  scout_apm
   sendgrid-ruby
   shoulda-matchers (~> 3.1)
   simplecov
+  sentry-raven
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
