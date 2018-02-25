@@ -52,4 +52,6 @@ group :test do
   gem "ffaker"
   gem "shoulda-matchers", "~> 3.1"
   gem "simplecov", require: false
+  gem "vcr"
+  gem "webmock"
 end
