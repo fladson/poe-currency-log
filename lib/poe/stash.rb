@@ -1,5 +1,5 @@
 class Stash
-  BASE = "https://www.pathofexile.com/character-window/get-stash-items".freeze
+  BASE = "/character-window/get-stash-items".freeze
   class << self
     def tabs(api, account_name, league)
       path = BASE + "?accountName=#{account_name}&league=#{league}"
@@ -14,7 +14,7 @@ class Stash
     def num_tabs(api, account_name, league)
       path = BASE + "?accountName=#{account_name}&league=#{league}&tabs=0&tabIndex=0"
       response = api.get(path)
-      raise Faraday::ConnectionFailed.new response unless response.status == 200
+      raise Faraday::ConnectionFailed.new(response) unless response.status == 200
 
       JSON.parse(response.body)["numTabs"]
     end

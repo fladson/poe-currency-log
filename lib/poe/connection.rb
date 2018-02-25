@@ -1,5 +1,5 @@
 class Connection
-  BASE = "https://www.pathofexile.com/my-account".freeze
+  BASE = "https://www.pathofexile.com/".freeze
 
   def self.api(session)
     Faraday.new(url: BASE) do |faraday|
