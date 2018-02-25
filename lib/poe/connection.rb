@@ -1,4 +1,4 @@
-class Connection
+class Poe::Connection
   BASE = "https://www.pathofexile.com/".freeze
 
   def self.api(session)

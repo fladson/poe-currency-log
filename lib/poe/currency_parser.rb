@@ -1,4 +1,4 @@
-class CurrencyParser
+class Poe::CurrencyParser
   STANDARD_ITEMS = [
     "Apprentice Cartographer's Sextant", "Blessed Orb", "Blessing of Chayula",
     "Blessing of Esh", "Blessing of Tul", "Blessing of Tul", "Blessing of Xoph",
