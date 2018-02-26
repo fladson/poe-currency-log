@@ -5,6 +5,10 @@ feature "logout" do
     Warden.test_reset!
   end
 
+  before do
+    User.any_instance.stub :check_credentials
+  end
+
   describe "redirect" do
     it "to home after logout" do
       user = create(:user)
