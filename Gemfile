@@ -8,6 +8,7 @@ end
 gem "attr_encrypted", "~> 3.1.0"
 gem "coffee-rails", "~> 4.2"
 gem "devise"
+gem "faraday"
 gem "honeybadger", "~> 3.1"
 gem "jbuilder", "~> 2.5"
 gem "newrelic_rpm"
@@ -56,4 +57,6 @@ group :test do
   gem "ffaker"
   gem "shoulda-matchers", "~> 3.1"
   gem "simplecov", require: false
+  gem "vcr"
+  gem "webmock"
 end

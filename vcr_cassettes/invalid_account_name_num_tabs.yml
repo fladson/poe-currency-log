@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.pathofexile.com/character-window/get-stash-items?accountName=invalid_account_name&league=valid_league&tabIndex=0&tabs=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Cookie:
+      - POESESSID=valid_session
+      User-Agent:
+      - Faraday v0.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Server:
+      - nginx/1.8.1
+      Date:
+      - Sun, 25 Feb 2018 13:37:02 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - session_start=1519565822; path=/; domain=.pathofexile.com; HttpOnly
+      X-Rate-Limit-Policy:
+      - backend-item-request-limit
+      X-Rate-Limit-Rules:
+      - Account
+      X-Rate-Limit-Account:
+      - 45:60:60,240:240:900
+      X-Rate-Limit-Account-State:
+      - 2:60:0,2:240:0
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"code":6,"message":"Forbidden"}}'
+    http_version:
+  recorded_at: Sun, 25 Feb 2018 13:37:02 GMT
+recorded_with: VCR 4.0.0

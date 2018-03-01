@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.pathofexile.com/character-window/get-characters
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Cookie:
+      - POESESSID=valid_session
+      User-Agent:
+      - Faraday v0.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.1
+      Date:
+      - Sun, 25 Feb 2018 12:01:52 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - session_start=1519560112; path=/; domain=.pathofexile.com; HttpOnly
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"name":"tianne_","league":"Standard","classId":2,"ascendancyClass":0,"class":"Ranger","level":22},{"name":"Maeggi","league":"Abyss","classId":0,"ascendancyClass":1,"class":"Ascendant","level":94},{"name":"Ngamason","league":"Standard","classId":1,"ascendancyClass":2,"class":"Berserker","level":90},{"name":"Lunna_","league":"Standard","classId":2,"ascendancyClass":1,"class":"Raider","level":88}]'
+    http_version:
+  recorded_at: Sun, 25 Feb 2018 12:01:53 GMT
+recorded_with: VCR 4.0.0

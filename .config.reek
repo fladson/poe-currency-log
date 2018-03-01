@@ -3,3 +3,8 @@ IrresponsibleModule:
 
 exclude_paths:
  - db/migrate
+
+FeatureEnvy:
+ exclude:
+ - Characters#get_json
+ - Stash#num_tabs
