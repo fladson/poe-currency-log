@@ -1,10 +1,9 @@
 require "rails_helper"
-require_relative "../../lib/poe/connection"
 
-RSpec.describe Connection do
+RSpec.describe Poe::Connection do
   describe ".api" do
     let(:session) { "session_id" }
-    subject { Connection.api(session) }
+    subject { Poe::Connection.api(session) }
 
     it "returns a connection with a poe host" do
       expect(subject.host).to eq("www.pathofexile.com")

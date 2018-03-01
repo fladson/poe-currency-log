@@ -1,4 +1,4 @@
-class Characters
+class Poe::Characters
   BASE = "/character-window/get-characters".freeze
   class << self
     def get_json(api)

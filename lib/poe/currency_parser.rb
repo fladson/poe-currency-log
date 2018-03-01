@@ -1,4 +1,4 @@
-class CurrencyParser
+class Poe::CurrencyParser
   STANDARD_ITEMS = [
     "Apprentice Cartographer's Sextant", "Blessed Orb", "Blessing of Chayula",
     "Blessing of Esh", "Blessing of Tul", "Blessing of Tul", "Blessing of Xoph",
@@ -27,10 +27,11 @@ class CurrencyParser
     def parse_tab(tab, currency_hash)
       return if tab =~ /divinationLayout/ || tab =~ /essenceLayout/ || tab =~ /fragmentLayout/
       json = JSON.parse(tab)
+      return if json["items"].blank?
 
       json["items"].each do |item|
         item_name = item["typeLine"]
-        currency_hash[item_name] += item["stackSize"] unless !CURRENCY.include?(item_name)
+        currency_hash[item_name] += item["stackSize"] if CURRENCY.include?(item_name)
       end
     end
   end

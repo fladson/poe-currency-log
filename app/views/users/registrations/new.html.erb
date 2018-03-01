@@ -23,12 +23,13 @@
 
   <div class="field">
     <%= f.label :session %><br />
-    <%= f.text_field :session %>
+    <%= f.text_field :session, required: true %>
   </div>
 
   <div class="field">
-    <%= f.label :account_name %><br />
-    <%= f.text_field :account_name %>
+    <%= f.label :time_zone %><br />
+    <p>We need your timezone to fetch your account at a covenient time</p>
+    <%= f.time_zone_select :time_zone %>
   </div>
 
   <div class="actions">
