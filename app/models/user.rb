@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :currency_logs, dependent: :destroy
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   # unencrypted attrs
@@ -7,6 +8,10 @@ class User < ApplicationRecord
   attr_encrypted :session, :account_name, key: Rails.application.secrets.secret_key_attr_encrypt
   validates :session, presence: true
   validate :check_credentials
+
+  def current_leagues
+    self.chars.map { |char| char["league"] }.uniq
+  end
 
   private
 
@@ -25,5 +30,4 @@ class User < ApplicationRecord
   def to_s
     email
   end
-
 end

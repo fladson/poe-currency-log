@@ -34,5 +34,6 @@ module PoeCurrencyLog
 
     config.autoload_paths << Rails.root.join("lib")
     config.eager_load_paths << Rails.root.join("lib")
+    config.active_record.observers = :user_observer
   end
 end
