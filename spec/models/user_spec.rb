@@ -79,4 +79,34 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe "current_leagues" do
+    context "when different leagues" do
+      it "returns the correct legues" do
+        chars = [
+          {"name"=>"tianne_", "class"=>"Ranger", "level"=>22, "league"=>"Standard SSF", "classId"=>2, "ascendancyClass"=>0},
+          {"name"=>"Maeggi", "class"=>"Ascendant", "level"=>94, "league"=>"Standard", "classId"=>0, "ascendancyClass"=>1},
+          {"name"=>"Ngamason", "class"=>"Berserker", "level"=>90, "league"=>"Standard Hardcore", "classId"=>1, "ascendancyClass"=>2},
+          {"name"=>"Lunna_", "class"=>"Raider", "level"=>88, "league"=>"Abyss", "classId"=>2, "ascendancyClass"=>1}
+        ]
+        user = build(:user, chars: chars)
+
+        expect(user.current_leagues).to eq(["Standard SSF", "Standard", "Standard Hardcore", "Abyss"])
+      end
+    end
+
+    context "when some different leagues" do
+      it "returns the correct legues as uniq" do
+        chars = [
+          {"name"=>"tianne_", "class"=>"Ranger", "level"=>22, "league"=>"Standard", "classId"=>2, "ascendancyClass"=>0},
+          {"name"=>"Maeggi", "class"=>"Ascendant", "level"=>94, "league"=>"Standard", "classId"=>0, "ascendancyClass"=>1},
+          {"name"=>"Ngamason", "class"=>"Berserker", "level"=>90, "league"=>"Abyss", "classId"=>1, "ascendancyClass"=>2},
+          {"name"=>"Lunna_", "class"=>"Raider", "level"=>88, "league"=>"Abyss", "classId"=>2, "ascendancyClass"=>1}
+        ]
+        user = build(:user, chars: chars)
+
+        expect(user.current_leagues).to eq(["Standard", "Abyss"])
+      end
+    end
+  end
 end
