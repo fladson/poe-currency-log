@@ -1,5 +1,7 @@
 {
   "name": "poe-currency-log",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "highcharts": "^6.0.7"
+  }
 }
