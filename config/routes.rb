@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   as :user do
     get "dashboard", to: "pages#dashboard", as: :user_root
   end
+
+  require "sidekiq/web"
+  mount Sidekiq::Web => "/sidekiq"
 end

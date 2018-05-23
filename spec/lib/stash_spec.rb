@@ -1,12 +1,10 @@
 require "rails_helper"
-require_relative "../../lib/poe/stash"
-require_relative "../../lib/poe/connection"
 
-RSpec.describe Stash do
-  let(:api) { Connection.api(session) }
+RSpec.describe Poe::Stash do
+  let(:api) { Poe::Connection.api(session) }
 
   describe ".tabs" do
-    let(:subject) { Stash.tabs(api, account_name, league) }
+    let(:subject) { Poe::Stash.tabs(api, account_name, league) }
 
     context "valid params" do
       let(:session) { "valid_session" }
@@ -66,7 +64,7 @@ RSpec.describe Stash do
   end
 
   describe ".num_tabs" do
-    let(:subject) { Stash.num_tabs(api, account_name, league) }
+    let(:subject) { Poe::Stash.num_tabs(api, account_name, league) }
 
     context "valid params" do
       let(:session) { "valid_session" }

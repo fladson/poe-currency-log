@@ -1,4 +1,4 @@
-class Stash
+class Poe::Stash
   BASE = "/character-window/get-stash-items".freeze
   class << self
     def tabs(api, account_name, league)

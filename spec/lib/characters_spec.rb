@@ -1,11 +1,9 @@
 require "rails_helper"
-require_relative "../../lib/poe/characters"
-require_relative "../../lib/poe/connection"
 
-RSpec.describe Characters do
+RSpec.describe Poe::Characters do
   describe ".get_json" do
-    let(:api) { Connection.api(session) }
-    let(:subject) { Characters.get_json(api) }
+    let(:api) { Poe::Connection.api(session) }
+    let(:subject) { Poe::Characters.get_json(api) }
 
     context "valid credentials" do
       let(:session) { "valid_session" }

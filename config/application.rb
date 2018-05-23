@@ -31,5 +31,9 @@ module PoeCurrencyLog
       config.dsn = "https://a1e587f51d2647778d3a0f85aedf81e5:bd1eabbef3c142498ca426629365370f@sentry.io/293471"
       config.sanitize_fields = Rails.application.config.filter_parameters.map(&:to_s)
     end
+
+    config.autoload_paths << Rails.root.join("lib")
+    config.eager_load_paths << Rails.root.join("lib")
+    config.active_record.observers = :user_observer
   end
 end
