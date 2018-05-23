@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem "attr_encrypted", "~> 3.1.0"
+gem "chartkick"
 gem "coffee-rails", "~> 4.2"
 gem "devise"
 gem "faraday"
@@ -20,6 +21,7 @@ gem "sass-rails", "~> 5.0"
 gem "scout_apm"
 gem "sendgrid-ruby"
 gem "sentry-raven"
+gem "sidekiq"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 

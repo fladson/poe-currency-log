@@ -1,0 +1,4 @@
+<% current_user.current_leagues.each do |league| %>
+  <h2><%= league %></h2>
+  <%= render "poe/currency", league: league %>
+<% end %>

@@ -5,6 +5,10 @@ feature "sign in" do
     Warden.test_reset!
   end
 
+  before do
+    User.any_instance.stub :check_credentials
+  end
+
   describe "home links" do
     context "signed out" do
       it "shows a sign in link" do

@@ -1,24 +1,11 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+TO-DO
+run task every 6hours
+ 6 hour automatized workers
+league specific sync
+loading spinners
+Check for same session users
+wrap currency logs into a transaction to not over sum
+remove travis and keep semaphore
+setup sentry for production only
+UI with next sync at timezone info
+create empty array with all currencies to facilitate calcs?

@@ -1,21 +1,18 @@
 require "rails_helper"
-require_relative "../../lib/poe/currency_parser"
-require_relative "../../lib/poe/connection"
-require_relative "../../lib/poe/stash"
 
-RSpec.describe CurrencyParser do
+RSpec.describe POE::CurrencyParser do
   before :all do
-    api = Connection.api("valid_session")
+    api = POE::API.new("valid_session")
+
     @tabs = []
-    VCR.use_cassette "tabs" do
-      @tabs = Stash.tabs(api, "valid_account_name", "valid_league")
+    VCR.use_cassette "stash tabs" do
+      @tabs = api.stash_tabs("valid_account_name", "valid_league")
     end
-    @tabs.freeze
   end
 
   describe ".parse_tabs" do
     it "parses currencies correctly" do
-      parsed_currency = CurrencyParser.parse_tabs(@tabs)
+      parsed_currency = POE::CurrencyParser.parse_tabs(@tabs)
       expected_currency = {
         "Journeyman Cartographer's Sextant"=>5,
         "Splinter of Chayula"=>35,
@@ -58,7 +55,7 @@ RSpec.describe CurrencyParser do
   describe ".parse_tab" do
     it "parses currencies correctly" do
       currency_hash = Hash.new { |hash, key| hash[key] = 0 }
-      CurrencyParser.parse_tab(@tabs.first, currency_hash)
+      POE::CurrencyParser.parse_tab(@tabs.first, currency_hash)
       expected_currency = {
         "Journeyman Cartographer's Sextant"=>5,
         "Splinter of Chayula"=>35,
@@ -99,9 +96,9 @@ RSpec.describe CurrencyParser do
 
     it "sums currencies correctly" do
       currency_hash = Hash.new { |hash, key| hash[key] = 0 }
-      CurrencyParser.parse_tab(@tabs.first, currency_hash)
-      CurrencyParser.parse_tab(@tabs.second, currency_hash)
-      CurrencyParser.parse_tab(@tabs.third, currency_hash)
+      POE::CurrencyParser.parse_tab(@tabs.first, currency_hash)
+      POE::CurrencyParser.parse_tab(@tabs.second, currency_hash)
+      POE::CurrencyParser.parse_tab(@tabs.third, currency_hash)
 
       expect(currency_hash["Chaos Orb"]).to eq(706)
       expect(currency_hash["Orb of Regret"]).to eq(68)
@@ -111,7 +108,7 @@ RSpec.describe CurrencyParser do
       divination_tab = @tabs[6]
       expect(JSON).not_to receive(:parse).with(divination_tab)
 
-      CurrencyParser.parse_tab(divination_tab, nil)
+      POE::CurrencyParser.parse_tab(divination_tab, nil)
     end
   end
 end
