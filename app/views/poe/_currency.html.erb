@@ -1,0 +1,12 @@
+<%= line_chart current_user.currency_logs.group(:league, :id) %>
+
+<% current_user.currency_logs_for(league).each do |currency_log| %>
+  <!-- <h3><%= currency_log.created_at %></h3> -->
+
+  <!-- <%= line_chart currency_log.data["Vaal Orb"] %>
+  <%= currency_log.data["Vaal Orb"] %> -->
+  <!-- <% currency_log.data.each do |currency| %>
+    <h3><%= currency[0] %></h3>
+    <h4><%= currency[1] %></h4>
+  <% end %> -->
+<% end %>

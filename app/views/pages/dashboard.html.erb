@@ -1,3 +1,13 @@
 <h1>Pages#dashboard</h1>
-<p>Find me in app/views/pages/dashboard.html.erb</p>
-<%= render "pages/shared/links" %>
+<% if current_user.valid_credentials %>
+  <%= render "pages/shared/links" %><br>
+  Next sync at <%= current_user.updated_at + 6.hours %><br>
+  <%= current_user.email %>
+  <%= form_tag fetch_currency_path, method: :get do %>
+    <%= submit_tag "Fetch currency" %>
+  <% end %>
+  <%= render "poe/leagues" %>
+<% else %>
+  <p>Your poe session id is invalid, please update it.</p>
+  <%= link_to "Update my poe session id", edit_user_registration_path %>
+<% end %>

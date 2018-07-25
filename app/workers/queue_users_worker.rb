@@ -13,7 +13,7 @@ class QueueUsersWorker
 
   def self.queue_users
     puts "Queueing users"
-    User.where(valid_credentials: true).find_each do |user|
+    User.where(valid_credentials: true).where("updated_at < ?", 6.hours.ago).find_each do |user|
       perform_async(user.email)
     end
   end
