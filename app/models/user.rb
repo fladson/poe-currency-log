@@ -11,9 +11,6 @@ class User < ApplicationRecord
   validates :session, presence: true
   validate :check_credentials
 
-  delegate :for_league, to: :currency_logs, prefix: true
-  alias_method :currency_logs_for, :currency_logs_for_league
-
   STANDARD_LEAGUES = ["Standard", "Hardcore", "SSF Standard", "SSF Hardcore"]
 
   def current_leagues
@@ -25,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def currency_stats_for(league)
-    currency_logs_for(league).timeline_order.format_currencies
+    currency_logs.progression.by_league(league)
   end
 
   private
