@@ -5,13 +5,13 @@ class LogCurrencyWorker
   def perform(user_email)
     puts "Fetching currency for #{user_email}"
     user = User.find_by_email(user_email)
-    api = Poe::Connection.api(user.session)
+    api = POE::API.new(user.session)
     begin
-      chars = Poe::Characters.get_json(api)
+      chars = api.chars
       user.update(chars: chars)
       user.current_leagues.each do |league|
-        tabs = Poe::Stash.tabs(api, user.account_name, league)
-        currency = Poe::CurrencyParser.parse_tabs(tabs)
+        tabs = api.stash_tabs(user.account_name, league)
+        currency = POE::CurrencyParser.parse_tabs(tabs)
 
         CurrencyLog.create(user: user, league: league, data: currency)
       end
