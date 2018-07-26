@@ -84,14 +84,14 @@ RSpec.describe User, type: :model do
     context "when different leagues" do
       it "returns the correct legues" do
         chars = [
-          {"name"=>"tianne_", "class"=>"Ranger", "level"=>22, "league"=>"Standard SSF", "classId"=>2, "ascendancyClass"=>0},
+          {"name"=>"tianne_", "class"=>"Ranger", "level"=>22, "league"=>"SSF Standard", "classId"=>2, "ascendancyClass"=>0},
           {"name"=>"Maeggi", "class"=>"Ascendant", "level"=>94, "league"=>"Standard", "classId"=>0, "ascendancyClass"=>1},
-          {"name"=>"Ngamason", "class"=>"Berserker", "level"=>90, "league"=>"Standard Hardcore", "classId"=>1, "ascendancyClass"=>2},
+          {"name"=>"Ngamason", "class"=>"Berserker", "level"=>90, "league"=>"Hardcore", "classId"=>1, "ascendancyClass"=>2},
           {"name"=>"Lunna_", "class"=>"Raider", "level"=>88, "league"=>"Abyss", "classId"=>2, "ascendancyClass"=>1}
         ]
         user = build(:user, chars: chars)
 
-        expect(user.current_leagues).to eq(["Standard SSF", "Standard", "Standard Hardcore", "Abyss"])
+        expect(user.current_leagues).to eq(["SSF Standard", "Standard", "Hardcore", "Abyss"])
       end
     end
 
@@ -107,6 +107,21 @@ RSpec.describe User, type: :model do
 
         expect(user.current_leagues).to eq(["Standard", "Abyss"])
       end
+    end
+  end
+
+  describe "temp_leagues" do
+    it "returns the correct legues" do
+      chars = [
+        {"name"=>"tianne_", "class"=>"Ranger", "level"=>22, "league"=>"SSF Standard", "classId"=>2, "ascendancyClass"=>0},
+        {"name"=>"Maeggi", "class"=>"Ascendant", "level"=>94, "league"=>"Standard", "classId"=>0, "ascendancyClass"=>1},
+        {"name"=>"Ngamason", "class"=>"Berserker", "level"=>90, "league"=>"Hardcore", "classId"=>1, "ascendancyClass"=>2},
+        {"name"=>"Lunna_", "class"=>"Raider", "level"=>88, "league"=>"Abyss", "classId"=>2, "ascendancyClass"=>1},
+        {"name"=>"Lunna_", "class"=>"Raider", "level"=>88, "league"=>"Abyss Hardcore", "classId"=>2, "ascendancyClass"=>1}
+      ]
+      user = build(:user, chars: chars)
+
+      expect(user.temp_leagues).to eq(["Abyss", "Abyss Hardcore"])
     end
   end
 end

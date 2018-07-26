@@ -1,6 +1,6 @@
 <h1>Pages#dashboard</h1>
+<%= render "pages/shared/links" %><br>
 <% if current_user.valid_credentials %>
-  <%= render "pages/shared/links" %><br>
   Next sync at <%= current_user.updated_at + 6.hours %><br>
   <%= current_user.email %>
   <%= form_tag fetch_currency_path, method: :get do %>
