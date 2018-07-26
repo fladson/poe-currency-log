@@ -15,7 +15,7 @@ class LogCurrencyWorker
 
         CurrencyLog.create(user: user, league: league, data: currency)
       end
-    rescue POE::Errors::InvalidSession
+    rescue POE::Error::InvalidSession
       puts "Connection failed, updating user valid_credentials to false"
       user.update(valid_credentials: false)
     end
