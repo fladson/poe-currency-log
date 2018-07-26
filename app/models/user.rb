@@ -31,9 +31,9 @@ class User < ApplicationRecord
     begin
       api = POE::API.new(session)
 
-      account_name = api.account_name
-      chars = api.chars
-      valid_credentials = true
+      self.account_name = api.account_name
+      self.chars = api.chars
+      self.valid_credentials = true
     rescue POE::Error::InvalidSession
       errors.add(:session, "is invalid")
       Rails.logger.info("Invalid user session: #{self}")
