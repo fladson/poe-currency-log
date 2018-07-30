@@ -4,18 +4,19 @@
         <h1 class="text-center text-4xl font-normal -mt-20 mb-20">Sign in to your account</h1>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "bg-white shadow rounded px-8 pt-6 pb-8 mb-4"}) do |f| %>
+          <%= render "users/shared/alerts" %>
           <div class="mb-6">
             <label class="block text-grey-darker text-sm font-bold mb-2" for="email">
               <%= f.label :email %>
             </label>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email@example.com", class: "shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" %>
+            <%= f.email_field :email, autofocus: true, required: true, autocomplete: "email", placeholder: "email@example.com", class: "shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" %>
           </div>
 
           <div class="mb-2">
             <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
               <%= f.label :password %>
             </label>
-            <%= f.password_field :password, autocomplete: "off", placeholder: "******************", class: "shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight"  %>
+            <%= f.password_field :password, required: true, autocomplete: "off", placeholder: "******************", class: "shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight"  %>
           </div>
 
           <div class="mb-6">
