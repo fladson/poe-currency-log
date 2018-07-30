@@ -1,2 +1,105 @@
-<% current_user.currency_logs_for(league).each do |currency_log| %>
-<% end %>
+<div class="py-4">
+  <% current_user.currency_stats_for(league).slice(*default_order).each do |chart| %>
+    <div class="bg-white rounded-lg shadow-custom mb-6 border border-card-border">
+      <div class="flex justify-between">
+        <div class="flex items-center -mt-4">
+          <span class="inline-flex ml-4">
+            <%= image_tag("currencies/#{chart[0]}.png", class: "h-10 w-10") %>
+          </span>
+          <span class="font-semibold text-xl text-grey-darkest ml-3">
+            <%= chart[0] %>
+          </span>
+        </div>
+
+        <div class="border rounded mb-2 mt-4 mr-4">
+          <div class="flex">
+            <div class="w-24">
+              <ul class="list-reset leading-normal border-r">
+                <li class="text-grey-darker text-center p-1 text-xs uppercase">Current</li>
+                <li class="text-grey-darker text-center text-xl font-bold">
+                  <%= chart[1].first.last %>
+                </li>
+              </ul>
+            </div>
+            <div class="w-24">
+              <ul class="list-reset leading-normal border-r">
+                <li class="text-grey-darker text-center p-1 text-xs uppercase">Max</li>
+                <li class="text-grey-darker text-center text-xl font-bold">
+                  <%= chart[1].flatten.reject{|i| i.is_a?(String)}.max %>
+                </li>
+              </ul>
+            </div>
+            <div class="w-24">
+              <ul class="list-reset leading-normal border-r">
+                <li class="text-grey-darker text-center p-1 text-xs uppercase">Diff</li>
+                <%= diff(chart[1]) %>
+              </ul>
+            </div>
+            <div class="w-24">
+              <ul class="list-reset leading-normal">
+                <li class="text-grey-darker text-center p-1 text-xs uppercase">% Diff</li>
+                <%= diff_percent(chart[1]) %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= line_chart chart[1],
+        points: false,
+        responsive: true,
+
+        # height: "200px",
+        # curve: false,
+        colors: [color_for(chart[0])],
+        dataset: {
+          borderWidth: 3,
+          # borderColor: color_for(chart[0]),
+          # backgroundColor: color_for(chart[0])
+        },
+        library: {
+          layout: {
+            padding: {
+                left: 15,
+                bottom: 15
+            }
+          },
+          tooltips:{
+            enabled: false
+          },
+          elements:{
+            line: {
+              # tension: 0.15
+            },
+            point: {
+              # hoverRadius: 0
+            }
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                fontColor: ['#8AA0C2'],
+                fontStyle: "bold"
+              },
+              gridLines: {
+                zeroLineColor: ['#edf2f9'],
+              },
+              # display: false
+            }],
+            xAxes: [{
+              gridLines: {
+                display: false,
+                zeroLineColor: ['#edf2f9'],
+              },
+              ticks: {
+
+                fontColor: ['#8AA0C2'],
+                fontStyle: "bold"
+              },
+              # display: false
+            }]
+          }
+        } %>
+    </div>
+  <% end %>
+</div>

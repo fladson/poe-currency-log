@@ -2,20 +2,26 @@
 <html>
   <head>
     <title>Poe Currency Log</title>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=News+Cycle:400,700" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,600,700" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Rubik:400,500" rel="stylesheet"> -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', 'data-turbolinks-track': 'reload', media: 'all' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_pack_tag "application" %>
 
     <%= render 'application/favicon' %>
+
   </head>
 
-  <body class="font-sans text-black h-full">
-    <p class="notice"><%= notice %></p>
-    <p class="text-red text-xs italic"><%= alert %></p>
+  <body class="font-custom antialiased font-normal text-black leading-normal">
     <%= yield %>
   </body>
+
 </html>

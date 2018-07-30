@@ -56,6 +56,11 @@ let colors = {
   'grey-lightest': '#f8fafc',
   'white': '#ffffff',
 
+  'grey-bg': '#f9fbfd',
+  'grey-border': '#e3ebf6',
+  'card-border': '#edf2f9',
+  'chart-text': '#8AA0C2',
+
   'red-darkest': '#3b0d0c',
   'red-darker': '#621b18',
   'red-dark': '#cc1f1a',
@@ -119,6 +124,13 @@ let colors = {
   'purple-light': '#a779e9',
   'purple-lighter': '#d6bbfc',
   'purple-lightest': '#f3ebff',
+
+  'purple-background': '#2f1b40',
+  'purple-background-1': '#2D2D46',
+  'purple-background-2': '#2D2C46',
+  'purple-background-3': '#29263F',
+
+  'grey-text': '#E5E5E8',
 
   'pink-darkest': '#451225',
   'pink-darker': '#6f213f',
@@ -226,6 +238,15 @@ module.exports = {
       'Liberation Mono',
       'Courier New',
       'monospace',
+    ],
+    'custom': [
+      'Libre Franklin',
+      'sans-serif',
+    ],
+    'numbers': [
+      'Rubik',
+      // 'Libre Franklin',
+      'sans-serif',
     ]
   },
 
@@ -483,6 +504,7 @@ module.exports = {
     '24': '6rem',
     '32': '8rem',
     '48': '12rem',
+    '62': '15.5rem',
     '64': '16rem',
     '1/2': '50%',
     '1/3': '33.33333%',
@@ -693,6 +715,7 @@ module.exports = {
     '20': '5rem',
     '24': '6rem',
     '32': '8rem',
+    '62': '15.5rem',
   },
 
 
@@ -748,6 +771,7 @@ module.exports = {
 
   shadows: {
     default: '0 2px 4px 0 rgba(0,0,0,0.10)',
+    'custom': '0 0.75rem 1.5rem rgba(18,38,63,.03)',
     'md': '0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08)',
     'lg': '0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)',
     'inner': 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',

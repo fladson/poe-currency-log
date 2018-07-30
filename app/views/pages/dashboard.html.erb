@@ -1,13 +1,52 @@
-<h1>Pages#dashboard</h1>
-<%= render "pages/shared/links" %><br>
-<% if current_user.valid_credentials %>
-  Next sync at <%= current_user.updated_at + 6.hours %><br>
-  <%= current_user.email %>
-  <%= form_tag fetch_currency_path, method: :get do %>
-    <%= submit_tag "Fetch currency" %>
-  <% end %>
-  <%= render "poe/leagues" %>
-<% else %>
-  <p>Your poe session id is invalid, please update it.</p>
-  <%= link_to "Update my poe session id", edit_user_registration_path %>
-<% end %>
+<div class="flex min-h-screen">
+  <aside class="min-h-screen w-62 flex-no-shrink bg-white text-grey-dark font-semibold border-r border-grey-border fixed pin-l">
+    <div class="flex p-8">
+      <%= inline_svg "logo.svg", class: "h-12 w-12 self-center flex-1" %>
+    </div>
+
+    <div class="">
+      <div class="mb-8">
+        <div class="inline-flex px-4">
+          <i data-feather="home" class="h-5 w-5 stroke-current"></i>
+          <p class="ml-2">Standard Leagues</p>
+        </div>
+
+        <div class="mt-2">
+          <% current_user.standard_leagues.each do |league| %>
+            <%= link_to league, league_path(league), method: :get, class: "tracking-wide uppercase text-xs no-underline hover:underline hover:text-grey-darkest text-grey-dark ml-12" %>
+          <% end %>
+        </div>
+
+      </div>
+
+      <div class="">
+        <div class="inline-flex px-4">
+          <i data-feather="calendar" class="h-5 w-5 stroke-current"></i>
+          <p class="ml-2">Temp Leagues</p>
+        </div>
+
+        <div class="mt-2">
+          <% current_user.temp_leagues.each do |league| %>
+            <%= link_to league, league_path(league), method: :get, class: "tracking-wide uppercase text-xs no-underline hover:underline hover:text-grey-darkest text-grey-dark ml-12" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="">
+      <hr class="border-t mx-4 border-grey mt-8 mb-2">
+
+      <nav class="text-sm tracking-wide text-center">
+        <a href="#" class="text-grey-dark hover:underline hover:text-grey-darkest no-underline mr-4">Settings</a>
+        <a href="#" class="text-grey-dark hover:underline hover:text-grey-darkest no-underline mr-4">Help</a>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-grey-dark hover:underline hover:text-grey-darkest no-underline" %>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="w-full bg-grey-bg py-6 px-8 flex-shrink ml-62">
+    <h2 class="mb-4">Standard</h2>
+    <hr class="border-t border-grey-border">
+    <%= render "poe/currency", league: "Standard" %>
+  </main>
+</div>
