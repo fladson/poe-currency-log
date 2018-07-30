@@ -73,7 +73,7 @@ module ChartHelper
 
   def diff_percent(data)
     return '-' if data.second.blank?
-    result = ((data.first.last - data.second.last).to_f / data.second.last.to_f * 100.to_f).round
+    result = ((data.first.last - data.second.last).to_f / data.second.zero? ? 1 : data.second.last.to_f * 100.to_f).round
     format_number(result, true)
   end
 
