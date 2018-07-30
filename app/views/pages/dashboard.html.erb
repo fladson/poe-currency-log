@@ -33,12 +33,12 @@
       </div>
     </div>
 
-    <div class="">
-      <hr class="border-t mx-4 border-grey mt-8 mb-2">
+    <div class="fixed pin-b p-4 ml-3">
+      <hr class="border-t border-grey-border mb-2">
 
-      <nav class="text-sm tracking-wide text-center">
-        <a href="#" class="text-grey-dark hover:underline hover:text-grey-darkest no-underline mr-4">Settings</a>
-        <a href="#" class="text-grey-dark hover:underline hover:text-grey-darkest no-underline mr-4">Help</a>
+      <nav class="text-sm tracking-wide">
+        <a href="#" class="text-custom-grey hover:underline hover:text-grey-darkest no-underline mr-4">Settings</a>
+        <a href="#" class="text-custom-grey hover:underline hover:text-grey-darkest no-underline mr-4">Help</a>
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-grey-dark hover:underline hover:text-grey-darkest no-underline" %>
       </nav>
     </div>
