@@ -35,3 +35,4 @@ rerun.txt
 yarn-debug.log*
 .yarn-integrity
 .DS_Store
+TODO.md
