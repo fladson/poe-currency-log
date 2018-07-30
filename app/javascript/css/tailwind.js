@@ -60,6 +60,7 @@ let colors = {
   'grey-border': '#e3ebf6',
   'card-border': '#edf2f9',
   'chart-text': '#8AA0C2',
+  'custom-grey': '#6e84a3',
 
   'red-darkest': '#3b0d0c',
   'red-darker': '#621b18',

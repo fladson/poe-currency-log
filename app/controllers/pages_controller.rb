@@ -5,10 +5,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-  end
-
-  def league
-    render partial: "poe/currency", locals: { league:params[:league] }
+    @current_league = params[:query] || current_user.default_league
+    @currency_stats = current_user.currency_stats(params[:query] || @current_league)
   end
 
   def fetch_currency
@@ -17,6 +15,6 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.permit(:league)
+    params.permit(:league, :query)
   end
 end

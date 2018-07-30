@@ -25,8 +25,12 @@ class User < ApplicationRecord
     current_leagues - temp_leagues
   end
 
-  def currency_stats_for(league)
+  def currency_stats(league)
     currency_logs.progression.by_league(league)
+  end
+
+  def default_league
+    current_leagues.first
   end
 
   private

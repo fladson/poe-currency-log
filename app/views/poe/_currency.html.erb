@@ -1,5 +1,5 @@
 <div class="py-4">
-  <% current_user.currency_stats_for(league).slice(*default_order).each do |chart| %>
+  <% @currency_stats.slice(*default_order).each do |chart| %>
     <div class="bg-white rounded-lg shadow-custom mb-6 border border-card-border">
       <div class="flex justify-between">
         <div class="flex items-center -mt-4">
