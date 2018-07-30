@@ -1,6 +1,6 @@
 module POE
   class CurrencyParser
-    STANDARD_ITEMS = [
+    STANDARD_CURRENCY = [
       "Apprentice Cartographer's Sextant", "Blessed Orb", "Cartographer's Chisel",
       "Chaos Orb", "Chromatic Orb", "Divine Orb", "Exalted Orb", "Gemcutter's Prism",
       "Glassblower's Bauble", "Jeweller's Orb", "Journeyman Cartographer's Sextant",
@@ -9,8 +9,8 @@ module POE
       "Orb of Fusing", "Orb of Regret", "Orb of Scouring", "Orb of Transmutation",
       "Regal Orb", "Silver Coin", "Vaal Orb"
     ].freeze
-    LEAGUE_ITEMS = [].freeze
-    CURRENCY = (STANDARD_ITEMS | LEAGUE_ITEMS).freeze
+    CURRENT_LEAGUE_CURRENCY = [].freeze
+    CURRENCY = (STANDARD_CURRENCY | CURRENT_LEAGUE_CURRENCY).freeze
 
     class << self
       def parse_tabs(tabs)
