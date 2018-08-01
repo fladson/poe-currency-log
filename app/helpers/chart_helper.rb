@@ -66,15 +66,26 @@ module ChartHelper
     DEFAULT_COLORS[currency]
   end
 
+  def colors
+    DEFAULT_COLORS.slice(*default_order).values
+  end
+
   def diff(data)
     return '-' if data.second.blank?
     format_number(data.first.last - data.second.last)
   end
 
   def diff_percent(data)
-    return '-' if data.second.blank?
-    result = ((data.first.last - data.second.last).to_f / (data.second.last.zero? ? 1 : data.second.last.to_f) * 100.to_f).round
-    format_number(result, true)
+    format_number(percent(data), true)
+  end
+
+  def all_diff_percent(data)
+    percent = []
+    data.each do |currency|
+      percent << [ currency.first, percent(currency.second) ]
+    end
+
+    percent
   end
 
   def color_for_chart(currency)
@@ -87,6 +98,11 @@ module ChartHelper
   end
 
   private
+  def percent(data)
+    return '-' if data.second.blank?
+    ((data.first.last - data.second.last).to_f / (data.second.last.zero? ? 1 : data.second.last.to_f) * 100.to_f).round
+  end
+
   def format_number(number, suffix=false)
     result_as_string = number.positive? ? number.to_s.prepend("+") : number.to_s
     result_as_string = number_to_human(number, :format => '%n%u', :units => { :thousand => 'K' }) if number >= 1000

@@ -1,4 +1,54 @@
 <div class="py-4">
+  <div class="bg-white rounded-lg shadow-custom mb-6 border border-card-border">
+    <span class="font-semibold text-xl text-grey-darkest px-4">
+      % Summary
+    </span>
+    <%= bar_chart all_diff_percent(@currency_stats.slice(*default_order)),
+      colors: [colors],
+      height: '500px',
+      library: {
+        layout: {
+          padding: {
+            left: 10,
+            bottom: 10,
+            right: 25,
+          }
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontFamily: "'Libre Franklin'",
+              fontSize: 14,
+              fontColor: ['#8AA0C2'],
+              fontStyle: "bold",
+              # stepSize: (chart[1].flatten.reject{|i| i.is_a?(String)}.max / 3).round(-1)
+            },
+            gridLines: {
+              zeroLineColor: ['#edf2f9'],
+              # display: false,
+            },
+            # display: false
+          }],
+          xAxes: [{
+            gridLines: {
+              # display: false,
+              zeroLineColor: ['#edf2f9'],
+            },
+            ticks: {
+              fontFamily: "'Libre Franklin'",
+              # fontSize: 12,
+              # source: 'data',
+              fontColor: ['#8AA0C2'],
+              fontStyle: "bold"
+            },
+            # display: false
+          }]
+        }
+      }
+
+
+    %>
+  </div>
   <% @currency_stats.slice(*default_order).each do |chart| %>
     <div class="bg-white rounded-lg shadow-custom mb-6 border border-card-border">
       <div class="flex justify-between">
@@ -48,7 +98,6 @@
       <%= line_chart chart[1],
         points: false,
         responsive: true,
-
         # height: "200px",
         # curve: false,
         colors: [color_for(chart[0])],
@@ -60,8 +109,9 @@
         library: {
           layout: {
             padding: {
-              left: 15,
-              bottom: 15
+              left: 10,
+              bottom: 10,
+              right: 25,
             }
           },
           tooltips:{
@@ -78,22 +128,32 @@
           scales: {
             yAxes: [{
               ticks: {
+                fontFamily: "'Libre Franklin'",
+                # fontSize: 14,
                 fontColor: ['#8AA0C2'],
-                fontStyle: "bold"
+                # fontStyle: "bold",
+                # stepSize: (chart[1].flatten.reject{|i| i.is_a?(String)}.max / 3).round(-1)
               },
               gridLines: {
                 zeroLineColor: ['#edf2f9'],
+                display: false,
               },
               # display: false
             }],
             xAxes: [{
+              type: 'time',
+              distribution: 'series',
+
               gridLines: {
                 display: false,
                 zeroLineColor: ['#edf2f9'],
               },
               ticks: {
+                fontFamily: "'Libre Franklin'",
+                # fontSize: 12,
+                source: 'data',
                 fontColor: ['#8AA0C2'],
-                fontStyle: "bold"
+                # fontStyle: "bold"
               },
               # display: false
             }]
