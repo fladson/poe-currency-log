@@ -104,6 +104,7 @@ module ChartHelper
   end
 
   def format_number(number, suffix=false)
+    return '-' if number.is_a?(String)
     result_as_string = number.positive? ? number.to_s.prepend("+") : number.to_s
     result_as_string = number_to_human(number, :format => '%n%u', :units => { :thousand => 'K' }) if number >= 1000
     result_as_string = suffix ? result_as_string << "%" : result_as_string

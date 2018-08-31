@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   end
 
   def fetch_currency
-    LogCurrencyWorker.perform_async(current_user.email)
+    LeagueLogCurrencyWorker.perform_async(current_user.email, @current_league)
     redirect_back(fallback_location: user_root_path)
   end
 

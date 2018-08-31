@@ -1,7 +1,7 @@
 <div class="flex min-h-screen">
   <aside class="min-h-screen w-62 flex-no-shrink bg-white text-custom-grey font-semibold border-r border-grey-border fixed pin-l">
     <div class="flex p-8">
-      <%= inline_svg "logo.svg", class: "h-12 w-12 self-center flex-1" %>
+      <%= inline_svg "logo.svg", class: "h-16 w-16 self-center flex-1" %>
     </div>
 
     <div class="">
@@ -13,7 +13,7 @@
 
         <ul class="mt-2 list-reset">
           <% current_user.standard_leagues.each do |league| %>
-            <li><%= link_to league, dashboard_path(league.parameterize, query: league), method: :get, class: "tracking-wide uppercase text-xs no-underline hover:underline hover:text-grey-darkest text-grey-dark ml-12" %></li>
+            <li><%= link_to league, dashboard_path(league.parameterize, query: league), method: :get, class: "tracking-wide uppercase text-xs no-underline hover:text-grey-darkest text-grey-dark ml-12" %></li>
           <% end %>
         </ul>
 
@@ -27,7 +27,7 @@
 
         <ul class="mt-2 list-reset">
           <% current_user.temp_leagues.each do |league| %>
-            <li><%= link_to league, dashboard_path(league.parameterize, query: league), method: :get, class: "tracking-wide uppercase text-xs no-underline hover:underline hover:text-grey-darkest text-grey-dark ml-12" %></li>
+            <li><%= link_to league, dashboard_path(league.parameterize, query: league), method: :get, class: "tracking-wide uppercase text-xs no-underline hover:text-grey-darkest text-grey-dark ml-12" %></li>
           <% end %>
         </ul>
       </div>
@@ -37,9 +37,9 @@
       <hr class="border-t border-grey-border mb-2">
 
       <nav class="text-sm tracking-wide">
-        <a href="#" class="text-custom-grey hover:underline hover:text-grey-darkest no-underline mr-4">Settings</a>
-        <a href="#" class="text-custom-grey hover:underline hover:text-grey-darkest no-underline mr-4">Help</a>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-custom-grey hover:underline hover:text-grey-darkest no-underline" %>
+        <a href="#" class="text-custom-grey hover:text-grey-darkest no-underline mr-4">Settings</a>
+        <a href="#" class="text-custom-grey hover:text-grey-darkest no-underline mr-4">Help</a>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-custom-grey hover:text-grey-darkest no-underline" %>
       </nav>
     </div>
   </aside>
@@ -49,7 +49,8 @@
       <h2 class="mb-4">
         <%= @current_league %>
       </h2>
-      <p class="mr-2 mt-6 uppercase text-sm">Next sync in <strong>5:00:00</strong></p>
+      <%= link_to "Manual sync", fetch_currency_path, method: :get, class: "text-xs uppercase mr-2 mt-4 bg-purple-dark hover:bg-purple text-white font-bold py-2 px-2 rounded shadow-md cursor-pointer text-center tracking-wide no-underline" %>
+      <!-- <p class="mr-2 mt-6 uppercase text-sm">Next sync in <strong>5:00:00</strong></p> -->
     </div>
     <hr class="border-t border-grey-border">
     <%= render "poe/currency" %>
