@@ -67,6 +67,7 @@ GEM
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
     chartkick (2.3.2)
+    chroma (0.2.0)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -403,6 +404,7 @@ DEPENDENCIES
   byebug
   capybara
   chartkick
+  chroma
   coffee-rails (~> 4.2)
   coveralls
   database_cleaner
