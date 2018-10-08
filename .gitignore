@@ -29,3 +29,10 @@ config/initializers/secret_token.rb
 node_modules/
 pickle-email-*.html
 rerun.txt
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity
+.DS_Store
+TODO.md

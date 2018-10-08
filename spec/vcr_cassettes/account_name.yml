@@ -1,0 +1,356 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.pathofexile.com/my-account
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Cookie:
+      - POESESSID=valid_session
+      User-Agent:
+      - Faraday v0.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.1
+      Date:
+      - Mon, 26 Feb 2018 00:27:44 GMT
+      Content-Type:
+      - text/html; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - session_start=1519604863; path=/; domain=.pathofexile.com; HttpOnly
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: "<!DOCTYPE html><html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:fb=\"http://www.facebook.com/2008/fbml\"
+        class=\"en_US\" lang=\"en-US\" xml:lang=\"en-US\">\n<head>\n<title>View Profile
+        - Path of Exile - fladsongomes</title><meta http-equiv=\"Content-Type\" content=\"text/html;
+        charset=UTF-8\" >\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"
+        >\n<meta property=\"fb:admins\" content=\"100001526026598\" >\n<meta property=\"og:image\"
+        content=\"https://web.poecdn.com/image/favicon/ogimage.png?oriath\" >\n<meta
+        property=\"og:title\" content=\"View Profile - Path of Exile - fladsongomes\"
+        >\n<meta property=\"og:site_name\" content=\"Path of Exile\" >\n<meta property=\"og:type\"
+        content=\"website\" >\n<meta property=\"og:keywords\" content=\"path of exile,action
+        rpg,online rpg game,free rpg game\" >\n<meta property=\"og:description\" content=\"Path
+        of Exile is a free online-only action RPG under development by Grinding Gear
+        Games in New Zealand.\" >\n<meta name=\"keywords\" content=\"path of exile,action
+        rpg,online rpg game,free rpg game\" >\n<meta name=\"description\" content=\"Path
+        of Exile is a free online-only action RPG under development by Grinding Gear
+        Games in New Zealand.\" >\n<meta name=\"msapplication-config\" content=\"https://web.poecdn.com/image/favicon/browserconfig.xml?oriath\"
+        >\n<meta name=\"theme-color\" content=\"#ffffff\" >\n<meta property=\"og:locale\"
+        content=\"en_US\" ><link href=\"//es.pathofexile.com/my-account\" hreflang=\"es-ES\"
+        rel=\"alternate\" >\n<link href=\"//de.pathofexile.com/my-account\" hreflang=\"de-DE\"
+        rel=\"alternate\" >\n<link href=\"//fr.pathofexile.com/my-account\" hreflang=\"fr-FR\"
+        rel=\"alternate\" >\n<link href=\"//th.pathofexile.com/my-account\" hreflang=\"th-TH\"
+        rel=\"alternate\" >\n<link href=\"//ru.pathofexile.com/my-account\" hreflang=\"ru-RU\"
+        rel=\"alternate\" >\n<link href=\"//br.pathofexile.com/my-account\" hreflang=\"pt-BR\"
+        rel=\"alternate\" >\n<link href=\"//pathofexile.com/my-account\" hreflang=\"en\"
+        rel=\"alternate\" >\n<link href=\"https://web.poecdn.com/image/favicon/apple-touch-icon.png?oriath\"
+        rel=\"apple-touch-icon\" sizes=\"180x180\" >\n<link href=\"https://web.poecdn.com/image/favicon/favicon-32x32.png?oriath\"
+        rel=\"icon\" type=\"image/png\" sizes=\"32x32\" >\n<link href=\"https://web.poecdn.com/image/favicon/favicon-16x16.png?oriath\"
+        rel=\"icon\" type=\"image/png\" sizes=\"16x16\" >\n<link href=\"https://web.poecdn.com/image/favicon/manifest.json?oriath\"
+        rel=\"manifest\" >\n<link href=\"https://web.poecdn.com/image/favicon/safari-pinned-tab.svg?oriath\"
+        rel=\"mask-icon\" >\n<link href=\"https://web.poecdn.com/image/favicon/favicon.ico?oriath\"
+        rel=\"shortcut icon\" >\n<link href=\"https://web.poecdn.com/css/https/screen.css?v=93f9c2632e940d7426fa3a4e71504c1d\"
+        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" >\r\n            <script
+        type=\"text/javascript\">\r\n                var _gaq = _gaq || [];\r\n                _gaq.push(['_setAccount',
+        'UA-17600449-1']);\r\n                _gaq.push(['_trackPageview']);\r\n                _gaq.push(['_setDomainName',
+        'pathofexile.com']);\r\n                (function() {\r\n                    var
+        ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
+        = true;\r\n                    ga.src = ('https:' == document.location.protocol
+        ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\r\n                    var
+        s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga,
+        s);\r\n                })();\r\n            </script></head>\n\n<body class=\"en_US
+        noJS \">\n            <div class=\"container\">\n        <div class=\"header
+        en\">\n            <div class=\"controls\">\n                <div id=\"statusBar\"><div
+        class=\"statusBarCenter\"></div><div class=\"statusBarRight\"></div><div class=\"row1\"><span
+        class=\"statusItem loggedInStatus\">Logged in as <span class=\"profile-link
+        hasTwitch\" data-twitch-user=\"fladsongomes\"><a href=\"/account/view-profile/fladsongomes\"><img
+        class=\"achievement\" src=\"https://web.poecdn.com/image/icons/achievements/Abyss/30.png?v=13\"
+        alt=\"Completed 30 Challenges\" title=\"Completed 30 Challenges\" />fladsongomes</a><a
+        class=\"twitch\" href=\"//www.twitch.tv/fladsongomes\" target=\"_blank\"></a></span></span>
+        \           <a href=\"/shop/purchase\" class=\"statusItem purchaseLink\"><span
+        class=\"coins\"><span class=\"amount shopCurrentCoinValue account\">160</span><span
+        class=\"label shopHideDuringReload\"></span></span><span class=\"pointsIcon\"></span></a></div><div
+        class=\"row2\">\r\n            <a class=\"logout statusItem\" href=\"/logout\">LOG
+        OUT</a>\r\n            <a class=\"statusItem privateMessageStatus\" href=\"/private-messages\">MESSAGES</a><a
+        class=\"statusItem\" href=\"/support\">CONTACT SUPPORT</a></div></div>                <div
+        class=\"language-select\">\n\t                <a href=\"//pathofexile.com/my-account\"><span
+        class=\"en-lang\"><img src=\"https://web.poecdn.com/image/lang/GB.png\"/></span></a>\n\t
+        \               <a href=\"//br.pathofexile.com/my-account\"><span class=\"br-lang\"><img
+        src=\"https://web.poecdn.com/image/lang/BR.png\"/></span></a>\n\t\t\t\t\t<a
+        href=\"//ru.pathofexile.com/my-account\"><span class=\"ru-lang\"><img src=\"https://web.poecdn.com/image/lang/RU.png\"/></span></a>\n
+        \                   <a href=\"//th.pathofexile.com/my-account\"><span class=\"th-lang\"><img
+        src=\"https://web.poecdn.com/image/lang/TH.png\"/></span></a>\n                    <a
+        href=\"//de.pathofexile.com/my-account\"><span class=\"de-lang\"><img src=\"https://web.poecdn.com/image/lang/DE.png\"/></span></a>\n
+        \                   <a href=\"//fr.pathofexile.com/my-account\"><span class=\"fr-lang\"><img
+        src=\"https://web.poecdn.com/image/lang/FR.png\"/></span></a>\n                    <a
+        href=\"//es.pathofexile.com/my-account\"><span class=\"es-lang\"><img src=\"https://web.poecdn.com/image/lang/ES.png\"/></span></a>\n
+        \               </div>                        <div id=\"inventory-controls\"
+        class=\"inventoryControls\">\n        </div>                <a id=\"mainLogoLink\"
+        href=\"/\">\n                    <span>Path of Exile</span>\n                </a>\n
+        \                                       <div id=\"largeHeaderButton\">\n                                                <a
+        id=\"downloadButton\" href=\"/downloads/PathOfExileInstaller.exe\"><span>Download</span></a>\n
+        \                                               </div>\n                                </div>\n
+        \           <ul class=\"navigation en_US\">\n                <li id=\"nav-home\">
+        \     <a onclick=\"return touchMenu()\" href=\"http://pathofexile.com/\"><span>Home</span></a><div
+        class=\"dropDown\"><div class=\"top\"></div><ul><li><a href=\"http://pathofexile.com/news\">News</a></li><li><a
+        href=\"http://pathofexile.com/my-account\">My Account</a></li><li><a href=\"http://pathofexile.com/forum/view-forum/patch-notes\">Patch
+        Notes</a></li></ul><div class=\"bot\"></div></div></li>\n                <li
+        id=\"nav-game\">      <a onclick=\"return touchMenu()\" href=\"http://pathofexile.com/game\"><span>Game</span></a><div
+        class=\"dropDown\"><div class=\"top\"></div><ul><li><a href=\"http://pathofexile.com/video\">Videos</a></li><li><a
+        href=\"http://pathofexile.com/gallery\">Gallery</a></li><li class=\"separator\"></li><li><a
+        href=\"http://pathofexile.com/game\">Overview</a></li><li><a href=\"http://pathofexile.com/passive-skill-tree\">Passive
+        Tree</a></li><li><a href=\"http://pathofexile.com/ascendancy/classes\">Ascendancy
+        Classes</a></li><li><a href=\"http://pathofexile.com/item-data\">Items</a></li><li
+        class=\"separator\"></li><li><a href=\"http://pathofexile.gamepedia.com/\">Community
+        Wiki</a></li></ul><div class=\"bot\"></div></div></li>\n                <li
+        id=\"nav-forum\">     <a onclick=\"return touchMenu()\" href=\"http://pathofexile.com/forum\"><span>Forum</span></a><div
+        class=\"dropDown\"><div class=\"top\"></div><ul><li><a href=\"http://pathofexile.com/forum\">Index</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/1457463\">Code of Conduct</a></li><li><a
+        href=\"http://pathofexile.com/search\">Search</a></li></ul><div class=\"bot\"></div></div></li>\n
+        \               <li id=\"nav-events\">    <a onclick=\"return touchMenu()\"
+        href=\"http://pathofexile.com/events\"><span>Events</span></a><div class=\"dropDown\"><div
+        class=\"top\"></div><ul><li><a href=\"http://pathofexile.com/events\">Event
+        Calendar</a></li><li><a href=\"http://pathofexile.com/seasons\">Race Season</a></li><li><a
+        href=\"http://pathofexile.com/signature-races/ladder\">Signature Races</a></li><li
+        class=\"separator\"></li><li><a href=\"http://pathofexile.com/forum/view-thread/2037517\">Abyss</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/2037514\">Hardcore Abyss</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/71278\">Standard</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/71276\">Hardcore</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/2037510\">SSF Abyss</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/2037508\">SSF Hardcore Abyss</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/1841357\">SSF Standard</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/1841353\">SSF Hardcore</a></li><li
+        class=\"separator\"></li><li><a href=\"http://pathofexile.com/labyrinth\">Labyrinth
+        Ladders</a></li></ul><div class=\"bot\"></div></div></li>\n                                    <li
+        id=\"nav-trade\">     <a onclick=\"return touchMenu()\" href=\"http://pathofexile.com/trade\"><span>Trade</span></a><div
+        class=\"dropDown\"><div class=\"top\"></div><ul><li><a href=\"http://pathofexile.com/trade/search\">Search
+        Items</a></li><li><a href=\"http://pathofexile.com/trade/exchange\">Bulk Item
+        Exchange</a></li><li><a href=\"http://pathofexile.com/trade/about\">About</a></li></ul><div
+        class=\"bot\"></div></div></li>\n                                <li id=\"nav-shop\">
+        \     <a onclick=\"return touchMenu()\" href=\"http://pathofexile.com/shop\"><span>Shop</span></a><div
+        class=\"dropDown\"><div class=\"top\"></div><ul><li><a href=\"http://pathofexile.com/purchase\">Buy
+        Packs</a></li><li><a href=\"http://pathofexile.com/shop\">Microtransactions</a></li><li><a
+        href=\"http://pathofexile.com/shop/category/daily-deals\">Specials</a></li><li><a
+        href=\"http://pathofexile.com/shop/watchlist\">My Watchlist</a></li><li><a
+        href=\"http://pathofexile.com/shop/redeem-key\">Redeem Key</a></li></ul><div
+        class=\"bot\"></div></div></li>\n                            </ul>\n        </div>\n
+        \       <div class=\"content\">\n            <div class=\"backdrop\"></div>\n
+        \           <div class=\"wrapper\">\n                                                                                \n\n<div
+        class=\"hidden\"><div id=\"saw\"></div></div>\n\n\n\n<div class=\"layoutBox1
+        layoutBoxFull defaultTheme\">\n    \n    <div class=\"layoutBoxContent\"><div
+        class=\"profile  mine\">\n\n    <div class=\"profile-top\">\n        <div
+        class=\"tab-links\">\n                                <a class=\"tab active\"
+        href=\"/account/view-profile/fladsongomes\" rel=\"nofollow\">\n                            <span>Overview</span>\n
+        \                       </a>                        <a class=\"tab\" href=\"/account/view-profile/fladsongomes/events\"
+        rel=\"nofollow\">\n                            <span>Season &amp; Events</span>\n
+        \                       </a>                        <a class=\"tab\" href=\"/account/view-profile/fladsongomes/pvp\"
+        rel=\"nofollow\">\n                            <span>PvP</span>\n                        </a>
+        \                       <a class=\"tab\" href=\"/account/view-profile/fladsongomes/achievements\"
+        rel=\"nofollow\">\n                            <span>Achievements</span>\n
+        \                       </a>                        <a class=\"tab\" href=\"/account/view-profile/fladsongomes/challenges\"
+        rel=\"nofollow\">\n                            <span>Challenges</span>\n                        </a>
+        \                       <a class=\"tab\" href=\"/account/view-profile/fladsongomes/characters\"
+        rel=\"nofollow\">\n                            <span>Characters</span>\n                        </a>
+        \                       <a class=\"tab\" href=\"/account/view-profile/fladsongomes/badges\"
+        rel=\"nofollow\">\n                            <span>Supporter Titles</span>\n
+        \                       </a>        </div>\n    </div>\n    <div class=\"profile-container\">\n
+        \       <div class=\"container-top\"></div>\n        <div class=\"container-bottom\"></div>\n
+        \       <div class=\"container-inner\">\n            <div class=\"container-content\">\n
+        \                               <div class=\"profile-boxes\">\n    <div class=\"profile-box
+        profile\">\n        <div class=\"box-top\"></div>\n        <div class=\"box-bottom\"></div>\n
+        \       <div class=\"box-inner\">\n            <h2>Basic Information</h2>\n
+        \           <strong>Guild:</strong>\n                        <a href=\"/guild/profile/444567\">Eternity&#039;s
+        Gospel</a>\n                        <br><br>\n            <strong>Forum Posts:</strong>\n
+        \           8            <small class=\"italic\">\n                (0.03 posts
+        per day)\n            </small>\n            <br>\n                        <br>\n
+        \           <strong>Joined:</strong>\n            May 16, 2017            <br>\n
+        \           <strong>Last Visited:</strong>\n            Feb 25, 2018            <br>\n
+        \       </div>\n    </div>\n    <div class=\"profile-box characters\">\n        <div
+        class=\"box-top\"></div>\n        <div class=\"box-bottom\"></div>\n        <div
+        class=\"box-inner\">\n            <h2>Characters</h2>\n                                            \n
+        \                                                                                           <div
+        class=\"profile-character non-hardcore\">\n                        <div class=\"character-icon
+        small\"><img src=\"/image/gen/classes/thumbs/ascendant.png\" /></div>\n                        <div
+        class=\"character-info\">\n                            <div class=\"info\"><span
+        class=\"characterName\">Maeggi</span></div>\n                            <div
+        class=\"info\">\n                                Level 94 Ascendant                            </div>\n
+        \                           <div class=\"info\">\n                                Abyss
+        League                            </div>\n                        </div>\n\n
+        \                       <a class=\"showcase-pin button add\" data-type=\"level\"
+        data-charactername=\"Maeggi\"></a>                    </div>\n                                    </div>\n
+        \   </div>\n\n    <div class=\"profile-box achievements\">\n        <div class=\"box-top\"></div>\n
+        \       <div class=\"box-bottom\"></div>\n        <div class=\"box-inner\">\n
+        \                           <h2 class=\"has-challenge-level\">Achievements
+        &amp; Challenges</h2>\n                                                            <div
+        class=\"challenge-level\">\n                        <img class=\"achievement\"
+        src=\"/image/icons/achievements/Abyss/30-large.png?v=13\" />\n                    </div>\n
+        \                               <div class=\"info\">\n                    Challenges
+        completed: 30/40<a class=\"showcase-pin button add\" data-type=\"completed_achievement_count\"
+        data-subtype=\"Abyss\"></a>                </div>\n                <div class=\"progress-bar-container\">\n
+        \                   <div class=\"progress-bar\" style=\"width: 75%\">&nbsp;</div>\n
+        \                   <div class=\"progress-frame\"></div>\n                </div>\n
+        \           \n                                        <div class=\"info\">\n
+        \                   Achievements completed: 72/120<a class=\"showcase-pin
+        button add\" data-type=\"completed_achievement_count\" data-subtype=\"Achievements\"></a>
+        \               </div>\n                <div class=\"progress-bar-container\">\n
+        \                   <div class=\"progress-bar\" style=\"width: 60%\">&nbsp;</div>\n
+        \                   <div class=\"progress-frame\"></div>\n                </div>\n
+        \           \n        </div>\n    </div>\n\n    <div class=\"profile-box seasons\">\n
+        \       <div class=\"box-top\"></div>\n        <div class=\"box-bottom\"></div>\n
+        \       <div class=\"box-inner\">\n            <h2>Seasons &amp; Events</h2>\n
+        \           <div class=\"info\">\n                Lifetime Season Points:
+        0            </div>\n                                        <div class=\"info\">\n
+        \                   Current Season Points: 0                </div>\n                <div
+        class=\"info\">\n                                        Current Season Rank:
+        -                </div>\n                                                <div
+        class=\"info rewards\">\n                    Current Season Rewards: 0/1000
+        \               </div>\n                <div class=\"progress-bar-container\">\n
+        \                                       <div class=\"progress-bar\" style=\"width:
+        0px\">&nbsp;</div>\n                    <div class=\"progress-frame\"></div>\n
+        \                                       <div class=\"progress-tick\" style=\"width:
+        47.6666666667px;\">\n                        <img src=\"/image/profile/progress-tick.png\"
+        />\n                    </div>\n                                        <div
+        class=\"progress-tick\" style=\"width: 47.6666666667px;\">\n                        <img
+        src=\"/image/profile/progress-tick.png\" />\n                    </div>\n
+        \                                       <div class=\"progress-tick\" style=\"width:
+        47.6666666667px;\">\n                        <img src=\"/image/profile/progress-tick.png\"
+        />\n                    </div>\n                                        <div
+        class=\"progress-tick\" style=\"width: 47.6666666667px;\">\n                        <img
+        src=\"/image/profile/progress-tick.png\" />\n                    </div>\n
+        \                                       <div class=\"progress-tick\" style=\"width:
+        47.6666666667px;\">\n                        <img src=\"/image/profile/progress-tick.png\"
+        />\n                    </div>\n                                        <div
+        class=\"progress-tick\" style=\"width: 47.6666666667px;\">\n                        <img
+        src=\"/image/profile/progress-tick.png\" />\n                    </div>\n
+        \                                   </div>\n                    </div>\n    </div>\n\n
+        \       \n</div>\n<div class=\"showcase-message\">\n</div>\n\n<div id=\"showcase\">\n</div>\n\n\n
+        \                           </div>\n        </div>\n    </div>\n        <div
+        class=\"profile-details\">\n        <div class=\"details-top\"></div>\n        <div
+        class=\"details-bottom\"></div>\n        <div class=\"details-inner\">\n            <div
+        class=\"details-content\">\n                <div class=\"avatar\">\n                    <div
+        id=\"avatar-image-container\" class=\"image\">\n                                                                        <a
+        id=\"change-avatar\" href=\"#saw\">\n                                    <div
+        class=\"avatar frame1\">\n                <img src=\"https://web.poecdn.com/gen/image/YTozOntpOjA7aTowO2k6/MjthOjI6e3M6MjoiaWQi/O2k6NTYzO3M6NDoic2l6/ZSI7czo2OiJhdmF0YXIi/O31pOjE7aToxO30,/f43cef0395/Path_of_Exile_Gallery_Image.jpg\"
+        alt=\"Avatar\">\n        </div>                            Change avatar                        </a>\n
+        \                                           </div>\n                </div>\n
+        \               <div class=\"details\">\n                    <h1 class=\"name\">fladsongomes</h1>\n
+        \                                                           <div class=\"badges
+        legacy clearfix\"><div class=\"badge  roleLabel seekerLabel\"><img src=\"https://web.poecdn.com/image/forum/supporter-tag/atlas2//Seeker.png\"
+        title=\"Seeker Supporter\" alt=\"Seeker Supporter\" /></div></div>                                                            <p><a
+        class=\"bright\" href=\"/account/view-profile/fladsongomes/manage\">Manage
+        account</a></p>\n                    \n                                                                        <p><a
+        class=\"bright\" href=\"/shop/redeem-key\">Redeem Key</a></p>\n                                            <p><a
+        class=\"bright\" href=\"/account/view-profile/fladsongomes/transactions\">Account
+        transactions</a></p>\n                    <p><a class=\"bright\" href=\"/account/view-profile/fladsongomes/privacy\">Privacy
+        settings</a></p>\n                                        <p><a class=\"bright\"
+        href=\"/account/view-profile/fladsongomes/downloads\">Digital downloads</a></p>\n
+        \                                                                               <p><a
+        class=\"bright\" href=\"/account/view-posts/fladsongomes/forum-posts\" rel=\"nofollow\">Recent
+        forum posts</a></p>\n                </div>\n            </div>\n        </div>\n
+        \   </div>\n    </div>\n\n</div>\n    \n</div>\n                                <div
+        class=\"clear\"></div>\n            </div>\n        </div>\n        <div class=\"footer\">\n
+        \           <div class=\"backdrop\"></div>\n            <div class=\"wrapper\">\n
+        \               <div class=\"sitemap\">\n                    <div class=\"column\"><h3><a
+        href=\"http://pathofexile.com/\">Home</a></h3><ul><li><a href=\"http://pathofexile.com/news\">News</a></li><li><a
+        href=\"http://pathofexile.com/my-account\">My Account</a></li><li><a href=\"http://pathofexile.com/forum/view-forum/patch-notes\">Patch
+        Notes</a></li></ul></div>                    <div class=\"column\"><h3><a
+        href=\"http://pathofexile.com/game\">Game</a></h3><ul><li><a href=\"http://pathofexile.com/video\">Videos</a></li><li><a
+        href=\"http://pathofexile.com/gallery\">Gallery</a></li><li><a href=\"#\"></a></li><li><a
+        href=\"http://pathofexile.com/game\">Overview</a></li><li><a href=\"http://pathofexile.com/passive-skill-tree\">Passive
+        Tree</a></li><li><a href=\"http://pathofexile.com/ascendancy/classes\">Ascendancy
+        Classes</a></li><li><a href=\"http://pathofexile.com/item-data\">Items</a></li><li><a
+        href=\"#\"></a></li><li><a href=\"http://pathofexile.gamepedia.com/\">Community
+        Wiki</a></li></ul></div>                    <div class=\"column\"><h3><a href=\"http://pathofexile.com/forum\">Forum</a></h3><ul><li><a
+        href=\"http://pathofexile.com/forum\">Index</a></li><li><a href=\"http://pathofexile.com/forum/view-thread/1457463\">Code
+        of Conduct</a></li><li><a href=\"http://pathofexile.com/search\">Search</a></li></ul></div>
+        \                   <div class=\"column centerColumn\"></div>\n                    <div
+        class=\"column\"><h3><a href=\"http://pathofexile.com/events\">Events</a></h3><ul><li><a
+        href=\"http://pathofexile.com/events\">Event Calendar</a></li><li><a href=\"http://pathofexile.com/seasons\">Race
+        Season</a></li><li><a href=\"http://pathofexile.com/signature-races/ladder\">Signature
+        Races</a></li><li><a href=\"#\"></a></li><li><a href=\"http://pathofexile.com/forum/view-thread/2037517\">Abyss</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/2037514\">Hardcore Abyss</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/71278\">Standard</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/71276\">Hardcore</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/2037510\">SSF Abyss</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/2037508\">SSF Hardcore Abyss</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/1841357\">SSF Standard</a></li><li><a
+        href=\"http://pathofexile.com/forum/view-thread/1841353\">SSF Hardcore</a></li><li><a
+        href=\"#\"></a></li><li><a href=\"http://pathofexile.com/labyrinth\">Labyrinth
+        Ladders</a></li></ul></div>                    <div class=\"column\"><h3><a
+        href=\"http://pathofexile.com/trade\">Trade</a></h3><ul><li><a href=\"http://pathofexile.com/trade/search\">Search
+        Items</a></li><li><a href=\"http://pathofexile.com/trade/exchange\">Bulk Item
+        Exchange</a></li><li><a href=\"http://pathofexile.com/trade/about\">About</a></li></ul></div>
+        \                   <div class=\"column\"><h3><a href=\"http://pathofexile.com/shop\">Shop</a></h3><ul><li><a
+        href=\"http://pathofexile.com/purchase\">Buy Packs</a></li><li><a href=\"http://pathofexile.com/shop\">Microtransactions</a></li><li><a
+        href=\"http://pathofexile.com/shop/category/daily-deals\">Specials</a></li><li><a
+        href=\"http://pathofexile.com/shop/watchlist\">My Watchlist</a></li><li><a
+        href=\"http://pathofexile.com/shop/redeem-key\">Redeem Key</a></li></ul></div>
+        \               </div>\n                                <div class=\"bottom\">\n
+        \                   <span class=\"copyright\">&#169; 2010 - 2018 <a href=\"http://www.grindinggear.com\">Grinding
+        Gear Games</a></span>\n                    <span class=\"legal\">\n                        <a
+        href=\"/legal/terms-of-use-and-privacy-policy\">Terms of Use and Privacy Policy</a>
+        - <a href=\"/support\">Contact Support</a>\n                    </span>\n
+        \                   - <span><a href=\"/developer/docs/api\">Developer API</a></span>\n
+        \                   <br>\n                    <a class=\"logo\" href=\"http://www.grindinggear.com\"><img
+        src=\"https://web.poecdn.com/image/logo/ggg-dark.png\" alt=\"Grinding Gear
+        Games\" /></a>\n                </div>\n                                <div
+        class=\"clear\"></div>\n            </div>\n        </div>\n    </div>\n        <div
+        id=\"poe-popup-container\"></div>\n    <div id=\"fb-root\"></div>\n        <script
+        type=\"text/javascript\" src=\"https://web.poecdn.com/js/lib/require-2.3.2.js?v=fb734febccaaa258d2fe03b3dca5e0a6\"></script>\n<script
+        type=\"text/javascript\">\n    //<!--\n                document.body.className
+        = document.body.className.replace( /(?:^|\\s)noJS(?!\\S)/ , '');\r\n            window.momentLocale
+        = 'en_US';\r\n            window.momentTimezone = 'America/Sao_Paulo';\r\n
+        \           window.PoELocale = 'en_US';\r\n\r\n            BASEURL = '';\r\n\r\n
+        \           require.config({\r\n                baseUrl: \"https://web.poecdn.com/js\",\r\n
+        \               paths : {\"main\":\"main.6a0f9605348f8cc34750df8001dd681012669896\",\"plugins\":\"plugins.99e4676dc7ca1f9db1afd6c9c9041cfdbb8100dd\",\"skilltree\":\"skilltree.bf3e3334a4e2dc73e2db8431bd5bd345e55c54c1\",\"trade\":\"trade.6656a8b75d30abeaedb2a85e14d186a5e17d1b3b\"},\r\n
+        \               shim: {\"main\":{\"deps\":[\"config\",\"plugins\"]},\"plugins\":{\"deps\":[\"config\"]}}\r\n
+        \           });\r\n            require([\"main\"], function(){require([\"plugins\",\"PoE/Widget/ProfileLink/Manager\"],
+        function($,M){$(function() {var m = new M(); m.loadFromDOM();});});require([\"PoE/Inventory/InventoryControls\"],
+        function(C){var c = new C({\"inventoryManager\":[],\"accountName\":\"fladsongomes\",\"activeCharacter\":{\"name\":\"Maeggi\",\"league\":\"Abyss\",\"classId\":0,\"ascendancyClass\":1,\"class\":\"Ascendant\",\"level\":94},\"el\":\"#inventory-controls\"});
+        c.render();});});    //-->\n</script>\n<script type=\"text/javascript\">\n
+        \   //<!--\n    function getShowcasePins() {\n    if (!showcasePins) {\n        require([\"main\"],
+        function() {\n            require([\"plugins\"], function($) {\n                $(document).ready(function()
+        {\n                    require([\"PoE/View/Profile/ShowcasePins\"], function(F)
+        {\n                        showcasePins = new F({\n                            el:
+        $('#showcase'),\n                            account: \"fladsongomes\",\n
+        \                           curAccountProfile: true\n                        });\n
+        \                       showcasePins.render();\n                    });\n
+        \               });\n            });\n        });\n    } else {\n        showcasePins.refresh();\n
+        \   }\n}\nvar showcasePins = false;\n\ngetShowcasePins();    //-->\n</script>\n<script
+        type=\"text/javascript\">\n    //<!--\n    \n    require([\"main\"], function()
+        {\n        require([\"default/showcase-pins\"]);\n    });\n    //-->\n</script>\n<script
+        type=\"text/javascript\">\n    //<!--\n            require([\"main\"], function()
+        {\n            require([\"PoE/Profile/SelectAvatar\"], function(SelectAvatar)
+        {\n                var s = new SelectAvatar({el: \"#saw\", hasCustom: false});\n
+        \               s.attach(\"#change-avatar\");\n                s.render();\n
+        \           });\n        });    //-->\n</script>\n<!--[if lt IE 7]><script
+        type=\"text/javascript\" src=\"http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js\"></script><![endif]-->\n<script
+        type=\"text/javascript\">\n    //<!--\n    window.onerror = function(e, url,
+        l) {};    //-->\n</script>    </body>\n</html>\n"
+    http_version:
+  recorded_at: Mon, 26 Feb 2018 00:27:44 GMT
+recorded_with: VCR 4.0.0

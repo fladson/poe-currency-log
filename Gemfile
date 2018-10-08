@@ -6,10 +6,13 @@ git_source(:github) do |repo_name|
 end
 
 gem "attr_encrypted", "~> 3.1.0"
+gem "chartkick"
+gem "chroma"
 gem "coffee-rails", "~> 4.2"
 gem "devise"
 gem "faraday"
 gem "honeybadger", "~> 3.1"
+gem "inline_svg"
 gem "jbuilder", "~> 2.5"
 gem "newrelic_rpm"
 gem "pg", ">= 0.18", "< 2.0"
@@ -20,8 +23,10 @@ gem "sass-rails", "~> 5.0"
 gem "scout_apm"
 gem "sendgrid-ruby"
 gem "sentry-raven"
+gem "sidekiq"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem "webpacker", "~> 3.5"
 
 group :development, :test do
   gem "awesome_print", require: false
@@ -44,6 +49,7 @@ group :development do
   gem "binding_of_caller"
   gem "letter_opener"
   gem "listen", ">= 3.0.5", "< 3.2"
+  gem "rails_real_favicon"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"

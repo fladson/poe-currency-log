@@ -1,5 +1,13 @@
 {
   "name": "poe-currency-log",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "chart.js": "^2.7.2",
+    "chartkick": "^2.3.6",
+    "tailwindcss": "^0.6.4"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
 }
