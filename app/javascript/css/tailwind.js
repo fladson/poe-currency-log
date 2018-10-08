@@ -44,6 +44,19 @@ View the full documentation at https://tailwindcss.com.
 */
 
 let colors = {
+  //CUSTOM
+  'grey-bg': '#FAFAFA',
+  'grey-text': '#4A4A4A',
+  'grey-text-light': '#9B9B9B',
+  'grey-text-custom': '#767676',
+  'grey-border': '#E5E5E5',
+  'black-button': '#1b1c1d',
+
+  'purple-background': '#2f1b40',
+  'purple-background-1': '#2D2D46',
+  'purple-background-2': '#2D2C46',
+  'purple-background-3': '#29263F',
+
   'transparent': 'transparent',
 
   'black': '#22292f',
@@ -55,12 +68,6 @@ let colors = {
   'grey-lighter': '#f1f5f8',
   'grey-lightest': '#f8fafc',
   'white': '#ffffff',
-
-  'grey-bg': '#f9fbfd',
-  'grey-border': '#e3ebf6',
-  'card-border': '#edf2f9',
-  'chart-text': '#8AA0C2',
-  'custom-grey': '#6e84a3',
 
   'red-darkest': '#3b0d0c',
   'red-darker': '#621b18',
@@ -125,13 +132,6 @@ let colors = {
   'purple-light': '#a779e9',
   'purple-lighter': '#d6bbfc',
   'purple-lightest': '#f3ebff',
-
-  'purple-background': '#2f1b40',
-  'purple-background-1': '#2D2D46',
-  'purple-background-2': '#2D2C46',
-  'purple-background-3': '#29263F',
-
-  'grey-text': '#E5E5E8',
 
   'pink-darkest': '#451225',
   'pink-darker': '#6f213f',

@@ -1,5 +1,5 @@
 <div class="flex min-h-screen">
-  <aside class="min-h-screen w-62 flex-no-shrink bg-white text-custom-grey font-semibold border-r border-grey-border fixed pin-l">
+  <aside class="min-h-screen w-62 flex-no-shrink bg-white text-grey-text font-semibold border-r border-grey-border fixed pin-l">
     <div class="flex p-8">
       <%= inline_svg "logo.svg", class: "h-16 w-16 self-center flex-1" %>
     </div>
@@ -7,13 +7,13 @@
     <div class="">
       <div class="mb-8">
         <div class="inline-flex px-4">
-          <%= inline_svg "icons/home.svg", class: "stroke-current w-5 h-5" %>
+          <%= inline_svg "icons/home.svg", class: "stroke-current w-5 h-5 text-grey-text" %>
           <p class="ml-2">Standard Leagues</p>
         </div>
 
         <ul class="mt-2 list-reset">
           <% current_user.standard_leagues.each do |league| %>
-            <li><%= link_to league, dashboard_path(league.parameterize, query: league), method: :get, class: "tracking-wide uppercase text-xs no-underline hover:text-grey-darkest text-grey-dark ml-12" %></li>
+            <li><%= link_to league, dashboard_path(league.parameterize, query: league), method: :get, class: "tracking-wide uppercase text-xs no-underline hover:text-grey-text text-grey-text-custom ml-12" %></li>
           <% end %>
         </ul>
 
@@ -37,20 +37,31 @@
       <hr class="border-t border-grey-border mb-2">
 
       <nav class="text-sm tracking-wide">
-        <a href="#" class="text-custom-grey hover:text-grey-darkest no-underline mr-4">Settings</a>
-        <a href="#" class="text-custom-grey hover:text-grey-darkest no-underline mr-4">Help</a>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-custom-grey hover:text-grey-darkest no-underline" %>
+        <a href="#" class="text-grey-text-light hover:text-grey-text no-underline mr-4">Settings</a>
+        <a href="#" class="text-grey-text-light hover:text-grey-text no-underline mr-4">Help</a>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-grey-text-light hover:text-grey-text no-underline" %>
       </nav>
     </div>
   </aside>
 
   <main class="w-full bg-grey-bg py-6 px-8 flex-shrink ml-62">
-    <div class="flex justify-between">
-      <h2 class="mb-4">
+    <div class="flex justify-between text-center">
+      <h2 class="text-grey-text">
         <%= @current_league %>
       </h2>
-      <%= link_to "Manual sync", fetch_currency_path, method: :get, class: "text-xs uppercase mr-2 mt-4 bg-purple-dark hover:bg-purple text-white font-bold py-2 px-2 rounded shadow-md cursor-pointer text-center tracking-wide no-underline" %>
-      <!-- <p class="mr-2 mt-6 uppercase text-sm">Next sync in <strong>5:00:00</strong></p> -->
+      <!-- <%= link_to "Manual sync", fetch_currency_path, method: :get, class: "text-xs uppercase mr-2 mt-4 bg-black-button text-white font-bold py-2 px-2 rounded-sm cursor-pointer text-center tracking-wide no-underline" %> -->
+      <div class="flex items-center">
+        <div class="inline-flex text-sm items-center mr-6">
+          <%= inline_svg "icons/clock.svg", class: "stroke-current w-4 h-4 text-grey-text" %>
+          <p class="ml-2 text-grey-text-custom">Set at <%= time_ago_in_words @current_user.updated_at %> ago</p>
+        </div>
+
+        <div class="inline-flex text-sm items-center">
+          <%= inline_svg "icons/refresh-cw.svg", class: "stroke-current w-4 h-4 text-grey-text" %>
+          <p class="ml-2 text-grey-text-custom">Next sync in <%= distance_of_time_in_words(@current_user.updated_at, @current_user.updated_at + 6.hours) %></p>
+        </div>
+      </div>
+
     </div>
     <hr class="border-t border-grey-border">
     <%= render "poe/currency" %>
