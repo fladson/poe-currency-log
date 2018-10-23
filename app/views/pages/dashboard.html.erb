@@ -1,5 +1,5 @@
 <div class="flex min-h-screen">
-  <aside class="min-h-screen w-62 flex-no-shrink bg-white text-grey-text font-semibold border-r border-grey-border fixed pin-l">
+  <aside class="min-h-screen w-60 flex-no-shrink bg-white text-grey-text font-semibold border-r border-grey-border fixed pin-l">
     <div class="flex p-8">
       <%= inline_svg "logo.svg", class: "h-16 w-16 self-center flex-1" %>
     </div>
@@ -37,14 +37,14 @@
       <hr class="border-t border-grey-border mb-2">
 
       <nav class="text-sm tracking-wide">
-        <a href="#" class="text-grey-text-light hover:text-grey-text no-underline mr-4">Settings</a>
+        <%= link_to "Settings", user_settings_path, method: :get, class: "text-grey-text-light hover:text-grey-text no-underline" %>
         <a href="#" class="text-grey-text-light hover:text-grey-text no-underline mr-4">Help</a>
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-grey-text-light hover:text-grey-text no-underline" %>
       </nav>
     </div>
   </aside>
 
-  <main class="w-full bg-grey-bg py-6 px-8 flex-shrink ml-62">
+  <main class="w-full bg-grey-bg py-6 px-8 flex-shrink ml-60">
     <div class="flex justify-between text-center">
       <h2 class="text-grey-text">
         <%= @current_league %>
@@ -53,12 +53,12 @@
       <div class="flex items-center">
         <div class="inline-flex text-sm items-center mr-6">
           <%= inline_svg "icons/clock.svg", class: "stroke-current w-4 h-4 text-grey-text" %>
-          <p class="ml-2 text-grey-text-custom">Set at <%= time_ago_in_words @current_user.updated_at %> ago</p>
+          <p class="ml-2 text-grey-text-custom">Updated <%= time_ago_in_words @current_user.updated_at %> ago</p>
         </div>
 
         <div class="inline-flex text-sm items-center">
           <%= inline_svg "icons/refresh-cw.svg", class: "stroke-current w-4 h-4 text-grey-text" %>
-          <p class="ml-2 text-grey-text-custom">Next sync in <%= distance_of_time_in_words(@current_user.updated_at, @current_user.updated_at + 6.hours) %></p>
+          <p class="ml-2 text-grey-text-custom">Next update in <%= distance_of_time_in_words(@current_user.updated_at, @current_user.updated_at + 6.hours) %></p>
         </div>
       </div>
 
