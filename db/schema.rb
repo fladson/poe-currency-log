@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181008163530) do
+ActiveRecord::Schema.define(version: 20181113135410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(version: 20181008163530) do
     t.jsonb "data", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "currency"
+    t.string "color"
+    t.integer "sort"
+    t.boolean "hidden", default: false
     t.index ["user_id"], name: "index_user_settings_on_user_id"
   end
 

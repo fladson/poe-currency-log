@@ -1,5 +1,5 @@
 class UserSettingsController < ApplicationController
-  before_action :authenticate
+
   def edit
     @user_settings = @current_user.settings
   end
@@ -11,6 +11,6 @@ class UserSettingsController < ApplicationController
   end
 
   def user_settings_params
-    params.require(:user_setting).permit(:data)
+    params.require(:user_setting).permit(:currency, :color, :sort, :hidden)
   end
 end

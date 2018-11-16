@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :currency_logs, dependent: :destroy
-  has_one :settings, class_name: "UserSetting", dependent: :destroy
+  has_many :settings, class_name: "UserSetting", dependent: :destroy
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 

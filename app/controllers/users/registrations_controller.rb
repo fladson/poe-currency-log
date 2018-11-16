@@ -17,6 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def create_empty_tabs(user)
+    CreateUserSettingsService.perform(user)
     EmptyTabsService.perform(user)
     LogCurrencyWorker.perform_async(user.email)
   end
