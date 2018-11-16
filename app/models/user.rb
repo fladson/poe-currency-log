@@ -27,7 +27,7 @@ class User < ApplicationRecord
   end
 
   def currency_stats(league)
-    currency_logs.progression.by_league(league)
+    currency_logs.progression.by_league(deparametrize(league))
   end
 
   def default_league
@@ -48,6 +48,10 @@ class User < ApplicationRecord
       errors.add(:session, "is invalid")
       Rails.logger.info("Invalid user session: #{self}")
     end
+  end
+
+  def deparametrize(str)
+    str.split("-").join(" ")
   end
 
   def to_s

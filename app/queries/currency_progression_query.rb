@@ -31,7 +31,7 @@ class CurrencyProgressionQuery
 
   module Scopes
     def by_league(league)
-      where(league: league)
+      where("lower(league) = ?", league.downcase)
     end
 
     def timeline_order
