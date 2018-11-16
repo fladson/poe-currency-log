@@ -18,8 +18,8 @@ class User < ApplicationRecord
     chars.map { |char| char["league"] }.uniq
   end
 
-  def temp_leagues
-    current_leagues - STANDARD_LEAGUES
+  def current_temp_league
+    (current_leagues - STANDARD_LEAGUES).pop
   end
 
   def standard_leagues
@@ -43,6 +43,7 @@ class User < ApplicationRecord
       self.account_name = api.account_name
       self.chars = api.chars
       self.valid_credentials = true
+      self.temp_leagues.push(current_temp_league) unless self.temp_leagues.include?(current_temp_league)
     rescue POE::Error::InvalidSession
       errors.add(:session, "is invalid")
       Rails.logger.info("Invalid user session: #{self}")

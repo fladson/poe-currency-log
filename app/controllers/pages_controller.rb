@@ -5,8 +5,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @current_league = params[:query] || current_user.default_league
-    @currency_stats = current_user.currency_stats(params[:query] || @current_league)
+    @current_league = params[:league] || current_user.default_league
+    @currency_stats = current_user.currency_stats(params[:league] || @current_league)
   end
 
   def fetch_currency
@@ -15,6 +15,6 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.permit(:league, :query)
+    params.permit(:league)
   end
 end
