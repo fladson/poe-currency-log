@@ -27,56 +27,23 @@ module ChartHelper
     "Vaal Orb" => "#C03C14"
   }
 
-  def default_order
-    [
-      "Chaos Orb",
-      "Orb of Fusing",
-      "Orb of Alchemy",
-      "Exalted Orb",
-      "Orb of Annulment",
+  def color_for(setting)
+    user_custom_color = setting.color
 
-      "Jeweller's Orb",
-      "Chromatic Orb",
-
-      "Regal Orb",
-      "Blessed Orb",
-      "Divine Orb",
-      "Glassblower's Bauble",
-      "Gemcutter's Prism",
-      "Orb of Scouring",
-      "Orb of Regret",
-      "Vaal Orb",
-
-      "Cartographer's Chisel",
-      "Apprentice Cartographer's Sextant",
-      "Journeyman Cartographer's Sextant",
-      "Master Cartographer's Sextant",
-
-      "Mirror of Kalandra",
-
-      "Orb of Transmutation",
-      "Orb of Alteration",
-      "Orb of Chance",
-      "Orb of Augmentation",
-      "Silver Coin"
-    ].freeze
-  end
-
-  def color_for(currency)
-    DEFAULT_COLORS[currency]
-  end
-
-  def colors
-    DEFAULT_COLORS.slice(*default_order).values
+    if user_custom_color != 'default'
+      user_custom_color
+    else
+      DEFAULT_COLORS[setting.currency]
+    end
   end
 
   def diff(data)
     return '-' if data.second.blank?
-    format_number(data.first.last - data.second.last)
+    data.first.last - data.second.last
   end
 
   def diff_percent(data)
-    format_number(percent(data), true)
+    percent(data)
   end
 
   def all_diff_percent(data)
@@ -108,6 +75,8 @@ module ChartHelper
     result_as_string = number.positive? ? number.to_s.prepend("+") : number.to_s
     result_as_string = number_to_human(number, :format => '%n%u', :units => { :thousand => 'K' }) if number >= 1000
     result_as_string = suffix ? result_as_string << "%" : result_as_string
+    result_as_string = '-' if result_as_string == '0' || result_as_string == '0%'
+
     content_tag(
       :li,
       result_as_string,
