@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227185028) do
+ActiveRecord::Schema.define(version: 20181113135410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,18 @@ ActiveRecord::Schema.define(version: 20180227185028) do
     t.datetime "updated_at", null: false
     t.index ["league"], name: "index_currency_logs_on_league"
     t.index ["user_id"], name: "index_currency_logs_on_user_id"
+  end
+
+  create_table "user_settings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.jsonb "data", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "currency"
+    t.string "color"
+    t.integer "sort"
+    t.boolean "hidden", default: false
+    t.index ["user_id"], name: "index_user_settings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,10 +61,12 @@ ActiveRecord::Schema.define(version: 20180227185028) do
     t.jsonb "chars", default: {}, null: false
     t.boolean "valid_credentials", default: false, null: false
     t.string "time_zone", default: "UTC", null: false
+    t.string "temp_leagues", default: [], array: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "currency_logs", "users"
+  add_foreign_key "user_settings", "users"
 end

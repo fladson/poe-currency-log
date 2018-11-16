@@ -39,8 +39,12 @@
             <%= f.text_field :session, required: true, autocomplete: "off", placeholder: "1j2892saj21981m", class: "shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight"  %>
           </div>
 
-          <%= f.submit "Sign up now", class: "mb-6 bg-purple-dark hover:bg-purple text-white font-semibold py-2 px-4 border border-purple-light rounded shadow w-full cursor-pointer" %>
+          <%= f.submit "Sign up now", class: "bg-purple-dark hover:bg-purple text-white font-semibold py-2 px-4 border border-purple-light rounded shadow w-full cursor-pointer" %>
         <% end %>
+
+        <div class="text-center text-sm">
+          <p class: "text-grey-darkest no-underline"><%= link_to "Log in", new_session_path(resource_name), class: "no-underline hover:underline" %></p>
+        </div>
       </div>
    </div>
 </div>

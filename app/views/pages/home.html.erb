@@ -1,179 +1,282 @@
-<div class="relative">
-  <div style="background-image: linear-gradient(-180deg, #FFFFFF 0%, #F4F6F9 100%)">
-    <div class="min-h-screen flex flex-col">
-      <div class="h-2 bg-purple"></div>
-      <main class="flex-1">
-        <div class="hero border-b">
-          <nav class="w-full max-w-screen mx-auto px-68 py-8 md:px-12">
-            <div class="text-center md:flex md:justify-between md:items-center">
-              <h2>Poe Currency Log</h2>
-              <div class="hidden md:flex">
-                <%= link_to 'Login', new_user_session_path, class: "font-bold uppercase no-underline text-black hover:text-grey-dark"  %>
-              </div>
-            </div>
-          </nav>
+<div class="bg-white">
+  <div class="min-h-screen flex flex-col">
+    <div class="h-2 bg-purple-dark"></div>
 
-          <div class="w-full max-w-screen mx-auto px-6">
-            <div class="py-8 text-center">
-              <h1 class="text-black text-4xl font-bold mb-6 leading-none md:text-6xl">
-                Your league currency progression in charts
-              </h1>
-              <p class="text-grey-dark mx-auto text-lg max-w-md md:text-2xl">
-                With automatic logging you will have one more reason to grind and show your friends how rich you are.
-              </p>
-            </div>
-            <div class="max-w-2xl mx-auto flex">
-              <%= image_tag("screenshot.png", class: "self-end px-4") %>
-            </div>
-            <div class="text-center py-6 hidden md:block">
-              <p class="text-lg text-black">
-                It's <strong>FREE</strong> but I am accepting donations.
-              </p>
-            </div>
-            <div class="max-w-md mx-auto mb-8 w-1/6">
-              <div class="bg-purple-dark hover:bg-purple text-white text-2xl font-bold py-3 rounded shadow-md cursor-pointer uppercase text-center tracking-wide">
-                Sign up now
-              </div>
-            </div>
+    <nav class="container mx-auto py-12 pt-6 text-center flex justify-between items-center">
+      <div class="flex items-center">
+        <%= inline_svg "logo.svg", class: "h-16 w-16 mr-4" %>
+        <h2>PoE Currency Log</h2>
+      </div>
+      <%= link_to 'Login', new_user_session_path, class: "font-bold uppercase no-underline text-black hover:underline" %>
+    </nav>
 
-          </div>
+    <main class="text-logo">
+      <div class="w-full max-w-screen mx-auto px-6">
+        <div class="py-4 mb-8 text-center">
+          <h1 class=" text-4xl font-bold mb-6 leading-none md:text-6xl">
+            Your league currency progression in charts
+          </h1>
+          <p class="text-grey-dark mx-auto text-lg max-w-md md:text-2xl">
+            With automatic logging you will have one more reason to grind and show your friends how rich you are.
+          </p>
         </div>
-        <div class="bg-black text-grey">
-          <div class="w-full max-w-2xl mx-auto py-20">
-            <!-- <div class="text-sm uppercase text-center font-semibold tracking-wider mb-1 md:text-md">
-              Why you should choose PingPing
-            </div> -->
-            <div class="text-2xl text-center font-semibold mb-20 md:text-3xl uppercase">
-              Features so far
-            </div>
-
-            <div class="flex flex-col md:flex-row">
-              <div class="w-full flex flex-col text-center mb-10 px-8 md:flex-row md:text-left md:w-1/2">
-                <!-- <div class="mb-4 md:mb-0">
-                  icon
-                </div> -->
-                <div class="flex-1 text-lg md:pl-10">
-                  <div class="font-bold text-xl mb-4">
-                    Automatic logging
-                  </div>
-                    <p class="text-grey-darker">
-                      Grind in peace exile! <br>
-                      Every 6h the system will fetch for updates and automatically.
-                    </p>
-                </div>
+        <div class="max-w-2xl mx-auto flex">
+          <div class="bg-white rounded shadow-custom mb-6 border border-grey-border w-full">
+            <div class="flex justify-between">
+              <div class="flex items-center -mt-4">
+                <span class="inline-flex ml-4">
+                  <%= image_tag("currencies/Chaos Orb.png", class: "h-10 w-10") %>
+                </span>
+                <span class="font-semibold text-xl text-grey-text ml-3">
+                  Chaos Orb
+                </span>
               </div>
-
-              <div class="w-full flex flex-col text-center mb-10 px-8 md:flex-row md:text-left md:w-1/2">
-                <!-- <div class="mb-4 md:mb-0">
-                  icon
-                </div> -->
-                <div class="flex-1 text-lg md:pl-10">
-                  <div class="font-bold text-xl mb-4">
-                    Progression charts
+              <div class="border rounded-sm mb-2 mt-4 mr-4">
+                <div class="flex">
+                  <div class="w-24">
+                    <ul class="list-reset leading-normal border-r h-16">
+                      <li class="text-grey-text text-center p-1 text-xs uppercase">Current</li>
+                      <li class="text-grey-text text-center text-xl font-bold">
+                        91
+                      </li>
+                    </ul>
                   </div>
-                    <p class="text-grey-darker">
-                      All data
-                    </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row">
-              <div class="w-full flex flex-col text-center mb-10 px-8 md:flex-row md:text-left md:w-1/2">
-                <!-- <div class="mb-4 md:mb-0">
-                  icon
-                </div> -->
-                <div class="flex-1 text-lg md:pl-10">
-                  <div class="font-bold text-xl mb-4">
-                    Privacy and security
+                  <div class="w-24">
+                    <ul class="list-reset leading-normal border-r h-16">
+                      <li class="text-grey-text text-center p-1 text-xs uppercase">Max</li>
+                      <li class="text-grey-text text-center text-xl font-bold">
+                        112
+                      </li>
+                    </ul>
                   </div>
-                  <p class="text-grey-darker">
-                    The system encrypts your session and will never publish any data collected
-                  </p>
-                </div>
-              </div>
-
-              <div class="w-full flex flex-col text-center px-8 md:flex-row md:text-left md:w-1/2">
-                <!-- <div class="mb-4 md:mb-0">
-                  icon
-                </div> -->
-                <div class="flex-1 text-lg md:pl-10">
-                  <div class="font-bold text-xl mb-4">
-                    Hidden statistics
+                  <div class="w-24">
+                    <ul class="list-reset leading-normal border-r h-16">
+                      <li class="text-grey-text text-center p-1 text-xs uppercase">Diff</li>
+                      <li class="text-grey-text text-center text-xl font-bold">
+                        <div class="inline-flex">
+                          <%= inline_svg "icons/chevron-up.svg", class: "mt-05 w-7 h-7 text-green" %>
+                          <p class="text-green">17</p>
+                        </div>
+                      </li>
+                    </ul>
                   </div>
-                  <p class="text-grey-darker">
-                    Ever wondered how was your progression last league in comparison with the current one? Wonder no more!
-                  </p>
+                  <div class="w-24">
+                    <ul class="list-reset leading-normal h-16">
+                      <li class="text-grey-text text-center p-1 text-xs uppercase">% Diff</li>
+                      <li class="text-grey-text text-center text-xl font-bold">
+
+                        <div class="inline-flex">
+                          <%= inline_svg "icons/chevron-up.svg", class: "mt-05 w-7 h-7 text-green" %>
+                          <p class="text-green">
+                            19
+                            <p class="text-xs text-green mt-2">%</p>
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
+            <%= area_chart [["2018-08-10 12:48:23 UTC", 91],
+              ["2018-08-08 11:08:02 UTC", 74],
+              ["2018-08-07 21:18:01 UTC", 56],
+              ["2018-08-06 21:08:12 UTC", 112],
+              ["2018-08-06 11:08:12 UTC", 60],
+              ["2018-08-05 13:43:32 UTC", 35],
+              ["2018-08-04 14:31:43 UTC", 29],
+              ["2018-08-03 18:11:34 UTC", 11],
+              ["2018-08-02 18:11:52 UTC", 23],
+              ["2018-08-02 13:11:19 UTC", 12],
+              ["2018-08-01 13:00:09 UTC", 0]],
+              library: {
+                plotOptions: {
+                  series: {
+                    fillColor: {
+                      linearGradient: [0, 0, 0, 300],
+                      stops: [
+                        [0, "#f5cd79".paint.lighten.to_hex],
+                        [1, "#f5cd79"]
+                      ]
+                    },
+                    fillOpacity: 1,
+                    lineWidth: 2,
+                    lineColor: "#f5cd79".paint.desaturate.to_hex,
+                    stickyTracking: false
+                  }
+                },
+                chart: {
+                  margin: [0, 0, 0, 0]
+                },
+                tooltip: {
+                  pointFormat: '<b>{point.y}</b>',
+                  shape: 'square',
+                  backgroundColor: '#FAFAFA',
+                  borderColor: '#E5E5E5',
+                  shadow: false
+                },
+                xAxis: {
+                  visible: false,
+                  minPadding: 0,
+                  maxPadding: 0
+                },
+                yAxis: {
+                  visible: false
+                }
+              }
+            %>
+          </div>
+        </div>
+        <div class="text-center py-4 hidden md:block">
+          <p class="text-lg mb-2">
+            It's <strong>FREE</strong> but I am accepting donations
+          </p>
+
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="FJKMHVKDBK5G2">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+          </form>
+        </div>
+        <div class="max-w-md mx-auto mt-4 w-1/6">
+          <%= link_to "Sign up now", new_user_registration_path, class: "no-underline bg-purple-dark hover:bg-purple text-white text-2xl font-bold p-4 px-16 rounded shadow-md cursor-pointer uppercase text-center tracking-wide" %>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="bg-grey-home">
+    <div class="w-full max-w-2xl mx-auto py-16">
+      <!-- <div class="text-sm uppercase text-center font-semibold tracking-wider mb-1 md:text-md">
+        Why you should choose PingPing
+      </div> -->
+      <div class="text-center font-semibold mb-20 text-3xl uppercase">
+        Features so far
+      </div>
+
+      <div class="flex flex-col md:flex-row">
+        <div class="w-full flex flex-col text-center mb-10 px-8 md:flex-row md:text-left md:w-1/2">
+          <%= inline_svg "icons/download-cloud.svg" %>
+          <div class="flex-1 text-lg md:pl-8">
+            <div class="font-bold text-xl mb-4">
+              Automatic logging
+            </div>
+              <p class="text-grey-darker">
+                Grind in peace exile! <br>
+                Every 6h the system will automatically sync with the GGG servers for your current items.
+              </p>
           </div>
         </div>
 
-        <div class="bg-grey-darkest">
-          <div class="w-full max-w-2xl mx-auto py-20 md:px-12">
-            <div class="text-2xl font-semibold mb-10 md:text-3xl uppercase">
-              Questions you may have
+        <div class="w-full flex flex-col text-center mb-10 px-8 md:flex-row md:text-left md:w-1/2">
+          <%= inline_svg "icons/bar-chart-2.svg" %>
+          <div class="flex-1 text-lg md:pl-8">
+            <div class="font-bold text-xl mb-4">
+              Progression charts
             </div>
-
-            <div class="block md:flex leading-normal py-6">
-              <h3 class="text-base md:text-lg text-white font-bold w:full md:w-1/3 pr-0 md:pr-3 mb-4 m:mb-0">
-                Why is this free?
-              </h3>
-              <p class="text-base md:text-lg text-blue-lighter w:full md:w-2/3 pl-0 md:pl-3">
-                This application was built entirely for learning purposes, I am a developer, so the intuit here is to maintain a performatic application with the lowest cost possible.
-                <br>
-                If you feel generous enough, you can donate to me, I will appreciate a lot.
+              <p class="text-grey-darker">
+                See how many currency you have through the league in customizable charts.
               </p>
-            </div>
-
-            <div class="block md:flex leading-normal py-6">
-              <h3 class="text-base md:text-lg text-white font-bold w:full md:w-1/3 pr-0 md:pr-3 mb-4 m:mb-0">
-                Why my session is needed?
-              </h3>
-              <p class="text-base md:text-lg text-blue-lighter w:full md:w-2/3 pl-0 md:pl-3">
-                Have you ever used Currency Cop before? It's for the same reason.<br>
-                We don't have an API for fetching your private stashes, that's the only reason the session is needed.
-              </p>
-            </div>
-
-            <div class="block md:flex leading-normal py-6">
-              <h3 class="text-base md:text-lg text-white font-bold w:full md:w-1/3 pr-0 md:pr-3 mb-4 m:mb-0">
-                Can you see my session id?
-              </h3>
-              <p class="text-base md:text-lg text-blue-lighter w:full md:w-2/3 pl-0 md:pl-3">
-                Nope! Your poe session is encrypted at the sign up and it will never be used outside this application.
-              </p>
-            </div>
-
-            <div class="block md:flex leading-normal py-6">
-              <h3 class="text-base md:text-lg text-white font-bold w:full md:w-1/3 pr-0 md:pr-3 mb-4 m:mb-0">
-                Can you see my data?
-              </h3>
-              <p class="text-base md:text-lg text-blue-lighter w:full md:w-2/3 pl-0 md:pl-3">
-                No, your data is secured with your email and password, that is also encrypted at sign up, and no one without the password can access it.
-              </p>
-            </div>
-
           </div>
         </div>
-      </main>
-      <footer class="bg-purple-dark">
-        <div class="w-full max-w-screen mx-auto px-66 py-6 text-sm text-grey md:px-12">
-          <div class="flex flex-col md:flex-row md:justify-between">
-            <ul class="list-reset flex flex-col text-center mb-6 md:text-left md:mb-0">
-              <li>
-                Built by <a href="https://twitter.com/fladsongomes" target="_blank" rel="noopener noreferer" class="no-underline font-bold text-white hover:underline">@fladsongomes</a>
-              </li>
-            </ul>
-            <ul class="list-reset flex flex-col text-center md:flex-row md:text-left">
-              <li class="md:mr-6"><a href="#" class="no-underline text-white hover:underline">Terms and conditions</a></li>
-              <li class="md:mr-6"><a href="#" class="no-underline text-white hover:underline">Privacy policy</a></li>
-              <!-- <li><a href="#" class="no-underline text-white hover:underline">Imprint</a></li> -->
-            </ul>
+      </div>
+
+      <div class="flex flex-col md:flex-row">
+        <div class="w-full flex flex-col text-center mb-10 px-8 md:flex-row md:text-left md:w-1/2">
+          <%= inline_svg "icons/lock.svg" %>
+          <div class="flex-1 text-lg md:pl-8">
+            <div class="font-bold text-xl mb-4">
+              Privacy and security
+            </div>
+            <p class="text-grey-darker">
+              The application encrypts your session id and will never publish any data collected.
+            </p>
           </div>
         </div>
-      </footer>
+
+        <div class="w-full flex flex-col text-center px-8 md:flex-row md:text-left md:w-1/2">
+          <%= inline_svg "icons/activity.svg" %>
+          <div class="flex-1 text-lg md:pl-8">
+            <div class="font-bold text-xl mb-4">
+              Hidden statistics
+            </div>
+            <p class="text-grey-darker">
+              Ever wondered how was your progression last league in comparison with the current one?
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div>
+    <div class="w-full max-w-2xl mx-auto py-20 md:px-12">
+      <div class="text-2xl font-semibold mb-10 md:text-3xl uppercase">
+        Questions you may have
+      </div>
+
+      <div class="block md:flex leading-normal py-6">
+        <h3 class="text-base md:text-lg  font-bold w:full md:w-1/3 pr-0 md:pr-3 mb-4 m:mb-0">
+          Why is this free?
+        </h3>
+        <p class="text-base md:text-lg text-grey-text w:full md:w-2/3 pl-0 md:pl-3">
+          This application was built entirely for learning purposes, I am a developer, so the intuit here is to maintain a performatic application with the lowest cost possible.
+          <br>
+          <br>
+          If you feel generous enough, you can make a donation, I will appreciate a lot and it will help to maintain the servers up and running.
+        </p>
+      </div>
+
+      <div class="block md:flex leading-normal py-6">
+        <h3 class="text-base md:text-lg  font-bold w:full md:w-1/3 pr-0 md:pr-3 mb-4 m:mb-0">
+          Why my session is needed?
+        </h3>
+        <p class="text-base md:text-lg text-grey-text w:full md:w-2/3 pl-0 md:pl-3">
+          Have you ever used Currency Cop before? It's for the same reason.<br>
+          We don't have an API for fetching your private stashes, that's the only reason the session is needed.
+        </p>
+      </div>
+
+      <div class="block md:flex leading-normal py-6">
+        <h3 class="text-base md:text-lg  font-bold w:full md:w-1/3 pr-0 md:pr-3 mb-4 m:mb-0">
+          Can you see my session id?
+        </h3>
+        <p class="text-base md:text-lg text-grey-text w:full md:w-2/3 pl-0 md:pl-3">
+          Nope! Your poe session is encrypted at the sign up and it will never be used outside this application.
+        </p>
+      </div>
+
+      <div class="block md:flex leading-normal py-6">
+        <h3 class="text-base md:text-lg  font-bold w:full md:w-1/3 pr-0 md:pr-3 mb-4 m:mb-0">
+          Can you see my data?
+        </h3>
+        <p class="text-base md:text-lg text-grey-text w:full md:w-2/3 pl-0 md:pl-3">
+          No, your data is secured with your email and password, that is also encrypted at sign up, and no one without the password can access it.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="w-full text-center bg-grey-bg border-t italic h-8">
+    <p class="mt-1">This application is fan-made and not affiliated with Grinding Gear Games in any way.</p>
+  </div>
+
+  <footer class="bg-purple-dark">
+    <div class="w-full max-w-screen mx-auto px-66 py-6 text-sm text-grey md:px-12">
+      <div class="flex flex-col md:flex-row md:justify-between">
+        <ul class="list-reset flex flex-col text-center mb-6 md:text-left md:mb-0">
+          <li>
+            Built by <a href="https://twitter.com/fladsongomes" target="_blank" rel="noopener noreferer" class="no-underline font-bold text-white hover:underline">@fladsongomes</a>
+          </li>
+        </ul>
+        <ul class="list-reset flex flex-col text-center md:flex-row md:text-left">
+          <li class="md:mr-6"><a href="/terms" class="no-underline text-white hover:underline">Terms and conditions</a></li>
+          <li class="md:mr-6"><a href="/privacy" class="no-underline text-white hover:underline">Privacy policy</a></li>
+          <li><a href="mailto:poe.currency.log@gmail.com?Subject=Contact - " target="_top" class="no-underline text-white hover:underline">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 </div>

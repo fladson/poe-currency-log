@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :currency_logs, dependent: :destroy
+  has_many :settings, class_name: "UserSetting", dependent: :destroy
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -17,8 +18,8 @@ class User < ApplicationRecord
     chars.map { |char| char["league"] }.uniq
   end
 
-  def temp_leagues
-    current_leagues - STANDARD_LEAGUES
+  def current_temp_league
+    (current_leagues - STANDARD_LEAGUES).pop
   end
 
   def standard_leagues
@@ -26,7 +27,7 @@ class User < ApplicationRecord
   end
 
   def currency_stats(league)
-    currency_logs.progression.by_league(league)
+    currency_logs.progression.by_league(deparametrize(league))
   end
 
   def default_league
@@ -42,10 +43,15 @@ class User < ApplicationRecord
       self.account_name = api.account_name
       self.chars = api.chars
       self.valid_credentials = true
+      self.temp_leagues.push(current_temp_league) unless self.temp_leagues.include?(current_temp_league)
     rescue POE::Error::InvalidSession
       errors.add(:session, "is invalid")
       Rails.logger.info("Invalid user session: #{self}")
     end
+  end
+
+  def deparametrize(str)
+    str.split("-").join(" ")
   end
 
   def to_s

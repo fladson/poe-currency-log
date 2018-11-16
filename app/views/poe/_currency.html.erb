@@ -1,216 +1,122 @@
 <div class="py-4">
-  <div class="bg-white rounded shadow-custom mb-6 border border-grey-border w-full">
-    <div class="flex items-center py-2">
-      <span class="inline-flex ml-4">
-        <%= inline_svg "icons/percent.svg", class: "stroke-current w-6 h-6 text-grey-text" %>
-      </span>
-      <span class="font-semibold text-xl text-grey-text ml-3">
-        Summary
-      </span>
-    </div>
-    <%= bar_chart all_diff_percent(@currency_stats.slice(*default_order)),
-      colors: [colors],
-      height: '500px',
-      library: {
-        layout: {
-          padding: {
-            left: 10,
-            bottom: 10,
-            right: 25,
-          }
-        },
-        tooltips:{
-          # enabled: false,
-          position: 'average',
-          mode: 'index',
-          intersect: false,
-          backgroundColor: '#FAFAFA',
-          titleFontSize: 12,
-          titleFontColor: '#9B9B9B',
-          bodyFontColor: '#4A4A4A',
-          bodyFontSize: 14,
-          bodyFontStyle: 'bold',
-          borderWidth: 1,
-          borderColor: '#E5E5E5',
-          titleFontFamily: "'Libre Franklin'",
-          bodyFontFamily: "'Libre Franklin'",
-
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              fontFamily: "'Libre Franklin'",
-              fontSize: 13,
-              fontColor: ['#9B9B9B'],
-              # fontStyle: "bold",
-              # stepSize: (chart[1].flatten.reject{|i| i.is_a?(String)}.max / 3).round(-1)
-            },
-            gridLines: {
-              # zeroLineColor: ['#edf2f9'],
-              # display: false,
-            },
-            # display: false
-          }],
-          xAxes: [{
-            gridLines: {
-              # display: false,
-              # zeroLineColor: ['#edf2f9'],
-            },
-            ticks: {
-              fontFamily: "'Libre Franklin'",
-              # fontSize: 12,
-              # source: 'data',
-              fontColor: ['#9B9B9B'],
-              fontStyle: "bold"
-            },
-            # display: false
-          }]
-        }
-      }
-    %>
-  </div>
-
   <div class="flex flex-wrap justify-between flex-grow">
+    <% @current_user.settings.ordered.each do |setting| %>
+      <% unless setting.hidden %>
+        <% chart = @currency_stats[setting.currency] %>
+        <div class="bg-white rounded shadow-custom mb-6 border border-grey-border max-w-lg flex-grow">
+          <div class="flex justify-between">
+            <div class="flex items-center -mt-4">
+              <span class="inline-flex ml-4">
+                <%= image_tag("currencies/#{setting.currency}.png", class: "h-10 w-10") %>
+              </span>
+              <span class="font-semibold text-xl text-grey-text ml-3">
+                <%= setting.currency %>
+              </span>
+            </div>
 
-  <% @currency_stats.slice(*default_order).each do |chart| %>
-    <div class="bg-white rounded shadow-custom mb-6 border border-grey-border max-w-lg flex-grow">
-      <div class="flex justify-between">
-        <div class="flex items-center -mt-4">
-          <span class="inline-flex ml-4">
-            <%= image_tag("currencies/#{chart[0]}.png", class: "h-10 w-10") %>
-          </span>
-          <span class="font-semibold text-xl text-grey-text ml-3">
-            <%= chart[0] %>
-          </span>
-        </div>
-
-        <div class="border rounded-sm mb-2 mt-4 mr-4">
-          <div class="flex">
-            <div class="w-24">
-              <ul class="list-reset leading-normal border-r">
-                <li class="text-grey-text text-center p-1 text-xs uppercase">Current</li>
-                <li class="text-grey-text text-center text-xl font-bold">
-                  <%= chart[1].first.last %>
-                </li>
-              </ul>
-            </div>
-            <div class="w-24">
-              <ul class="list-reset leading-normal border-r">
-                <li class="text-grey-text text-center p-1 text-xs uppercase">Max</li>
-                <li class="text-grey-text text-center text-xl font-bold">
-                  <%= chart[1].flatten.reject{|i| i.is_a?(String)}.max %>
-                </li>
-              </ul>
-            </div>
-            <div class="w-24">
-              <ul class="list-reset leading-normal border-r">
-                <li class="text-grey-text text-center p-1 text-xs uppercase">Diff</li>
-                <li class="text-grey-text text-center text-xl font-bold">
-                  <%= diff(chart[1]) %>
-                </li>
-              </ul>
-            </div>
-            <div class="w-24">
-              <ul class="list-reset leading-normal">
-                <li class="text-grey-text text-center p-1 text-xs uppercase">% Diff</li>
-                <li class="text-grey-text text-center text-xl font-bold">
-                  <%= diff_percent(chart[1]) %>
-                </li>
-              </ul>
+            <div class="border rounded-sm mb-2 mt-4 mr-4">
+              <div class="flex">
+                <div class="w-24">
+                  <ul class="list-reset leading-normal border-r h-16">
+                    <li class="text-grey-text text-center p-1 text-xs uppercase">Current</li>
+                    <li class="text-grey-text text-center text-xl font-bold">
+                      <%= chart.first.last %>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-24">
+                  <ul class="list-reset leading-normal border-r h-16">
+                    <li class="text-grey-text text-center p-1 text-xs uppercase">Max</li>
+                    <li class="text-grey-text text-center text-xl font-bold">
+                      <%= chart.flatten.reject{|i| i.is_a?(String)}.max %>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-24">
+                  <ul class="list-reset leading-normal border-r h-16">
+                    <li class="text-grey-text text-center p-1 text-xs uppercase">Diff</li>
+                    <li class="text-grey-text text-center text-xl font-bold">
+                      <% value = diff(chart) %>
+                      <div class="inline-flex">
+                        <% if value.positive? %>
+                          <%= inline_svg "icons/chevron-up.svg", class: "mt-05 w-7 h-7 text-green" %>
+                          <p class="text-green"><%= value %></p>
+                        <% elsif value.negative? %>
+                          <%= inline_svg "icons/chevron-down.svg", class: "mt-05 w-7 h-7 text-red" %>
+                          <p class="text-red"><%= value %></p>
+                        <% else %>
+                          <p class="text-yellow-dark"><%= value %></p>
+                        <% end %>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-24">
+                  <ul class="list-reset leading-normal h-16">
+                    <li class="text-grey-text text-center p-1 text-xs uppercase">% Diff</li>
+                    <li class="text-grey-text text-center text-xl font-bold">
+                      <% value = diff_percent(chart) %>
+                      <div class="inline-flex">
+                        <% if value.positive? %>
+                          <%= inline_svg "icons/chevron-up.svg", class: "mt-05 w-7 h-7 text-green" %>
+                          <p class="text-green">
+                            <%= value %>
+                            <p class="text-xs text-green mt-2">%</p>
+                          </p>
+                        <% elsif value.negative? %>
+                          <%= inline_svg "icons/chevron-down.svg", class: "mt-05 w-7 h-7 text-red" %>
+                          <p class="text-red"><%= value %></p>
+                          <p class="text-xs text-red mt-2">%</p>
+                        <% else %>
+                          <p class="text-yellow-dark"><%= value %></p>
+                        <% end %>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <%= area_chart chart[1],
-        points: false,
-        responsive: true,
-        # height: "200px",
-        # curve: false,
-        # colors: [color_for(chart[0])],
-        dataset: {
-          borderWidth: 3,
-          borderColor: color_for(chart[0]).paint.darken.to_hex,
-          backgroundColor: color_for(chart[0]),
-          pointHoverBackgroundColor: '#ffffff',
-          pointHoverBorderColor: '#3d4852',
-          pointHoverBorderWidth: 3,
-          pointHoverRadius: 6
-        },
-        library: {
-          layout: {
-            padding: {
-              # left: 1,
-              # bottom: 1,
-              # right: 1,
-              # top: 1
-            }
-          },
-          tooltips:{
-            # enabled: false,
-            position: 'average',
-            mode: 'index',
-            intersect: false,
-            caretSize: 7,
-            backgroundColor: '#FAFAFA',
-            titleFontSize: 12,
-            titleFontColor: '#9B9B9B',
-            bodyFontColor: '#4A4A4A',
-            bodyFontSize: 16,
-            bodyFontStyle: 'bold',
-            borderWidth: 1,
-            borderColor: '#E5E5E5',
-            titleFontFamily: "'Libre Franklin'",
-            bodyFontFamily: "'Libre Franklin'",
-            xPadding: 8,
-            yPadding: 8,
-          },
-          elements:{
-            line: {
-              # tension: 0.15
+          <%= area_chart chart,
+          library: {
+            # colors: [color_for(setting)],
+            plotOptions: {
+              series: {
+                fillColor: {
+                    linearGradient: [0, 0, 0, 300],
+                    stops: [
+                        [0, color_for(setting).paint.lighten.to_hex],
+                        [1, color_for(setting)]
+                    ]
+                },
+                fillOpacity: 1,
+                lineWidth: 2,
+                lineColor: color_for(setting).paint.desaturate.to_hex,
+                stickyTracking: false
+              }
             },
-            point: {
-              # hoverRadius: 4,
-              # backgroundColor: '#ffffff',
-              # borderColor: '#22292f',
-              # borderWidth: 1,
+            chart: {
+              margin: [0, 0, 0, 0]
+            },
+            tooltip: {
+              pointFormat: '<b>{point.y}</b>',
+              shape: 'square',
+              backgroundColor: '#FAFAFA',
+              borderColor: '#E5E5E5',
+              shadow: false
+            },
+            xAxis: {
+              visible: false,
+              minPadding: 0,
+              maxPadding: 0
+            },
+            yAxis: {
+              visible: false
             }
-          },
-          scales: {
-            yAxes: [{
-              ticks: {
-                max: (chart[1].flatten.reject{|i| i.is_a?(String)}.max * 1.1)
-                # fontFamily: "'Libre Franklin'",
-                # fontSize: 14,
-                # fontColor: ['#9B9B9B'],
-                # fontStyle: "bold",
-                # stepSize: (chart[1].flatten.reject{|i| i.is_a?(String)}.max / 3).round(-1)
-              },
-              gridLines: {
-                # zeroLineColor: ['#edf2f9'],
-                display: false,
-              },
-              display: false
-            }],
-            xAxes: [{
-              type: 'time',
-              distribution: 'series',
-              gridLines: {
-                display: false,
-                # zeroLineColor: ['#edf2f9'],
-              },
-              ticks: {
-                # fontFamily: "'Libre Franklin'",
-                # fontSize: 12,
-                # source: 'data',
-                # fontColor: ['#9B9B9B'],
-                # fontStyle: "bold"
-              },
-              display: false
-            }]
           }
-        } %>
-    </div>
-  <% end %>
-
+          %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
