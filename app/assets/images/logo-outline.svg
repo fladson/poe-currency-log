@@ -5,8 +5,8 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <circle id="Oval" fill="#282D36" cx="300" cy="280" r="250"></circle>
-        <text id="C" fill="#FAFAFA" font-family="Fontin-Bold, Fontin" font-size="500" font-weight="bold">
+        <circle id="Oval" stroke="#282D36" stroke-width="25" cx="300" cy="280" r="237.5"></circle>
+        <text id="C" fill="#282D36" font-family="Fontin-Bold, Fontin" font-size="500" font-weight="bold">
             <tspan x="124.5" y="445">C</tspan>
         </text>
     </g>
