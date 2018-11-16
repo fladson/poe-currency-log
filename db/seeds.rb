@@ -1,4 +1,13 @@
-User.first.update_column('chars',
+user = User.new(
+  email: "test@email.com",
+  password: '123456',
+  password_confirmation: '123456'
+)
+
+user.skip_confirmation!
+user.save(validate: false)
+
+user.update_column('chars',
   [{"name"=>"O_taro",
     "class"=>"Hierophant",
     "level"=>74,
@@ -58,9 +67,12 @@ User.first.update_column('chars',
      "ascendancyClass"=>1}]
 )
 
-100.times do |i|
+EmptyTabsService.perform(user)
+CreateUserSettingsService.perform(user)
+
+20.times do |i|
   CurrencyLog.create(
-    user: User.first,
+    user: user,
     league: [
       "Standard", "Hardcore", "SSF Standard", "SSF Hardcore", "Incursion",
       "Incursion SSF", "Incursion Hardcore", "Incursion Hardcore SSF"

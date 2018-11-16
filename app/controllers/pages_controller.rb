@@ -15,6 +15,20 @@ class PagesController < ApplicationController
   end
 
   def leagues_comparison
+    @currency_stats = {}
+    # current_user.temp_leagues.each do |league|
+    #   data = current_user.currency_stats(league)
+    #   data.each do |currency|
+    #     @currency_stats[currency[0]] = []
+    #     @currency_stats[league].push(
+    #       {
+    #         name: league,
+    #         currency: currency[0],
+    #         data: currency[1]
+    #       }
+    #     )
+    #   end
+    # end
   end
 
   def terms
