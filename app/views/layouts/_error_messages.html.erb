@@ -2,7 +2,7 @@
 <div class="text-sm border-l-4 p-2 mb-4 bg-orange-lightest border-orange">
   <% object.errors.full_messages.each do |msg| %>
     <p class="font-bold">
-      <%= msg %>
+      <%= "- #{msg}" %>
     </p>
   <% end %>
 </div>
