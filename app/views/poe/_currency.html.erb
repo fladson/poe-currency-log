@@ -38,14 +38,14 @@
                     <li class="text-grey-text text-center text-xl font-bold">
                       <% value = diff(chart) %>
                       <div class="inline-flex">
-                        <% if value.positive? %>
+                        <% if value == '-' %>
+                          <p class="text-yellow-dark"><%= value %></p>
+                        <% elsif value.positive? %>
                           <%= inline_svg "icons/chevron-up.svg", class: "mt-05 w-7 h-7 text-green" %>
                           <p class="text-green"><%= value %></p>
-                        <% elsif value.negative? %>
+                        <% else %>
                           <%= inline_svg "icons/chevron-down.svg", class: "mt-05 w-7 h-7 text-red" %>
                           <p class="text-red"><%= value %></p>
-                        <% else %>
-                          <p class="text-yellow-dark"><%= value %></p>
                         <% end %>
                       </div>
                     </li>
@@ -57,18 +57,18 @@
                     <li class="text-grey-text text-center text-xl font-bold">
                       <% value = diff_percent(chart) %>
                       <div class="inline-flex">
-                        <% if value.positive? %>
+                        <% if value == '-' %>
+                          <p class="text-yellow-dark"><%= value %></p>
+                        <% elsif value.positive? %>
                           <%= inline_svg "icons/chevron-up.svg", class: "mt-05 w-7 h-7 text-green" %>
                           <p class="text-green">
                             <%= value %>
                             <p class="text-xs text-green mt-2">%</p>
                           </p>
-                        <% elsif value.negative? %>
+                        <% else %>
                           <%= inline_svg "icons/chevron-down.svg", class: "mt-05 w-7 h-7 text-red" %>
                           <p class="text-red"><%= value %></p>
                           <p class="text-xs text-red mt-2">%</p>
-                        <% else %>
-                          <p class="text-yellow-dark"><%= value %></p>
                         <% end %>
                       </div>
                     </li>
