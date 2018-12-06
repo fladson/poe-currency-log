@@ -43,11 +43,16 @@ class User < ApplicationRecord
       self.account_name = api.account_name
       self.chars = api.chars
       self.valid_credentials = true
-      self.temp_leagues.push(current_temp_league) unless self.temp_leagues.include?(current_temp_league)
+      update_temp_leagues
     rescue POE::Error::InvalidSession
       errors.add(:session, "is invalid")
       Rails.logger.info("Invalid user session: #{self}")
     end
+  end
+
+  def update_temp_leagues
+    return unless current_temp_league
+    self.temp_leagues.push(current_temp_league) unless self.temp_leagues.include?(current_temp_league)
   end
 
   def deparametrize(str)
