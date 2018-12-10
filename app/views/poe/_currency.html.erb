@@ -38,7 +38,7 @@
                     <li class="text-grey-text text-center text-xl font-bold">
                       <% value = diff(chart) %>
                       <div class="inline-flex">
-                        <% if value == '-' %>
+                        <% if value == '-' || value.zero? %>
                           <p class="text-yellow-dark"><%= value %></p>
                         <% elsif value.positive? %>
                           <%= inline_svg "icons/chevron-up.svg", class: "mt-05 w-7 h-7 text-green" %>
@@ -57,7 +57,7 @@
                     <li class="text-grey-text text-center text-xl font-bold">
                       <% value = diff_percent(chart) %>
                       <div class="inline-flex">
-                        <% if value == '-' %>
+                        <% if value == '-' || value.zero? %>
                           <p class="text-yellow-dark"><%= value %></p>
                         <% elsif value.positive? %>
                           <%= inline_svg "icons/chevron-up.svg", class: "mt-05 w-7 h-7 text-green" %>
