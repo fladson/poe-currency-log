@@ -27,7 +27,9 @@ module POE
 
     def stash_tabs(account_name, league)
       tabs = []
-      number_of_tabs(account_name, league).times do |tab_index|
+      tabs_count = number_of_tabs(account_name, league)
+      return unless tabs_count
+      tabs_count.times do |tab_index|
         tabs << client.get(tabs_path(account_name, league, tab_index)).body.freeze
       end
 

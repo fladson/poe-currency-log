@@ -12,6 +12,7 @@ class LogCurrencyWorker
       user.update(chars: chars)
       user.current_leagues.each do |league|
         tabs = api.stash_tabs(user.account_name, league)
+        return unless tabs
         currency = POE::CurrencyParser.parse_tabs(tabs)
 
         CurrencyLog.create(user: user, league: league, data: currency)
