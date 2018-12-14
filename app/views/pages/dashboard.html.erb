@@ -16,7 +16,7 @@
         </div>
 
         <div class="inline-flex text-sm items-center mr-6">
-          <%= link_to "Manual sync", fetch_currency_path(@current_league.capitalize), method: :get, class: "text-xs uppercase bg-black-button text-white font-bold py-2 px-2 rounded-sm cursor-pointer text-center tracking-wide no-underline" %>
+          <%= link_to "Manual sync", fetch_currency_path(league: @current_league.capitalize), method: :get, class: "text-xs uppercase bg-black-button text-white font-bold py-2 px-2 rounded-sm cursor-pointer text-center tracking-wide no-underline" %>
         </div>
 
         <div class="inline-flex text-sm items-center mr-6">
