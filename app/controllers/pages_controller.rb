@@ -6,11 +6,11 @@ class PagesController < ApplicationController
 
   def dashboard
     @current_league = params[:league] || current_user.default_league
-    @currency_stats = current_user.currency_stats(params[:league] || @current_league)
+    @currency_stats = current_user.currency_stats(@current_league)
   end
 
   def fetch_currency
-    LeagueLogCurrencyWorker.perform_async(current_user.email, @current_league)
+    LeagueLogCurrencyWorker.perform_async(current_user.email, params[:league])
     redirect_back(fallback_location: user_root_path)
   end
 
