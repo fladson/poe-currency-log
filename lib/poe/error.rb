@@ -4,5 +4,6 @@ module POE
     class InvalidParams < RuntimeError; end
     class ServiceUnavailable < RuntimeError; end
     class StashParser < RuntimeError; end
+    class RateLimit < RuntimeError; end
   end
 end
