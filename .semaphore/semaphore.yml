@@ -5,11 +5,17 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
+  - name: Install dependencies
+    task:
+      jobs:
+        - name: yarn install and cache
+          commands:
+            - checkout
+            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
+            - yarn install
+            - cache store node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules
   - name: "Unit tests"
     task:
-      prologue:
-        commands:
-          - yarn install
       jobs:
       - name: RSpec
         commands:
