@@ -23,8 +23,7 @@ module POE
       end
 
       def parse_tab(tab, currency_hash)
-        # TODO add other special tabs
-        return if tab =~ /divinationLayout/
+        return if tab =~ Regexp.union(/divinationLayout/, /mapLayout/, /essenceLayout/, /fragmentLayout/, /divinationLayout/)
         json = JSON.parse(tab)
         return if json["items"].blank?
         json["items"].each do |item|
