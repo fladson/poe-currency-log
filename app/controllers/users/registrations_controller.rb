@@ -4,24 +4,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super do |user|
-      create_empty_tabs(user) if user.created_at
+      SetupNewUserWorker.perform_async(user) if user.persisted?
     end
   end
 
   def update
     super do |user|
-      create_empty_tabs(user) if user.reload.currency_logs.empty?
+      SetupNewUserWorker.perform_async(user) if user.reload.settings.empty? || user.reload.currency_logs.empty?
     end
   end
 
   protected
-
-  def create_empty_tabs(user)
-    CreateUserSettingsService.perform(user)
-    EmptyTabsService.perform(user)
-    LogCurrencyWorker.perform_async(user.email)
-  end
-
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:session])
   end
