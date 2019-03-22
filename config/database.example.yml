@@ -14,5 +14,3 @@ test:
 production:
   <<: *default
   database: poe-currency-log_production
-  username: poe-currency-log
-  password: <%= ENV['POE-CURRENCY-LOG_DATABASE_PASSWORD'] %>
