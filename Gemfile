@@ -35,9 +35,6 @@ group :development, :test do
   gem 'bullet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
-  gem 'guard'
-  gem 'guard-livereload'
-  gem 'guard-rspec'
   gem 'meta_request'
   gem 'pry-rails'
   gem 'reek', require: false
