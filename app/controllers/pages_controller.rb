@@ -1,12 +1,9 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: :dashboard
 
-  def home
-  end
-
   def dashboard
-    @current_league = params[:league] || current_user.default_league
-    @currency_stats = current_user.currency_stats(@current_league)
+    @league = params[:league] || current_user.default_league
+    @currency_stats = current_user.currency_stats(@league)
   end
 
   def fetch_currency
@@ -17,13 +14,13 @@ class PagesController < ApplicationController
   def leagues_comparison
   end
 
+  def home
+  end
+
   def terms
   end
 
   def privacy
-  end
-
-  def help
   end
 
   def page_params
