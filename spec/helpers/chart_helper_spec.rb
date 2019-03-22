@@ -1,15 +1,61 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the ChartHelper. For example:
-#
-# describe ChartHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe ChartHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'color_for' do
+    context 'when user has custom color' do
+      let(:setting) { build(:user_setting, color: 'custom') }
+
+      it 'returns the user custom color' do
+        expect(color_for(setting)).to eq('custom')
+      end
+    end
+
+    context 'when user has no custom color' do
+      let(:setting) { build(:user_setting) }
+
+      it 'returns the default color for that currency' do
+        expect(color_for(setting)).to eq(default_colors[setting.currency])
+      end
+    end
+  end
+
+  describe 'diff' do
+    subject { diff(data) }
+
+    context 'when data has only one record' do
+      let(:data) { [['datetime', 1]] }
+
+      it 'returns a -' do
+        expect(subject).to eq('-')
+      end
+    end
+
+    context 'when data has more than one record' do
+      let(:data) { [['datetime', 10], ['datetime', 5]] }
+
+      it 'returns the correct value' do
+        expect(subject).to eq(5)
+      end
+    end
+  end
+
+  describe 'diff_percent' do
+    subject { diff_percent(data) }
+
+    context 'when data has only one record' do
+      let(:data) { [['datetime', 1]] }
+
+      it 'returns a -' do
+        expect(subject).to eq('-')
+      end
+    end
+
+    context 'when data has more than one record' do
+      let(:data) { [['datetime', 10], ['datetime', 5]] }
+
+      it 'returns the correct value' do
+        expect(subject).to eq(100)
+      end
+    end
+  end
 end
