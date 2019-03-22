@@ -13,9 +13,8 @@ RSpec.describe POE::CurrencyParser do
   end
 
   describe '.parse_tabs' do
-    it 'parses currencies correctly' do
-      parsed_currency = described_class.parse_tabs(@tabs)
-      expected_currency = {
+    let(:expected_currency) do
+      {
         "Journeyman Cartographer's Sextant" => 5,
         "Jeweller's Orb" => 1356,
         'Orb of Chance' => 292,
@@ -41,17 +40,19 @@ RSpec.describe POE::CurrencyParser do
         'Orb of Fusing' => 519,
         'Orb of Scouring' => 76,
         "Gemcutter's Prism" => 9
-      }.freeze
+      }
+    end
+
+    it 'parses currencies correctly' do
+      parsed_currency = described_class.parse_tabs(@tabs)
 
       expect(parsed_currency).to eq(expected_currency)
     end
   end
 
   describe '.parse_tab' do
-    it 'parses currencies correctly' do
-      currency_hash = Hash.new { |hash, key| hash[key] = 0 }
-      described_class.parse_tab(@tabs.first, currency_hash)
-      expected_currency = {
+    let(:expected_currency) do
+      {
         "Journeyman Cartographer's Sextant" => 5,
         "Jeweller's Orb" => 1356,
         'Orb of Chance' => 292,
@@ -76,7 +77,12 @@ RSpec.describe POE::CurrencyParser do
         'Orb of Fusing' => 519,
         'Orb of Scouring' => 76,
         "Gemcutter's Prism" => 9
-      }.freeze
+      }
+    end
+
+    it 'parses currencies correctly' do
+      currency_hash = Hash.new { |hash, key| hash[key] = 0 }
+      described_class.parse_tab(@tabs.first, currency_hash)
 
       expect(currency_hash).to eq(expected_currency)
     end
@@ -92,10 +98,11 @@ RSpec.describe POE::CurrencyParser do
     end
 
     it 'does not parse special tabs' do
+      allow(JSON).to receive(:parse)
       divination_tab = @tabs[6]
-      expect(JSON).not_to receive(:parse).with(divination_tab)
-
       described_class.parse_tab(divination_tab, nil)
+
+      expect(JSON).not_to have_received(:parse).with(divination_tab)
     end
   end
 end

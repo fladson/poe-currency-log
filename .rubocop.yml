@@ -8,6 +8,10 @@ AllCops:
   Exclude:
     - 'db/**/*'
     - 'node_modules/**/*'
+    - 'bin/**/*'
+
+Style/Documentation:
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
   Exclude:
@@ -16,6 +20,20 @@ Style/FrozenStringLiteralComment:
 Metrics/LineLength:
   Exclude:
     - 'config/**/*'
+    - 'spec/models/user_spec.rb'
+    - 'spec/models/currency_log_spec.rb'
 
-Style/Documentation:
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+RSpec/NestedGroups:
   Enabled: false
+
+RSpec/AnyInstance:
+  Exclude:
+    - 'spec/controllers/pages_controller_spec.rb'
+
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/controllers/pages_controller_spec.rb'

@@ -9,33 +9,25 @@ RSpec.describe ApplicationHelper, type: :helper do
     context 'when level is notice' do
       let(:level) { 'notice' }
 
-      it 'returns the blue class' do
-        expect(subject).to eq('bg-blue-lightest border-blue')
-      end
+      it { is_expected.to eq 'bg-blue-lightest border-blue' }
     end
 
     context 'when level is success' do
       let(:level) { 'success' }
 
-      it 'returns the blue class' do
-        expect(subject).to eq('bg-green-lightest border-green')
-      end
+      it { is_expected.to eq 'bg-green-lightest border-green' }
     end
 
     context 'when level is error' do
       let(:level) { 'error' }
 
-      it 'returns the blue class' do
-        expect(subject).to eq('bg-red-lightest border-red')
-      end
+      it { is_expected.to eq 'bg-red-lightest border-red' }
     end
 
     context 'when level is alert' do
       let(:level) { 'alert' }
 
-      it 'returns the blue class' do
-        expect(subject).to eq('bg-orange-lightest border-orange')
-      end
+      it { is_expected.to eq 'bg-orange-lightest border-orange' }
     end
   end
 end

@@ -6,20 +6,20 @@ RSpec.describe POE::API do
   let(:api) { described_class.new(session) }
 
   describe '#client' do
-    subject { api.client }
+    subject(:client) { api.client }
 
     let(:session) { 'any_session' }
 
     it 'returns a connection with a poe host' do
-      expect(subject.host).to eq('www.pathofexile.com')
+      expect(client.host).to eq('www.pathofexile.com')
     end
 
     it 'returns a connection with a POESESSID Cookie' do
-      expect(subject.headers['Cookie']).to eq("POESESSID=#{session}")
+      expect(client.headers['Cookie']).to eq("POESESSID=#{session}")
     end
 
     it 'returns a json content type connection' do
-      expect(subject.headers['Content-type']).to eq('application/json')
+      expect(client.headers['Content-type']).to eq('application/json')
     end
   end
 
@@ -43,7 +43,7 @@ RSpec.describe POE::API do
     end
 
     describe '#stash_tabs' do
-      subject { api.stash_tabs(account_name, league) }
+      subject(:stash_tabs) { api.stash_tabs(account_name, league) }
 
       context 'when valid params' do
         let(:account_name) { 'valid_account_name' }
@@ -63,7 +63,7 @@ RSpec.describe POE::API do
 
           it 'raises a InvalidSession exception' do
             VCR.use_cassette 'invalid account name stash tabs' do
-              expect { subject }.to raise_error(POE::Error::InvalidSession)
+              expect { stash_tabs }.to raise_error(POE::Error::InvalidSession)
             end
           end
         end
@@ -74,7 +74,7 @@ RSpec.describe POE::API do
 
           it 'raises a InvalidParams exception' do
             VCR.use_cassette 'invalid league stash tabs' do
-              expect { subject }.to raise_error(POE::Error::InvalidParams)
+              expect { stash_tabs }.to raise_error(POE::Error::InvalidParams)
             end
           end
         end
@@ -82,7 +82,7 @@ RSpec.describe POE::API do
     end
 
     describe '#number_of_tabs' do
-      subject { api.number_of_tabs(account_name, league) }
+      subject(:number_of_tabs) { api.number_of_tabs(account_name, league) }
 
       context 'when valid params' do
         let(:account_name) { 'valid_account_name' }
@@ -90,7 +90,7 @@ RSpec.describe POE::API do
 
         it 'returns the correct number of tabs' do
           VCR.use_cassette 'number of tabs' do
-            expect(subject).to eq(16)
+            expect(number_of_tabs).to eq(16)
           end
         end
       end
@@ -102,7 +102,8 @@ RSpec.describe POE::API do
 
           it 'raises a InvalidSession exception' do
             VCR.use_cassette 'invalid account name number of tabs' do
-              expect { subject }.to raise_error(POE::Error::InvalidSession)
+              expect { number_of_tabs }
+                .to raise_error(POE::Error::InvalidSession)
             end
           end
         end
@@ -113,7 +114,8 @@ RSpec.describe POE::API do
 
           it 'raises a InvalidParams exception' do
             VCR.use_cassette 'invalid league number of tabs' do
-              expect { subject }.to raise_error(POE::Error::InvalidParams)
+              expect { number_of_tabs }
+                .to raise_error(POE::Error::InvalidParams)
             end
           end
         end
@@ -146,7 +148,8 @@ RSpec.describe POE::API do
 
       it 'raises a InvalidSession exception' do
         VCR.use_cassette 'invalid session stash tabs' do
-          expect { api.stash_tabs(account_name, league) }.to raise_error(POE::Error::InvalidSession)
+          expect { api.stash_tabs(account_name, league) }
+            .to raise_error(POE::Error::InvalidSession)
         end
       end
     end
@@ -157,7 +160,8 @@ RSpec.describe POE::API do
 
       it 'raises a InvalidSession exception' do
         VCR.use_cassette 'invalid session number of tabs' do
-          expect { api.number_of_tabs(account_name, league) }.to raise_error(POE::Error::InvalidSession)
+          expect { api.number_of_tabs(account_name, league) }
+            .to raise_error(POE::Error::InvalidSession)
         end
       end
     end

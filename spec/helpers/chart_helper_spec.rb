@@ -27,17 +27,13 @@ RSpec.describe ChartHelper, type: :helper do
     context 'when data has only one record' do
       let(:data) { [['datetime', 1]] }
 
-      it 'returns a -' do
-        expect(subject).to eq('-')
-      end
+      it { is_expected.to eq '-' }
     end
 
     context 'when data has more than one record' do
       let(:data) { [['datetime', 10], ['datetime', 5]] }
 
-      it 'returns the correct value' do
-        expect(subject).to eq(5)
-      end
+      it { is_expected.to eq 5 }
     end
   end
 
@@ -47,17 +43,13 @@ RSpec.describe ChartHelper, type: :helper do
     context 'when data has only one record' do
       let(:data) { [['datetime', 1]] }
 
-      it 'returns a -' do
-        expect(subject).to eq('-')
-      end
+      it { is_expected.to eq '-' }
     end
 
     context 'when data has more than one record' do
       let(:data) { [['datetime', 10], ['datetime', 5]] }
 
-      it 'returns the correct value' do
-        expect(subject).to eq(100)
-      end
+      it { is_expected.to eq 100 }
     end
   end
 end

@@ -11,10 +11,21 @@ RSpec.describe Users::RegistrationsController, type: :controller do
   end
 
   describe 'POST #create' do
-    it 'calls the SetupNewUserWorker' do
-      expect(SetupNewUserWorker).to receive(:perform_async)
+    let(:params) do
+      {
+        user: {
+          email: 'foo@email.com',
+          password: 'foo123',
+          password_confirmation: 'foo123',
+          session: session
+        }
+      }
+    end
 
-      post :create, params: { user: { email: 'foo@email.com', password: 'foo123', password_confirmation: 'foo123', session: session } }
+    it 'calls the SetupNewUserWorker' do
+      post :create, params: params
+
+      expect(SetupNewUserWorker).to have_received(:perform_async)
     end
   end
 
@@ -23,23 +34,23 @@ RSpec.describe Users::RegistrationsController, type: :controller do
       sign_in(user)
     end
 
-    context 'user with settings or currency logs' do
+    context 'when user with settings or currency logs' do
       let(:user) { create(:user, :with_settings_and_currency_logs) }
 
       it 'does not calls SetupNewUserWorker' do
-        expect(SetupNewUserWorker).not_to receive(:perform_async)
-
         put :update, params: { user: { id: user.id, session: session } }
+
+        expect(SetupNewUserWorker).not_to have_received(:perform_async)
       end
     end
 
-    context 'user without settings or currency logs' do
+    context 'when user without settings or currency logs' do
       let(:user) { create(:user) }
 
       it 'calls SetupNewUserWorker ' do
-        expect(SetupNewUserWorker).to receive(:perform_async)
-
         put :update, params: { user: { id: user.id, session: session } }
+
+        expect(SetupNewUserWorker).to have_received(:perform_async)
       end
     end
   end
