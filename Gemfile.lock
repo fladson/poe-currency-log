@@ -214,8 +214,6 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rollbar (2.18.0)
-      multi_json
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -359,7 +357,6 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.5)
   reek
-  rollbar
   rspec-rails (~> 3.7)
   rubocop
   rubocop-rspec
