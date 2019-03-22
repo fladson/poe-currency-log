@@ -23,7 +23,7 @@ blocks:
           - checkout
           - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
           - sem-service start postgres
-          - sem-version ruby 2.6.0
+          - sem-version ruby 2.5.1
           - bundle install --deployment --path vendor/bundle
           - bundle exec rake db:setup
       jobs:
