@@ -32,6 +32,7 @@ RSpec.describe POE::CurrencyParser do
         "Chromatic Orb"=>437,
         "Orb of Transmutation"=>328,
         "Master Cartographer's Sextant"=>16,
+        "Mirror of Kalandra"=>0,
         "Orb of Regret"=>69,
         "Orb of Annulment"=>5,
         "Orb of Alchemy"=>117,

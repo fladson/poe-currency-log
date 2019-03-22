@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     controller :pages do
       get "terms" => :terms, as: :terms
       get "privacy" => :privacy, as: :privacy
-      get "help" => :help, as: :help
       get "fetch_currency" => :fetch_currency, as: :fetch_currency
       get "dashboard" => :dashboard, as: :user_root
       get "dashboard/:league" => :dashboard, as: :dashboard
