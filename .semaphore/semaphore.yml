@@ -29,9 +29,11 @@ blocks:
           - sem-version ruby 2.5.1
           - bundle install --deployment --path vendor/bundle
           - bundle exec rake db:setup
+          - cache restore codeclimate
           - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           - chmod +x ./cc-test-reporter
           - ./cc-test-reporter before-build
+          - cache store codeclimate ./cc-test-reporter
       jobs:
       - name: RSpec
         commands:
