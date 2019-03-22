@@ -3,16 +3,3 @@ IrresponsibleModule:
 
 exclude_paths:
   - db/migrate
-
-FeatureEnvy:
-  exclude:
-  - Characters#get_json
-  - Stash#num_tabs
-  - POE::API#client
-
-UtilityFunction:
-  exclude:
-  - POE::API#tabs_path
-TooManyStatements:
-  exclude:
-  - User#check_credentials

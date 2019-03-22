@@ -5,7 +5,17 @@ AllCops:
   DisplayStyleGuide: true
   ExtraDetails: false
   TargetRubyVersion: 2.5
+  Exclude:
+    - 'db/**/*'
+    - 'node_modules/**/*'
 
 Style/FrozenStringLiteralComment:
   Exclude:
     - 'app/helpers/chart_helper.rb'
+
+Metrics/LineLength:
+  Exclude:
+    - 'config/**/*'
+
+Style/Documentation:
+  Enabled: false
