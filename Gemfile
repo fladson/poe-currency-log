@@ -40,8 +40,8 @@ group :development, :test do
   gem "pry-rails"
   gem "reek", require: false
   gem "rspec-rails", "~> 3.7"
-  gem "rubocop-github", require: false
-  gem "rubocop-rspec", require: false
+  gem "rubocop", require: false
+  gem "rubocop-rspec"
 end
 
 group :development do
