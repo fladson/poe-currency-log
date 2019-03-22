@@ -20,4 +20,5 @@ blocks:
       - name: RSpec
         commands:
           - checkout
+          - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
           - echo "make rspec"
