@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :currency_logs, dependent: :destroy
-  has_many :settings, class_name: "UserSetting", dependent: :destroy
+  has_many :settings, class_name: 'UserSetting', dependent: :destroy
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -9,17 +9,16 @@ class User < ApplicationRecord
   attribute :account_name
   attr_encrypted :session, :account_name, key: Rails.application.secrets.secret_key_attr_encrypt
 
-  validates :session, presence: true
-  validate :check_credentials
+  validates :session, presence: true, length: { is: 32 }
 
-  STANDARD_LEAGUES = ["Standard", "Hardcore", "SSF Standard", "SSF Hardcore"]
+  STANDARD_LEAGUES = ['Standard', 'Hardcore', 'SSF Standard', 'SSF Hardcore']
 
   def current_leagues
-    chars.map { |char| char["league"] }.uniq
+    chars.map { |char| char['league'] }.uniq
   end
 
-  def current_temp_league
-    (current_leagues - STANDARD_LEAGUES).pop
+  def current_temp_leagues
+    current_leagues - STANDARD_LEAGUES
   end
 
   def standard_leagues
@@ -35,28 +34,8 @@ class User < ApplicationRecord
   end
 
   private
-
-  def check_credentials
-    begin
-      api = POE::API.new(session)
-
-      self.account_name = api.account_name
-      self.chars = api.chars
-      self.valid_credentials = true
-      update_temp_leagues
-    rescue POE::Error::InvalidSession
-      errors.add(:session, "is invalid")
-      Rails.logger.info("Invalid user session: #{self}")
-    end
-  end
-
-  def update_temp_leagues
-    return unless current_temp_league
-    self.temp_leagues.push(current_temp_league) unless self.temp_leagues.include?(current_temp_league)
-  end
-
   def deparametrize(str)
-    str.split("-").join(" ")
+    str.split('-').join(' ')
   end
 
   def to_s

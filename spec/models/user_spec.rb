@@ -1,6 +1,11 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
+  it { is_expected.to have_many(:currency_logs) }
+  it { is_expected.to have_many(:settings).class_name('UserSetting') }
+  it { is_expected.to validate_presence_of(:session) }
+  it { is_expected.to validate_length_of(:session).is_equal_to(32) }
+
   describe "encryption" do
     let(:account_name) { "account_name" }
     let(:session) { "session" }
@@ -22,67 +27,9 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "check_credentials" do
-    context "when valid session" do
-      let(:user) { create(:user) }
-
-      it "returns as valid" do
-        VCR.use_cassette "check credentials" do
-          expect(user).to be_valid
-        end
-      end
-
-      it "assigns valid_credentials to true" do
-        VCR.use_cassette "check credentials" do
-          expect(user.valid_credentials).to be_truthy
-        end
-      end
-
-      it "assigns chars" do
-        VCR.use_cassette "check credentials" do
-          expect(user.chars).not_to be_empty
-        end
-      end
-
-      it "assigns account_name" do
-        VCR.use_cassette "check credentials" do
-          expect(user.account_name).to eq("fladsongomes")
-        end
-      end
-    end
-
-    context "when invalid session" do
-      let(:user) { build(:user, session: "invalid_session") }
-
-      it "returns as invalid" do
-        VCR.use_cassette "check credentials invalid" do
-          expect(user).not_to be_valid
-        end
-      end
-
-      it "does not assigns valid_credentials to true" do
-        VCR.use_cassette "check credentials invalid" do
-          expect(user.valid_credentials).to be_falsey
-        end
-      end
-
-      it "does not assigns chars" do
-        VCR.use_cassette "check credentials invalid" do
-          expect(user.chars).to be_empty
-        end
-      end
-
-      it "does not assigns account_name" do
-        VCR.use_cassette "check credentials invalid" do
-          expect(user.account_name).to be_empty
-        end
-      end
-    end
-  end
-
   describe "#current_leagues" do
     context "when different leagues" do
-      it "returns the correct legues" do
+      it "returns the correct leagues" do
         chars = [
           {"name"=>"tianne_", "class"=>"Ranger", "level"=>22, "league"=>"SSF Standard", "classId"=>2, "ascendancyClass"=>0},
           {"name"=>"Maeggi", "class"=>"Ascendant", "level"=>94, "league"=>"Standard", "classId"=>0, "ascendancyClass"=>1},
@@ -96,7 +43,7 @@ RSpec.describe User, type: :model do
     end
 
     context "when some different leagues" do
-      it "returns the correct legues as uniq" do
+      it "returns the correct leagues as uniq" do
         chars = [
           {"name"=>"tianne_", "class"=>"Ranger", "level"=>22, "league"=>"Standard", "classId"=>2, "ascendancyClass"=>0},
           {"name"=>"Maeggi", "class"=>"Ascendant", "level"=>94, "league"=>"Standard", "classId"=>0, "ascendancyClass"=>1},
@@ -110,8 +57,8 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "#temp_leagues" do
-    it "returns the correct legues" do
+  describe "#current_temp_leagues" do
+    it "returns the correct leagues" do
       chars = [
         {"name"=>"tianne_", "class"=>"Ranger", "level"=>22, "league"=>"SSF Standard", "classId"=>2, "ascendancyClass"=>0},
         {"name"=>"Maeggi", "class"=>"Ascendant", "level"=>94, "league"=>"Standard", "classId"=>0, "ascendancyClass"=>1},
@@ -121,12 +68,12 @@ RSpec.describe User, type: :model do
       ]
       user = build(:user, chars: chars)
 
-      expect(user.temp_leagues).to eq(["Abyss", "Abyss Hardcore"])
+      expect(user.current_temp_leagues).to eq(["Abyss", "Abyss Hardcore"])
     end
   end
 
   describe "#standard_leagues" do
-    it "returns the correct legues" do
+    it "returns the correct leagues" do
       chars = [
         {"name"=>"tianne_", "class"=>"Ranger", "level"=>22, "league"=>"SSF Standard", "classId"=>2, "ascendancyClass"=>0},
         {"name"=>"Maeggi", "class"=>"Ascendant", "level"=>94, "league"=>"Standard", "classId"=>0, "ascendancyClass"=>1},
@@ -134,7 +81,7 @@ RSpec.describe User, type: :model do
         {"name"=>"Lunna_", "class"=>"Raider", "level"=>88, "league"=>"Abyss", "classId"=>2, "ascendancyClass"=>1},
         {"name"=>"Lunna_", "class"=>"Raider", "level"=>88, "league"=>"Abyss Hardcore", "classId"=>2, "ascendancyClass"=>1}
       ]
-      user = build(:user, chars: chars)
+      user = build(:user, chars: chars, temp_leagues: ["Abyss", "Abyss Hardcore"])
 
       expect(user.standard_leagues).to eq(["SSF Standard", "Standard", "Hardcore"])
     end
