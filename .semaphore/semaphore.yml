@@ -1,0 +1,44 @@
+version: v1.0
+name: Poe Currency Log
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Setup
+    task:
+      jobs:
+        - name: bundle
+          commands:
+          - checkout
+          - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
+          - sem-version ruby 2.5.1
+          - bundle install --deployment -j 4 --path vendor/bundle
+          - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
+
+  - name: "Unit tests"
+    task:
+      env_vars:
+        - name: CC_TEST_REPORTER_ID
+          value: af90d4c78d0c2e33bc55803b5a00499af7ff0557b335012c2bf762ffce12fd07
+      prologue:
+        commands:
+          - checkout
+          - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
+          - sem-service start postgres
+          - sem-version ruby 2.5.1
+          - bundle install --deployment --path vendor/bundle
+          - bundle exec rake db:setup
+          - cache restore codeclimate
+          - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          - chmod +x ./cc-test-reporter
+          - ./cc-test-reporter before-build
+          - cache store codeclimate ./cc-test-reporter
+      jobs:
+      - name: RSpec
+        commands:
+          - bundle exec rspec spec
+      epilogue:
+        commands:
+          - exitcode=$(if [ "$SEMAPHORE_JOB_RESULT" == "passed" ]; then echo 0; else echo 1; fi)
+          - ./cc-test-reporter after-build --exit-code $exitcode
