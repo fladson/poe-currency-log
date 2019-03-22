@@ -7,12 +7,13 @@ RSpec.describe PagesController, type: :controller do
     context 'when unauthorized' do
       it 'returns a 302' do
         get :dashboard
+
         expect(response).to have_http_status(302)
       end
     end
 
     context 'when authorized' do
-      let(:user) { create(:user, :with_settings_and_currency_logs) }
+      let(:user) { create(:user, :with_settings) }
 
       before do
         sign_in(user)
@@ -40,6 +41,7 @@ RSpec.describe PagesController, type: :controller do
   describe 'GET #home' do
     it 'returns http success' do
       get :home
+
       expect(response).to have_http_status(:success)
     end
   end
@@ -47,6 +49,7 @@ RSpec.describe PagesController, type: :controller do
   describe 'GET #terms' do
     it 'returns http success' do
       get :terms
+
       expect(response).to have_http_status(:success)
     end
   end
@@ -54,6 +57,7 @@ RSpec.describe PagesController, type: :controller do
   describe 'GET #privacy' do
     it 'returns http success' do
       get :privacy
+
       expect(response).to have_http_status(:success)
     end
   end

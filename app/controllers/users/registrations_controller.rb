@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def update
     super do |user|
-      SetupNewUserWorker.perform_async(user) if user.reload.settings.empty? || user.reload.currency_logs.empty?
+      SetupNewUserWorker.perform_async(user) if user.settings.empty? || user.currency_logs.empty?
     end
   end
 

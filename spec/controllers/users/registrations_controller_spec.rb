@@ -34,8 +34,8 @@ RSpec.describe Users::RegistrationsController, type: :controller do
       sign_in(user)
     end
 
-    context 'when user with settings or currency logs' do
-      let(:user) { create(:user, :with_settings_and_currency_logs) }
+    xcontext 'when user has settings' do
+      let(:user) { create(:user, :with_settings) }
 
       it 'does not calls SetupNewUserWorker' do
         put :update, params: { user: { id: user.id, session: session } }
