@@ -1,20 +1,30 @@
+# frozen_string_literal: true
+
 module POE
   class API
-    BASE = "https://www.pathofexile.com/".freeze
-    ACCOUNT = "/my-account".freeze
-    CHARS = "/character-window/get-characters".freeze
-    STASH = "/character-window/get-stash-items".freeze
-
-    attr_reader :session
+    BASE    = 'https://www.pathofexile.com/'
+    ACCOUNT = '/my-account'
+    CHARS   = '/character-window/get-characters'
+    STASH   = '/character-window/get-stash-items'
 
     def initialize(session)
       @session = session
     end
 
+    def client
+      connection ||= Faraday.new(url: BASE) do |faraday|
+        faraday.use ErrorHandling
+        faraday.adapter Faraday.default_adapter
+        faraday.headers = {
+          'Content-Type' => 'application/json',
+          'Cookie' => "POESESSID=#{session}"
+        }
+      end
+    end
+
     def account_name
       response = client.get(ACCOUNT)
       match = /\/account\/view-profile\/(.*?)\"/.match(response.body)
-      raise POE::Error::InvalidSession, "Session invalid: Couldn't retrieve the account name" unless match
 
       match[1]
     end
@@ -43,18 +53,8 @@ module POE
       JSON.parse(response.body)["numTabs"]
     end
 
-    def client
-      connection ||= Faraday.new(url: BASE) do |faraday|
-        faraday.use ErrorHandling
-        faraday.adapter Faraday.default_adapter
-        faraday.headers = {
-          "Content-Type" => "application/json",
-          "Cookie" => "POESESSID=#{session}"
-        }
-      end
-    end
-
     private
+    attr_reader :session
 
     def tabs_path(account_name, league, tab_index = 0)
       STASH + "?accountName=#{account_name}&league=#{league}&tabs=0&tabIndex=#{tab_index}"
