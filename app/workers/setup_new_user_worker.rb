@@ -1,0 +1,12 @@
+class SetupNewUserWorker
+  include Sidekiq::Worker
+  sidekiq_options retry: false
+
+  def perform(user)
+    UserSettingsService.create(user)
+    InitialEmptyCurrencyService.create(user)
+    UserDataWorker.perform(user)
+    UpdateUserTempLeaguesWorker.perform(user)
+    LogCurrencyWorker.perform_async(user)
+  end
+end

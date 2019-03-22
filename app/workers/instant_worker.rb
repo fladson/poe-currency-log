@@ -3,9 +3,7 @@ class InstantWorker
   sidekiq_options retry: false
 
   def perform(user_email)
-    user = User.find_by_email(user_email)
-
-    LogCurrencyWorker.perform_async(user.email)
+    LogCurrencyWorker.perform_async(user_email)
   end
 
   def self.run
