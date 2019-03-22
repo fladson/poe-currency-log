@@ -24,7 +24,7 @@ module POE
 
     def account_name
       response = client.get(ACCOUNT)
-      match = /\/account\/view-profile\/(.*?)\"/.match(response.body)
+      match = %r{/account/view-profile/(.*?)\"}.match(response.body)
 
       match[1]
     end
@@ -39,6 +39,7 @@ module POE
       tabs = []
       tabs_count = number_of_tabs(account_name, league)
       return unless tabs_count
+
       tabs_count.times do |tab_index|
         tabs << client.get(tabs_path(account_name, league, tab_index)).body.freeze
       end
@@ -50,10 +51,11 @@ module POE
       path = tabs_path(account_name, league)
       response = client.get(path)
 
-      JSON.parse(response.body)["numTabs"]
+      JSON.parse(response.body)['numTabs']
     end
 
     private
+
     attr_reader :session
 
     def tabs_path(account_name, league, tab_index = 0)

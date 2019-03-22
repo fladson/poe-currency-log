@@ -1,5 +1,6 @@
-class UserSettingsController < ApplicationController
+# frozen_string_literal: true
 
+class UserSettingsController < ApplicationController
   def edit
     @user_settings = @current_user.settings
   end
@@ -7,7 +8,7 @@ class UserSettingsController < ApplicationController
   def update
     @user_settings.update(user_settings_params)
 
-    #notification
+    # notification
   end
 
   def user_settings_params

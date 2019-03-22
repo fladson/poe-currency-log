@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module POE
   class Error
     class InvalidSession < RuntimeError; end

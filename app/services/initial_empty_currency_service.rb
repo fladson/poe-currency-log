@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module InitialEmptyCurrencyService
   def self.create(user)
     user.current_leagues.each do |league|

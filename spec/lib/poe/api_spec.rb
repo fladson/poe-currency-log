@@ -3,18 +3,19 @@
 require 'rails_helper'
 
 RSpec.describe POE::API do
-  let(:api) { POE::API.new(session) }
+  let(:api) { described_class.new(session) }
 
   describe '#client' do
-    let(:session) { 'any_session' }
     subject { api.client }
+
+    let(:session) { 'any_session' }
 
     it 'returns a connection with a poe host' do
       expect(subject.host).to eq('www.pathofexile.com')
     end
 
     it 'returns a connection with a POESESSID Cookie' do
-      expect(subject.headers["Cookie"]).to eq("POESESSID=#{session}")
+      expect(subject.headers['Cookie']).to eq("POESESSID=#{session}")
     end
 
     it 'returns a json content type connection' do
@@ -121,7 +122,7 @@ RSpec.describe POE::API do
   end
 
   context 'when invalid session' do
-    let(:session) { "valid_session" }
+    let(:session) { 'valid_session' }
 
     describe '#account_name' do
       it 'raises a POE::InvalidSession exception' do

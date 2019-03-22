@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :currency_logs, dependent: :destroy
   has_many :settings, class_name: 'UserSetting', dependent: :destroy
@@ -11,7 +13,7 @@ class User < ApplicationRecord
 
   validates :session, presence: true, length: { is: 32 }
 
-  STANDARD_LEAGUES = ['Standard', 'Hardcore', 'SSF Standard', 'SSF Hardcore']
+  STANDARD_LEAGUES = ['Standard', 'Hardcore', 'SSF Standard', 'SSF Hardcore'].freeze
 
   def current_leagues
     chars.map { |char| char['league'] }.uniq
@@ -34,6 +36,7 @@ class User < ApplicationRecord
   end
 
   private
+
   def deparametrize(str)
     str.split('-').join(' ')
   end

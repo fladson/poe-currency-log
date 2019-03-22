@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SetupNewUserWorker
   include Sidekiq::Worker
   sidekiq_options retry: false

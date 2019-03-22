@@ -1,5 +1,7 @@
-require "coveralls"
-require "webmock/rspec"
+# frozen_string_literal: true
+
+require 'coveralls'
+require 'webmock/rspec'
 Coveralls.wear!
 
 RSpec.configure do |config|

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Users::RegistrationsController, type: :controller do
   let(:session) { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }
 
-  before :each do
+  before do
     request.env['devise.mapping'] = Devise.mappings[:user]
     allow(SetupNewUserWorker).to receive(:perform_async).and_return('nothing')
   end
@@ -17,7 +19,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
   end
 
   describe 'PUT #update' do
-    before :each do
+    before do
       sign_in(user)
     end
 

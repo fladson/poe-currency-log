@@ -1,5 +1,5 @@
-require "awesome_print"
+# frozen_string_literal: true
+
+require 'awesome_print'
 AwesomePrint.irb!
-if defined?(PryRails::RAILS_PROMPT)
-  Pry.config.prompt = PryRails::RAILS_PROMPT
-end
+Pry.config.prompt = PryRails::RAILS_PROMPT if defined?(PryRails::RAILS_PROMPT)

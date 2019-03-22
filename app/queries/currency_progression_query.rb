@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CurrencyProgressionQuery
   attr_reader :relation
 
@@ -24,14 +26,14 @@ class CurrencyProgressionQuery
 
     def self.generate(relation, field, date = :created_at)
       relation.pluck(field, date)
-        .map(&method(:inject_created_at))
-        .inject(&method(:accumulate))
+              .map(&method(:inject_created_at))
+              .inject(&method(:accumulate))
     end
   end
 
   module Scopes
     def by_league(league)
-      where("lower(league) = ?", league.downcase)
+      where('lower(league) = ?', league.downcase)
     end
 
     def timeline_order
