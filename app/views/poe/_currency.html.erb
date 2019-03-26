@@ -1,16 +1,16 @@
 <div class="py-4">
   <div class="flex flex-wrap justify-between flex-grow">
-    <% @current_user.settings.ordered.each do |setting| %>
-      <% unless setting.hidden %>
-        <% chart = @currency_stats[setting.currency] %>
+    <% @current_user.ordered_chart_preferences.each do |chart_preference| %>
+      <% unless chart_preference['hidden'] %>
+        <% chart = @currency_stats[chart_preference['currency']] %>
         <div class="bg-white rounded shadow-custom mb-6 border border-grey-border max-w-lg flex-grow">
           <div class="flex justify-between">
             <div class="flex items-center -mt-4">
               <span class="inline-flex ml-4">
-                <%= image_tag("currencies/#{setting.currency}.png", class: "h-10 w-10") %>
+                <%= image_tag("currencies/#{chart_preference['currency']}.png", class: "h-10 w-10") %>
               </span>
               <span class="font-semibold text-xl text-grey-text ml-3">
-                <%= setting.currency %>
+                <%= chart_preference['currency'] %>
               </span>
             </div>
 
@@ -79,19 +79,19 @@
           </div>
           <%= area_chart chart,
           library: {
-            # colors: [color_for(setting)],
+            # colors: [color_for(chart_preference)],
             plotOptions: {
               series: {
                 fillColor: {
                     linearGradient: [0, 0, 0, 300],
                     stops: [
-                        [0, color_for(setting).paint.lighten.to_hex],
-                        [1, color_for(setting)]
+                        [0, color_for(chart_preference).paint.lighten.to_hex],
+                        [1, color_for(chart_preference)]
                     ]
                 },
                 fillOpacity: 1,
                 lineWidth: 2,
-                lineColor: color_for(setting).paint.desaturate.to_hex,
+                lineColor: color_for(chart_preference).paint.desaturate.to_hex,
                 stickyTracking: false
               }
             },

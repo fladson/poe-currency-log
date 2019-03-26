@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  serialize :chart_preferences
   has_many :currency_logs, dependent: :destroy
-  has_many :settings, class_name: 'UserSetting', dependent: :destroy
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -33,6 +33,10 @@ class User < ApplicationRecord
 
   def default_league
     current_leagues.first
+  end
+
+  def ordered_chart_preferences
+    chart_preferences.sort_by{ |k| k['sort'] }
   end
 
   private
