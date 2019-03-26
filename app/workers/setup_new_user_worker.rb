@@ -5,7 +5,7 @@ class SetupNewUserWorker
   sidekiq_options retry: false
 
   def perform(user)
-    UserSettingsService.create(user)
+    ChartPreferencesService.create(user)
     InitialEmptyCurrencyService.create(user)
     UserDataWorker.perform(user)
     UpdateUserTempLeaguesWorker.perform(user)
