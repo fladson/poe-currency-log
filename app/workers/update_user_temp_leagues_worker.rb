@@ -3,11 +3,10 @@
 class UpdateUserTempLeaguesWorker
   include Sidekiq::Worker
 
-  def perform(user)
+  def perform(user_email)
     puts '------------------------------------------------------'
-    puts " + Fetching data for #{user.email}"
-    api = POE::API.new(user.session)
-
+    puts " + Fetching data for #{user_email}"
+    user = User.find_by_email(user_email)
     begin
       temp_leagues = user.temp_leagues | user.current_temp_leagues
       user.update(temp_leagues: temp_leagues)

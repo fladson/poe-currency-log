@@ -10,8 +10,7 @@ class LogCurrencyWorker
     api = POE::API.new(user.session)
 
     begin
-      chars = api.chars
-      user.update(chars: chars, valid_credentials: true)
+      user.update(chars: api.chars, valid_credentials: true)
       user.current_leagues.each do |league|
         tabs = api.stash_tabs(user.account_name, league)
         return unless tabs
