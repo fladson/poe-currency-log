@@ -13,26 +13,28 @@ class User < ApplicationRecord
 
   validates :session, presence: true, length: { is: 32 }
 
-  STANDARD_LEAGUES = ['Standard', 'Hardcore', 'SSF Standard', 'SSF Hardcore'].freeze
-
   def current_leagues
     chars.map { |char| char['league'] }.uniq
   end
 
   def current_temp_leagues
-    current_leagues - STANDARD_LEAGUES
+    current_leagues - POE::League::STANDARD_LEAGUES
   end
 
   def standard_leagues
-    current_leagues - temp_leagues
+    current_leagues - POE::League.temp_leagues
+  end
+
+  def past_temp_leagues
+    temp_leagues - POE::League.temp_leagues
+  end
+
+  def default_league
+    current_temp_leagues.last
   end
 
   def currency_stats(league)
     currency_logs.progression.by_league(deparametrize(league))
-  end
-
-  def default_league
-    current_leagues.first
   end
 
   def ordered_chart_preferences

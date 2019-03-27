@@ -30,6 +30,12 @@ FactoryBot.define do
             'sort' =>     1,
             'color' =>    'custom',
             'hidden' =>   true
+          },
+          {
+            'currency' => 'Exalted Orb',
+            'sort' =>     0,
+            'color' =>    'custom',
+            'hidden' =>   true
           }
         ]
       end
