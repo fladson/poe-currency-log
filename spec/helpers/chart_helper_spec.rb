@@ -5,18 +5,18 @@ require 'rails_helper'
 RSpec.describe ChartHelper, type: :helper do
   describe 'color_for' do
     context 'when user has custom color' do
-      let(:setting) { build(:user_setting, color: 'custom') }
+      let(:user) { build(:user, :with_custom_chart_preferences) }
 
       it 'returns the user custom color' do
-        expect(color_for(setting)).to eq('custom')
+        expect(color_for(user.chart_preferences.first)).to eq('custom')
       end
     end
 
     context 'when user has no custom color' do
-      let(:setting) { build(:user_setting) }
+      let(:user) { build(:user, :with_chart_preferences) }
 
       it 'returns the default color for that currency' do
-        expect(color_for(setting)).to eq(default_colors[setting.currency])
+        expect(color_for(user.chart_preferences.first)).to eq(default_colors['Chaos Orb'])
       end
     end
   end

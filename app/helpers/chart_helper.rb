@@ -27,13 +27,13 @@ module ChartHelper
     'Vaal Orb' => '#C03C14'
   }.freeze
 
-  def color_for(setting)
-    user_custom_color = setting.color
+  def color_for(chart_preference)
+    user_custom_color = chart_preference['color']
 
     if user_custom_color != 'default'
       user_custom_color
     else
-      DEFAULT_COLORS[setting.currency]
+      DEFAULT_COLORS[chart_preference['currency']]
     end
   end
 

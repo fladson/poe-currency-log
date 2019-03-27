@@ -13,7 +13,7 @@ RSpec.describe PagesController, type: :controller do
     end
 
     context 'when authorized' do
-      let(:user) { create(:user, :with_settings) }
+      let(:user) { create(:user, :with_chart_preferences) }
 
       before do
         sign_in(user)

@@ -9,9 +9,29 @@ FactoryBot.define do
     session               { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }
     chars                 { [{ league: 'Standard' }, { league: 'Hardcore' }] }
 
-    trait :with_settings do
-      after(:create) do |user|
-        create(:user_setting, user: user)
+    trait :with_chart_preferences do
+      chart_preferences do
+        [
+          {
+            'currency' => 'Chaos Orb',
+            'sort' =>     0,
+            'color' =>    'default',
+            'hidden' =>   false
+          }
+        ]
+      end
+    end
+
+    trait :with_custom_chart_preferences do
+      chart_preferences do
+        [
+          {
+            'currency' => 'Chaos Orb',
+            'sort' =>     1,
+            'color' =>    'custom',
+            'hidden' =>   true
+          }
+        ]
       end
     end
   end

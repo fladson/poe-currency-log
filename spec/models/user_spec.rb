@@ -15,7 +15,6 @@ RSpec.describe User, type: :model do
   end
 
   it { is_expected.to have_many(:currency_logs) }
-  it { is_expected.to have_many(:settings).class_name('UserSetting') }
   it { is_expected.to validate_presence_of(:session) }
   it { is_expected.to validate_length_of(:session).is_equal_to(32) }
 

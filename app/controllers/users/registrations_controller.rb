@@ -10,10 +10,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def update
-    super do |user|
-      SetupNewUserWorker.perform_async(user) if user.settings.empty? || user.currency_logs.empty?
-    end
+  def update_resource(resource, params)
+    resource.update_without_password(params)
   end
 
   protected
@@ -23,6 +21,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:session])
+    devise_parameter_sanitizer.permit(:account_update) do |user_params|
+      user_params.permit(:session, chart_preferences: [:currency, :sort, :color, :hidden])
+    end
   end
 end
