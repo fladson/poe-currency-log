@@ -28,30 +28,4 @@ RSpec.describe Users::RegistrationsController, type: :controller do
       expect(SetupNewUserWorker).to have_received(:perform_async)
     end
   end
-
-  describe 'PUT #update' do
-    before do
-      sign_in(user)
-    end
-
-    xcontext 'when user has settings' do
-      let(:user) { create(:user, :with_settings) }
-
-      it 'does not calls SetupNewUserWorker' do
-        put :update, params: { user: { id: user.id, session: session } }
-
-        expect(SetupNewUserWorker).not_to have_received(:perform_async)
-      end
-    end
-
-    context 'when user without settings or currency logs' do
-      let(:user) { create(:user) }
-
-      it 'calls SetupNewUserWorker ' do
-        put :update, params: { user: { id: user.id, session: session } }
-
-        expect(SetupNewUserWorker).to have_received(:perform_async)
-      end
-    end
-  end
 end
