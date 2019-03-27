@@ -1,9 +1,0 @@
-<% @current_user.settings.each do |setting| %>
-  <h2><%= setting.currency %></h2>
-  <%= form_for(setting, url: update_user_settings_path(setting), html: { method: :put }) do |f| %>
-    <div class="field">
-      <%= f.label :color %><br />
-      <%= f.text_field :color, autofocus: true %>
-    </div>
-  <% end %>
-<% end %>
