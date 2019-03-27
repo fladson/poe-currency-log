@@ -10,12 +10,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def update
-    super do |user|
-      SetupNewUserWorker.perform_async(user) if user.chart_preferences.blank? || user.currency_logs.empty?
-    end
-  end
-
   protected
 
   def configure_sign_up_params
