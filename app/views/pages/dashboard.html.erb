@@ -17,10 +17,6 @@
         </div>
 
         <div class="inline-flex text-sm items-center mr-6">
-          <%= link_to "Manual sync", fetch_currency_path(league: @league.capitalize), method: :get, class: "text-xs uppercase bg-black-button text-white font-bold py-2 px-2 rounded-sm cursor-pointer text-center tracking-wide no-underline" %>
-        </div>
-
-        <div class="inline-flex text-sm items-center mr-6">
           <%= inline_svg "icons/clock.svg", class: "stroke-current w-4 h-4 text-grey-text" %>
           <p class="ml-2 text-grey-text-custom">Updated <%= time_ago_in_words @current_user.updated_at %> ago</p>
         </div>
