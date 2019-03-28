@@ -8,6 +8,13 @@ FactoryBot.define do
     confirmed_at          { Date.today }
     session               { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }
     chars                 { [{ league: 'Standard' }, { league: 'Hardcore' }] }
+    valid_credentials     { true }
+
+    trait :with_currency_logs do
+      after(:create) do |user|
+        create(:currency_log, user: user)
+      end
+    end
 
     trait :with_chart_preferences do
       chart_preferences do
