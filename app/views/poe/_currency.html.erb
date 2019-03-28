@@ -1,7 +1,7 @@
 <div class="py-4">
   <div class="flex flex-wrap justify-between flex-grow">
     <% @current_user.ordered_chart_preferences.each do |chart_preference| %>
-      <% unless chart_preference['hidden'] %>
+      <% unless chart_preference['hidden'] == "true" %>
         <% chart = @currency_stats[chart_preference['currency']] %>
         <div class="bg-white rounded shadow-custom mb-6 border border-grey-border max-w-lg flex-grow">
           <div class="flex justify-between">

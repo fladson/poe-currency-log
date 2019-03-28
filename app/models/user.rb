@@ -39,7 +39,7 @@ class User < ApplicationRecord
   end
 
   def ordered_chart_preferences
-    chart_preferences.sort_by{ |k| k['sort'] }
+    chart_preferences.sort_by{ |k| k['sort'].to_i }
   end
 
   private

@@ -21,9 +21,9 @@ FactoryBot.define do
         [
           {
             'currency' => 'Chaos Orb',
-            'sort' =>     0,
+            'sort' =>     '0',
             'color' =>    'default',
-            'hidden' =>   false
+            'hidden' =>   'false'
           }
         ]
       end
@@ -34,15 +34,15 @@ FactoryBot.define do
         [
           {
             'currency' => 'Chaos Orb',
-            'sort' =>     1,
+            'sort' =>     '1',
             'color' =>    'custom',
-            'hidden' =>   true
+            'hidden' =>   'true'
           },
           {
             'currency' => 'Exalted Orb',
-            'sort' =>     0,
+            'sort' =>     '0',
             'color' =>    'custom',
-            'hidden' =>   true
+            'hidden' =>   'true'
           }
         ]
       end

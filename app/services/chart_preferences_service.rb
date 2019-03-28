@@ -8,9 +8,9 @@ module ChartPreferencesService
     POE::CurrencyParser.currency_names.each_with_index do |currency, index|
       default_chart_preferences << {
         currency: currency,
-        sort:     index,
+        sort:     index.to_s,
         color:    'default',
-        hidden:   false
+        hidden:   'false'
       }
     end
 
