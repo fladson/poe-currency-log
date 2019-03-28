@@ -50,10 +50,11 @@
         <% resource.chart_preferences.each do |p| %>
           <div class="shadow border rounded">
             <%= inline_svg "icons/move.svg", class: "stroke-current w-5 h-5" %>
+            <p><%= p['currency'] %></p>
             <%= f.hidden_field "chart_preferences[][currency]", value: "#{p['currency']}" %>
             <%= f.text_field "chart_preferences[][sort]", value: "#{p['sort']}", class: "sort" %>
             <%= f.color_field "chart_preferences[][color]", value: "#{color_for(p)}" %>
-            <%= f.text_field "chart_preferences[][hidden]", value: "#{p['hidden']}" %>
+            <%= f.text_field "chart_preferences[][hidden]", value: 'true', type: :checkbox, checked: ActiveModel::Type::Boolean.new.cast(p['hidden']) %>
           </div>
           <br>
         <% end %>
