@@ -20,11 +20,6 @@
           <%= inline_svg "icons/clock.svg", class: "stroke-current w-4 h-4 text-grey-text" %>
           <p class="ml-2 text-grey-text-custom">Updated <%= time_ago_in_words @current_user.updated_at %> ago</p>
         </div>
-
-        <div class="inline-flex text-sm items-center">
-          <%= inline_svg "icons/refresh-cw.svg", class: "stroke-current w-4 h-4 text-grey-text" %>
-          <p class="ml-2 text-grey-text-custom">Next update in <%= distance_of_time_in_words(@current_user.updated_at, @current_user.updated_at + 1.hour) %></p>
-        </div>
       </div>
 
     </div>
