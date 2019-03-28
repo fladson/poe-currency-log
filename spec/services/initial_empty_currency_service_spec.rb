@@ -3,10 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe InitialEmptyCurrencyService do
-  subject { described_class.create(user) }
+  subject { described_class.create(user.email) }
 
   describe '.create' do
-    let(:user) { build(:user) }
+    let(:user) { create(:user) }
 
     it 'creates an empty currency log for each user current leagues' do
       expect(user.currency_logs).to be_empty
