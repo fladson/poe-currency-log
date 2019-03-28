@@ -1,5 +1,8 @@
-<div class="bg-grey-lighter h-screen">
-  <div class="container h-full flex mx-auto">
+<div class="bg-grey-lighter">
+  <div class="min-h-screen flex flex-col max-w-4xl mx-auto pt-10">
+    <div class="pb-4">
+      <h2>Account Settings</h2>
+    </div>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "bg-white shadow rounded px-8 pt-6 pb-8 mb-4" }) do |f| %>
       <%= render "layouts/error_messages", object: resource %>
 
@@ -41,22 +44,26 @@
         <%= f.text_field :session, autocomplete: "off", class: "shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" %>
       </div>
 
-      <div class="mb-8">
+      <h3>Chart Preferences</h3>
+
+      <div class="mb-8 mt-4" id="sortable">
         <% resource.chart_preferences.each do |p| %>
-          <%= f.hidden_field "chart_preferences[][currency]", value: "#{p['currency']}" %>
-          <%= f.text_field "chart_preferences[][sort]", value: "#{p['sort']}" %>
-          <%= f.text_field "chart_preferences[][color]", value: "#{p['color']}" %>
-          <%= f.text_field "chart_preferences[][hidden]", value: "#{p['hidden']}" %>
+          <div class="shadow border rounded">
+            <%= inline_svg "icons/move.svg", class: "stroke-current w-5 h-5" %>
+            <%= f.hidden_field "chart_preferences[][currency]", value: "#{p['currency']}" %>
+            <%= f.text_field "chart_preferences[][sort]", value: "#{p['sort']}", class: "sort" %>
+            <%= f.color_field "chart_preferences[][color]", value: "#{color_for(p)}" %>
+            <%= f.text_field "chart_preferences[][hidden]", value: "#{p['hidden']}" %>
+          </div>
           <br>
         <% end %>
       </div>
 
-      <%= f.submit "Update", class: "bg-purple-dark hover:bg-purple text-white font-semibold py-2 px-4 border border-purple-light rounded shadow w-full cursor-pointer" %>
+      <div class="">
+        <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure" }, method: :delete, class: "bg-red-dark hover:bg-red text-white font-semibold py-2 px-4 border border-red-light rounded shadow w-full cursor-pointer no-underline" %>
+        <%= f.submit "Update", class: "bg-purple-dark hover:bg-purple text-white font-semibold py-2 px-4 border border-purple-light rounded shadow cursor-pointer" %>
+      </div>
     <% end %>
-
-    <div class="text-center text-sm mb-4">
-      <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure"}, method: :delete, class: "text-red no-underline hover:underline" %>
-    </div>
 
     <div class="text-center text-sm">
       <%= link_to "Back", :back, class: "text-grey-darkest no-underline hover:underline" %>
