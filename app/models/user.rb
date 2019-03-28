@@ -34,6 +34,7 @@ class User < ApplicationRecord
   end
 
   def currency_stats(league)
+    return unless league
     currency_logs.progression.by_league(deparametrize(league))
   end
 
