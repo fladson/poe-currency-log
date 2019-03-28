@@ -1,20 +1,14 @@
 # frozen_string_literal: true
 
+# This worker will be executed after a temp league ends
 class UpdateUserTempLeaguesWorker
   include Sidekiq::Worker
+  sidekiq_options retry: false
 
-  def perform(user)
-    puts '------------------------------------------------------'
-    puts " + Fetching data for #{user.email}"
-    api = POE::API.new(user.session)
+  def perform(user_email)
+    user = User.find_by_email(user_email)
+    temp_leagues = user.temp_leagues | user.current_temp_leagues
 
-    begin
-      temp_leagues = user.temp_leagues | user.current_temp_leagues
-      user.update(temp_leagues: temp_leagues)
-    rescue POE::Error::InvalidSession
-      puts ' - Invalid session, updating user valid_credentials to false'
-      user.update(valid_credentials: false)
-      LogCurrencyWorker.sidekiq_options retry: 0
-    end
+    user.update(temp_leagues: temp_leagues)
   end
 end

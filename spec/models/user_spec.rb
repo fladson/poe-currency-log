@@ -44,20 +44,20 @@ RSpec.describe User, type: :model do
   end
 
   describe '#current_leagues' do
-    context 'when different leagues' do
-      it 'returns the correct leagues' do
-        user = build(:user, chars: chars)
-
-        expect(user.current_leagues).to eq(['SSF Standard', 'Standard', 'Hardcore', 'Abyss', 'Abyss Hardcore'])
-      end
+    let(:expected_leagues) do
+      [
+        'SSF Standard',
+        'Standard',
+        'Hardcore',
+        'Abyss',
+        'Abyss Hardcore'
+      ]
     end
 
-    context 'when some different leagues' do
-      it 'returns the correct leagues as uniq' do
-        user = build(:user, chars: chars)
+    it 'returns the correct leagues' do
+      user = build(:user, chars: chars)
 
-        expect(user.current_leagues).to eq(['SSF Standard', 'Standard', 'Hardcore', 'Abyss', 'Abyss Hardcore'])
-      end
+      expect(user.current_leagues).to eq(expected_leagues)
     end
   end
 
@@ -71,9 +71,36 @@ RSpec.describe User, type: :model do
 
   describe '#standard_leagues' do
     it 'returns the correct leagues' do
-      user = build(:user, chars: chars, temp_leagues: ['Abyss', 'Abyss Hardcore'])
+      user = build(:user, chars: chars)
+      allow(ENV).to receive(:[]).with('CURRENT_LEAGUE').and_return('Abyss')
 
       expect(user.standard_leagues).to eq(['SSF Standard', 'Standard', 'Hardcore'])
+    end
+  end
+
+  describe '#past_temp_leagues' do
+    it 'returns the correct leagues' do
+      user = build(:user, chars: chars, temp_leagues: ['Harbinger', 'Harbinger SSF', 'Abyss', 'Abyss Hardcore'])
+      allow(ENV).to receive(:[]).with('CURRENT_LEAGUE').and_return('Abyss')
+
+      expect(user.past_temp_leagues).to eq(['Harbinger', 'Harbinger SSF'])
+    end
+  end
+
+  describe '#default_league' do
+    it 'returns the correct leagues' do
+      user = build(:user, chars: chars)
+
+      expect(user.default_league).to eq('Abyss Hardcore')
+    end
+  end
+
+  describe '#ordered_chart_preferences' do
+    it 'returns the chart preferences ordered by sort' do
+      user = build(:user, :with_custom_chart_preferences)
+      ordered_chart_preferences = user.ordered_chart_preferences
+
+      expect(ordered_chart_preferences.first['currency']).to eq('Exalted Orb')
     end
   end
 end

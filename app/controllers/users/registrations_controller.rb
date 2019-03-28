@@ -10,6 +10,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def update
+    super do |user|
+      SetupNewUserWorker.perform_async(user) if user.currency_logs.blank?
+    end
+  end
+
   def update_resource(resource, params)
     resource.update_without_password(params)
   end

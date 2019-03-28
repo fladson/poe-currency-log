@@ -52,4 +52,20 @@ RSpec.describe ChartHelper, type: :helper do
       it { is_expected.to eq 100 }
     end
   end
+
+  describe 'convert_thousand_to_human' do
+    subject { convert_thousand_to_human(value) }
+
+    context 'when value is higher than 999' do
+      let(:value) { 1000 }
+
+      it { is_expected.to eq '1K' }
+    end
+
+    context 'when value is less than or equal to 999' do
+      let(:value) { 999 }
+
+      it { is_expected.to eq '999' }
+    end
+  end
 end

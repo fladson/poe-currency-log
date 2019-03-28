@@ -4,8 +4,6 @@ class LeagueLogCurrencyWorker
   include Sidekiq::Worker
 
   def perform(user_email, league)
-    puts '------------------------------------------------------'
-    puts " + Fetching currency for #{user_email} | League: #{league}"
     user = User.find_by_email(user_email)
     api = POE::API.new(user.session)
 
@@ -18,7 +16,7 @@ class LeagueLogCurrencyWorker
     rescue POE::Error::InvalidSession
       puts ' - Connection failed, updating user valid_credentials to false'
       user.update(valid_credentials: false)
-      LogCurrencyWorker.sidekiq_options retry: 0
+      LeagueLogCurrencyWorker.sidekiq_options retry: 0
     end
   end
 end

@@ -20,12 +20,25 @@
 
       <div class="mb-8">
         <div class="inline-flex px-4">
+          <%= inline_svg "icons/archive.svg", class: "stroke-current w-5 h-5" %>
+          <p class="ml-2">Past Temp Leagues</p>
+        </div>
+
+        <ul class="mt-2 list-reset">
+          <% current_user.past_temp_leagues.each do |league| %>
+            <li><%= link_to league, dashboard_path(league.parameterize), method: :get, class: "tracking-wide uppercase text-xs no-underline hover:text-grey-text text-grey-text-custom ml-12" %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="mb-8">
+        <div class="inline-flex px-4">
           <%= inline_svg "icons/calendar.svg", class: "stroke-current w-5 h-5" %>
           <p class="ml-2">Temp Leagues</p>
         </div>
 
         <ul class="mt-2 list-reset">
-          <% current_user.temp_leagues.each do |league| %>
+          <% current_user.current_temp_leagues.each do |league| %>
             <li><%= link_to league, dashboard_path(league.parameterize), method: :get, class: "tracking-wide uppercase text-xs no-underline hover:text-grey-text text-grey-text-custom ml-12" %></li>
           <% end %>
         </ul>
@@ -34,7 +47,6 @@
 
     <div class="fixed pin-b p-4 ml-3 w-55">
       <hr class="border-t border-grey-border mb-2">
-
       <nav class="text-sm tracking-wide text-center">
         <%= link_to "Account Settings", edit_user_registration_path, method: :get, class: "text-grey-text-light hover:text-grey-text no-underline" %>
         <a href="mailto:poe.currency.log@gmail.com?Subject=Help - " class="text-grey-text-light hover:text-grey-text no-underline mr-2">Contact</a>

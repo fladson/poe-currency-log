@@ -49,6 +49,10 @@ module ChartHelper
     ((data.first.last - data.second.last).to_f / (data.second.last.zero? ? 1 : data.second.last.to_f) * 100.to_f).round
   end
 
+  def convert_thousand_to_human(value)
+    number_to_human(value, format: '%n%u', units: { thousand: 'K' })
+  end
+
   def default_colors
     DEFAULT_COLORS
   end

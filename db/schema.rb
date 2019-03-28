@@ -1,4 +1,18 @@
-ActiveRecord::Schema.define(version: 20190322193012) do
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 20190327174849) do
+
+  # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "currency_logs", force: :cascade do |t|
@@ -34,7 +48,6 @@ ActiveRecord::Schema.define(version: 20190322193012) do
     t.string "encrypted_session_iv"
     t.jsonb "chars", default: {}, null: false
     t.boolean "valid_credentials", default: false, null: false
-    t.string "time_zone", default: "UTC", null: false
     t.string "temp_leagues", default: [], array: true
     t.jsonb "chart_preferences", default: {}, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

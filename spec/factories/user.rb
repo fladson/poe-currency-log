@@ -8,6 +8,13 @@ FactoryBot.define do
     confirmed_at          { Date.today }
     session               { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }
     chars                 { [{ league: 'Standard' }, { league: 'Hardcore' }] }
+    valid_credentials     { true }
+
+    trait :with_currency_logs do
+      after(:create) do |user|
+        create(:currency_log, user: user)
+      end
+    end
 
     trait :with_chart_preferences do
       chart_preferences do
@@ -28,6 +35,12 @@ FactoryBot.define do
           {
             'currency' => 'Chaos Orb',
             'sort' =>     1,
+            'color' =>    'custom',
+            'hidden' =>   true
+          },
+          {
+            'currency' => 'Exalted Orb',
+            'sort' =>     0,
             'color' =>    'custom',
             'hidden' =>   true
           }
