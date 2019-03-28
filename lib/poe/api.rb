@@ -27,6 +27,8 @@ module POE
       match = %r{/account/view-profile/(.*?)\"}.match(response.body)
 
       match[1]
+    rescue NoMethodError
+      raise POE::Error::InvalidSession, '403: Session invalid'
     end
 
     def chars

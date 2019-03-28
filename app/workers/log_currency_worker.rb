@@ -4,8 +4,6 @@ class LogCurrencyWorker
   include Sidekiq::Worker
 
   def perform(user_email)
-    puts '------------------------------------------------------'
-    puts " + Fetching currency for #{user_email}"
     user = User.find_by_email(user_email)
     api = POE::API.new(user.session)
 
@@ -16,7 +14,6 @@ class LogCurrencyWorker
         return unless tabs
 
         currency = POE::CurrencyParser.parse_tabs(tabs)
-
         CurrencyLog.create(user: user, league: league, data: currency)
       end
     rescue POE::Error::InvalidSession
