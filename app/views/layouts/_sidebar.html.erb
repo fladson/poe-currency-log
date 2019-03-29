@@ -47,9 +47,9 @@
       </div>
     </div>
 
-    <div class="fixed pin-b p-4 ml-3 w-55">
+    <div class="fixed pin-b mb-2 w-60">
       <hr class="border-t border-grey-border mb-2">
-      <nav class="text-sm tracking-wide text-center">
+      <nav class="text-sm tracking-wide text-center flex justify-between px-3">
         <%= link_to "Settings", edit_user_registration_path, method: :get, class: "text-grey-text-light hover:text-grey-text no-underline" %>
         <a href="mailto:poe.currency.log@gmail.com?Subject=Help - " class="text-grey-text-light hover:text-grey-text no-underline">Contact</a>
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-grey-text-light hover:text-grey-text no-underline" %>
