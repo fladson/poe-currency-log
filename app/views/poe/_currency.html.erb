@@ -20,7 +20,7 @@
                   <ul class="list-reset leading-normal border-r h-16">
                     <li class="text-grey-text text-center p-1 text-xs uppercase">Current</li>
                     <li class="text-grey-text text-center text-xl font-bold">
-                      <%= convert_thousand_to_human(chart.first.last) %>
+                      <%= chart.first.last %>
                     </li>
                   </ul>
                 </div>
@@ -28,7 +28,7 @@
                   <ul class="list-reset leading-normal border-r h-16">
                     <li class="text-grey-text text-center p-1 text-xs uppercase">Max</li>
                     <li class="text-grey-text text-center text-xl font-bold">
-                      <%= convert_thousand_to_human(chart.flatten.reject{|i| i.is_a?(String)}.max) %>
+                      <%= chart.flatten.reject{|i| i.is_a?(String)}.max %>
                     </li>
                   </ul>
                 </div>
@@ -39,13 +39,13 @@
                       <% value = diff(chart) %>
                       <div class="inline-flex">
                         <% if value == '-' || value.zero? %>
-                          <p class="text-yellow-dark"><%= convert_thousand_to_human(value) %></p>
+                          <p class="text-yellow-dark"><%= value %></p>
                         <% elsif value.positive? %>
                           <%= inline_svg "icons/chevron-up.svg", class: "mt-05 w-7 h-7 text-green" %>
-                          <p class="text-green"><%= convert_thousand_to_human(value) %></p>
+                          <p class="text-green"><%= value %></p>
                         <% else %>
                           <%= inline_svg "icons/chevron-down.svg", class: "mt-05 w-7 h-7 text-red" %>
-                          <p class="text-red"><%= convert_thousand_to_human(value) %></p>
+                          <p class="text-red"><%= value %></p>
                         <% end %>
                       </div>
                     </li>
