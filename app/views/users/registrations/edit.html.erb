@@ -1,73 +1,95 @@
-<div class="bg-grey-lighter">
-  <div class="min-h-screen flex flex-col max-w-4xl mx-auto pt-10">
-    <div class="pb-4">
-      <h2>Account Settings</h2>
-    </div>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "bg-white shadow rounded px-8 pt-6 pb-8 mb-4" }) do |f| %>
+<%= render "layouts/sidebar" %>
+
+<main class="w-full bg-grey-bg py-4 px-6 flex-shrink ml-60">
+  <div class="flex justify-between text-center">
+    <h2 class="text-grey-text">
+      Settings
+    </h2>
+  </div>
+  <hr class="border-t border-grey-border">
+
+  <div class="flex flex-col mx-auto pt-6">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "bg-white shadow rounded px-6 py-6" }) do |f| %>
       <%= render "layouts/error_messages", object: resource %>
-
-      <div class="mb-6">
-        <label class="block text-grey-darker text-sm font-bold mb-2" for="email">
-          <%= f.label :email %>
-        </label>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" %>
-      </div>
-
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div class="mb-6">
           Currently waiting confirmation for: <%= resource.unconfirmed_email %>
         </div>
       <% end %>
 
-      <div class="mb-6">
-        <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
-          <%= f.label :password %>
-          <em class="text-xs">(<%= @minimum_password_length %> characters minimum)</em>
-          <br><em class="text-xs">(leave blank if you don't want to change it)</em>
+      <div class="flex">
+        <div class="mb-6 w-1/2 mr-10">
+          <label class="block text-grey-darker text-sm font-bold mb-2 uppercase" for="email">
+            <%= f.label :email %>
+          </label>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-white border-grey-light appearance-none border-2 rounded w-full py-2 px-3 text-grey-darkest px-3 py-3" %>
+        </div>
 
-        </label>
-        <%= f.password_field :password, autocomplete: "off", class: "shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" %>
+        <div class="mb-8 w-1/2">
+          <label class="block text-grey-darker text-sm font-bold mb-2 uppercase" for="session">
+            <%= f.label :session %>
+          </label>
+          <%= f.text_field :session, autocomplete: "off", class: "bg-white border-grey-light appearance-none border-2 rounded w-full py-2 px-3 text-grey-darkest px-3 py-3" %>
+        </div>
       </div>
 
-      <div class="mb-6">
-        <label class="block text-grey-darker text-sm font-bold mb-2" for="password_confirmation">
-          <%= f.label :password_confirmation %>
-        </label>
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" %>
+      <div class="flex">
+        <div class="mb-6 w-1/2 mr-10">
+          <label class="block text-grey-darker text-sm mb-2" for="password">
+            <%= f.label :password, class: "uppercase font-bold" %>
+            <em class="text-xs">(<%= @minimum_password_length %> characters minimum - </em>
+            <em class="text-xs">leave blank if you don't want to change it)</em>
+          </label>
+          <%= f.password_field :password, autocomplete: "off", class: "bg-white border-grey-light appearance-none border-2 rounded w-full py-2 px-3 text-grey-darkest px-3 py-3" %>
+        </div>
+
+        <div class="mb-6 w-1/2">
+          <label class="block text-grey-darker text-sm font-bold mb-2 uppercase" for="password_confirmation">
+            <%= f.label :password_confirmation %>
+          </label>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "bg-white border-grey-light appearance-none border-2 rounded w-full py-2 px-3 text-grey-darkest px-3 py-3" %>
+        </div>
       </div>
 
+      <hr class="border-t border-grey-border mb-8">
 
-      <div class="mb-8">
-        <label class="block text-grey-darker text-sm font-bold mb-2 inline-flex items-center" for="session">
-          <%= f.label :session %>
-        </label>
-        <%= f.text_field :session, autocomplete: "off", class: "shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" %>
-      </div>
-
-      <h3>Chart Preferences</h3>
-
-      <div class="mb-8 mt-4" id="sortable">
+      <div class="flex flex-wrap justify-between " id="sortable">
         <% resource.chart_preferences.each do |p| %>
-          <div class="shadow border rounded">
-            <%= inline_svg "icons/move.svg", class: "stroke-current w-5 h-5" %>
-            <p><%= p['currency'] %></p>
+          <div class="w-55 bg-white border-2 border-grey-light rounded-lg p-2 hover:cursor-move mb-6 mx-4">
             <%= f.hidden_field "chart_preferences[][currency]", value: "#{p['currency']}" %>
-            <%= f.text_field "chart_preferences[][sort]", value: "#{p['sort']}", class: "sort" %>
-            <%= f.color_field "chart_preferences[][color]", value: "#{color_for(p)}" %>
-            <%= f.text_field "chart_preferences[][hidden]", value: 'true', type: :checkbox, checked: ActiveModel::Type::Boolean.new.cast(p['hidden']) %>
+            <%= f.hidden_field "chart_preferences[][sort]", value: "#{p['sort']}", class: "sort" %>
+
+            <div class="flex items-center mb-3">
+              <%= image_tag("currencies/#{p['currency']}.png", class: "h-10 w-10") %>
+              <h3 class="uppercase text-sm text-grey-darker ml-2">
+                <%= p['currency'] %>
+              </h3>
+            </div>
+            <hr class="border-t border-2 border-grey-light -ml-2 -mr-2 mb-4">
+
+            <div class="flex items-center mb-2">
+              <label class="text-grey-darker text-sm font-bold mb-2 uppercase">
+                Color:
+              </label>
+              <%= f.color_field "chart_preferences[][color]", value: "#{color_for(p)}", class: "appearance-none -mt-2 border-transparent" %>
+            </div>
+
+            <div class="flex items-center">
+              <label class="text-grey-darker text-sm font-bold uppercase">
+                Hidden:
+              </label>
+              <%= f.text_field "chart_preferences[][hidden]", value: 'true', type: :checkbox, checked: ActiveModel::Type::Boolean.new.cast(p['hidden']), class: "ml-2" %>
+            </div>
           </div>
-          <br>
         <% end %>
       </div>
 
-      <div class="">
-        <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure" }, method: :delete, class: "bg-red-dark hover:bg-red text-white font-semibold py-2 px-4 border border-red-light rounded shadow w-full cursor-pointer no-underline" %>
-        <%= f.submit "Update", class: "bg-purple-dark hover:bg-purple text-white font-semibold py-2 px-4 border border-purple-light rounded shadow cursor-pointer" %>
+      <hr class="border-t border-grey-border mb-6">
+
+      <div class="flex items-center justify-between">
+        <%= f.submit "Update", class: "items-center bg-purple-dark hover:bg-purple text-white font-semibold py-3 border border-purple-light rounded shadow cursor-pointer w-1/5" %>
+        <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure? This Action cannot be undone and all your data will be deleted." }, method: :delete, class: "items-center text-red font-semibold cursor-pointer no-underline"  %>
       </div>
     <% end %>
-
-    <div class="text-center text-sm">
-      <%= link_to "Back", :back, class: "text-grey-darkest no-underline hover:underline" %>
-    </div>
   </div>
-</div>
+</main>
