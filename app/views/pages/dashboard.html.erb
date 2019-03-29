@@ -1,6 +1,6 @@
 <%= render "layouts/sidebar" %>
 
-<main class="w-full bg-grey-bg py-6 px-6 flex-shrink ml-60">
+<main class="w-full bg-grey-bg py-4 px-6 flex-shrink ml-60">
   <% if @current_user.valid_credentials %>
     <div class="flex justify-between text-center">
       <h2 class="text-grey-text">
@@ -16,9 +16,9 @@
           </form>
         </div>
 
-        <div class="inline-flex text-sm items-center mr-6">
-          <%= inline_svg "icons/clock.svg", class: "stroke-current w-4 h-4 text-grey-text" %>
-          <p class="ml-2 text-grey-text-custom">Updated <%= time_ago_in_words @current_user.updated_at %> ago</p>
+        <div class="inline-flex text-sm items-center mr-2">
+          <%= inline_svg "icons/clock.svg", class: "stroke-current w-4 h-4 mr-2 text-grey-text" %>
+          <p class="text-grey-text-custom">Updated <%= time_ago_in_words @current_user.updated_at %> ago</p>
         </div>
       </div>
 
