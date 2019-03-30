@@ -45,6 +45,9 @@ View the full documentation at https://tailwindcss.com.
 
 let colors = {
   //CUSTOM
+  'primary': '#7952B3',
+  'primary-light': '#8663ba',
+  'primary-lighter': '#9374c2',
   'grey-bg': '#FAFAFA',
   'grey-text': '#4A4A4A',
   'grey-text-light': '#9B9B9B',
