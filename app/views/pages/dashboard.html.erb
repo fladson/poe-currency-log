@@ -18,7 +18,7 @@
 
         <div class="inline-flex text-sm items-center mr-2">
           <%= inline_svg "icons/clock.svg", class: "stroke-current w-4 h-4 mr-2 text-grey-text" %>
-          <p class="text-grey-text-custom">Updated <%= time_ago_in_words @current_user.updated_at %> ago</p>
+          <p class="text-grey-text-custom">Updated <%= time_ago_in_words @current_user.league_updated_at(@league) %> ago</p>
         </div>
       </div>
 
