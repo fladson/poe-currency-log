@@ -40,13 +40,13 @@ module ChartHelper
   def diff(data)
     return '-' if data.second.blank?
 
-    data.first.last - data.second.last
+    data.last.last - data[-2].last
   end
 
   def diff_percent(data)
-    return '-' if data.second.blank?
+    return '-' if data[-2].blank?
 
-    ((data.first.last - data.second.last).to_f / (data.second.last.zero? ? 1 : data.second.last.to_f) * 100.to_f).round
+    ((data.last.last - data[-2].last).to_f / (data[-2].last.zero? ? 1 : data[-2].last.to_f) * 100.to_f).round
   end
 
   def convert_thousand_to_human(value)
@@ -55,6 +55,20 @@ module ChartHelper
 
   def default_colors
     DEFAULT_COLORS
+  end
+
+  def candlestick_data(data)
+    candlestick = []
+    data.group_by { |(d, v)| d }.map { |d, v| [d, v.map(&:last)] }.each do |entry|
+      open  = entry[1].last
+      high  = entry[1].max
+      low   = entry[1].min
+      close = entry[1].first
+
+      candlestick << [entry[0].to_s, [open, high, low, close]]
+    end
+
+    candlestick
   end
 
   private

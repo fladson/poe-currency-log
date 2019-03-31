@@ -68,4 +68,34 @@ RSpec.describe ChartHelper, type: :helper do
       it { is_expected.to eq '999' }
     end
   end
+
+  describe 'candlestick_data' do
+    subject { candlestick_data(data) }
+
+    let(:yesterday) { Date.yesterday }
+    let(:today) { Date.today }
+    let(:data) do
+      [
+        [today, 1],
+        [today, 0],
+        [today, 3],
+        [today, 10],
+        [today, 5],
+        [yesterday, 5],
+        [yesterday, 4],
+        [yesterday, 3],
+        [yesterday, 2],
+        [yesterday, 1]
+      ]
+    end
+
+    let(:expected_data) do
+      [
+        [today.to_s, [5, 10, 0, 1]],
+        [yesterday.to_s, [1, 5, 1, 5]]
+      ]
+    end
+
+    it { is_expected.to eq expected_data }
+  end
 end

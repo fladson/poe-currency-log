@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "apexcharts": "^3.6.4",
     "chart.js": "^2.7.2",
     "chartkick": "^2.3.6",
     "highcharts": "^6.2.0",

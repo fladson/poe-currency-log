@@ -11,9 +11,12 @@ import "../css/tailwind.css"
 import Chartkick from "chartkick"
 window.Chartkick = Chartkick
 
+import ApexCharts from "apexcharts"
+window.ApexCharts = ApexCharts
+
 // for Chart.js
 // import Chart from "chart.js"
 // Chartkick.addAdapter(Chart)
 
-import Highcharts from "highcharts";
-Chartkick.addAdapter(Highcharts);
+// import Highcharts from "highcharts";
+// Chartkick.addAdapter(Highcharts);

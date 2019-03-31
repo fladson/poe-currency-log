@@ -3,7 +3,7 @@
     <% @current_user.ordered_chart_preferences.each do |chart_preference| %>
       <% unless chart_preference['hidden'] == "true" %>
         <% chart = @currency_stats[chart_preference['currency']] %>
-        <div class="bg-white rounded shadow-custom mb-6 border border-grey-border max-w-lg flex-grow">
+        <div class="bg-white rounded-lg shadow-custom mb-6 border border-grey-border max-w-lg flex-grow">
           <div class="flex justify-between">
             <div class="flex items-center -mt-4">
               <span class="inline-flex ml-4">
@@ -14,13 +14,13 @@
               </span>
             </div>
 
-            <div class="border rounded-sm mb-2 mt-4 mr-4">
+            <div class="border rounded mb-2 mt-4 mr-4">
               <div class="flex">
                 <div class="w-24">
                   <ul class="list-reset leading-normal border-r h-16">
                     <li class="text-grey-text text-center p-1 text-xs uppercase">Current</li>
                     <li class="text-grey-text text-center text-xl font-bold">
-                      <%= chart.first.last %>
+                      <%= chart.last.last %>
                     </li>
                   </ul>
                 </div>
@@ -77,45 +77,52 @@
               </div>
             </div>
           </div>
-          <%= area_chart chart,
-          library: {
-            # colors: [color_for(chart_preference)],
-            plotOptions: {
-              series: {
-                fillColor: {
-                    linearGradient: [0, 0, 0, 300],
-                    stops: [
-                        [0, color_for(chart_preference).paint.lighten.to_hex],
-                        [1, color_for(chart_preference)]
-                    ]
-                },
-                fillOpacity: 1,
-                lineWidth: 2,
-                lineColor: color_for(chart_preference).paint.desaturate.to_hex,
-                stickyTracking: false
-              }
-            },
-            chart: {
-              margin: [0, 0, 0, 0]
-            },
-            tooltip: {
-              pointFormat: '<b>{point.y}</b>',
-              shape: 'square',
-              backgroundColor: '#FAFAFA',
-              borderColor: '#E5E5E5',
-              shadow: false
-            },
-            xAxis: {
-              visible: false,
-              minPadding: 0,
-              maxPadding: 0
-            },
-            yAxis: {
-              visible: false,
-              minRange: 0.1 # this is to place the bar at the bottom when values are 0
+
+          <div id="chart_div_<%= chart_preference['currency'].parameterize %>" class="w-full"></div>
+
+          <script type="text/javascript">
+            var options = {
+              chart: {
+                width: '100%',
+                height: 180,
+                type: 'area',
+                sparkline: {
+                  enabled: true
+                }
+              },
+              stroke: {
+                curve: 'straight',
+                // curve: 'smooth',
+                width: 3.5
+              },
+              colors: ["<%= color_for(chart_preference) %>"],
+              fill: {
+                colors: ["<%= color_for(chart_preference) %>"],
+                type: 'solid',
+                opacity: 0.5
+              },
+
+              title: {
+                text: ""
+              },
+              series: [{
+                name: "<%= chart_preference['currency'] %>",
+                data: [
+                  <% chart.each do |entry| %>
+                  {
+                    x: "<%= entry[0] %>",
+                    y: <%= entry[1] %>
+                  },
+                  <% end %>
+                ]
+              }]
             }
-          }
-          %>
+
+            // var chart = new ApexCharts(document.querySelector("#chart_<%= chart_preference['currency'].parameterize %>"), options);
+            var chart = new ApexCharts(document.getElementById("chart_div_<%= chart_preference['currency'].parameterize %>"), options);
+
+            chart.render();
+          </script>
         </div>
       <% end %>
     <% end %>

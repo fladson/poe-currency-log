@@ -14,7 +14,7 @@ class CurrencyProgressionQuery
   module Chart
     def self.inject_created_at((data, created_at))
       data.each_with_object({}) do |(key, value), hash|
-        hash[key] = [[created_at.to_s, value]]
+        hash[key] = [[created_at.httpdate, value]]
       end
     end
 
@@ -37,7 +37,7 @@ class CurrencyProgressionQuery
     end
 
     def timeline_order
-      order(:created_at)
+      order(created_at: :desc)
     end
 
     def formatted
