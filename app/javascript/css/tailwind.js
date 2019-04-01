@@ -265,6 +265,22 @@ module.exports = {
       'Droid Sans',
       'Helvetica Neue',
       'sans-serif',
+    ],
+    'numbers': [
+      'Nunito',
+      'Open Sans',
+      'system-ui',
+      'BlinkMacSystemFont',
+      '-apple-system',
+      'Segoe UI',
+      'Roboto',
+      'Oxygen',
+      'Ubuntu',
+      'Cantarell',
+      'Fira Sans',
+      'Droid Sans',
+      'Helvetica Neue',
+      'sans-serif',
     ]
   },
 
