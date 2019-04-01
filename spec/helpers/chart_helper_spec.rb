@@ -31,7 +31,7 @@ RSpec.describe ChartHelper, type: :helper do
     end
 
     context 'when data has more than one record' do
-      let(:data) { [['datetime', 10], ['datetime', 5]] }
+      let(:data) { [['datetime', 5], ['datetime', 10]] }
 
       it { is_expected.to eq 5 }
     end
@@ -47,7 +47,7 @@ RSpec.describe ChartHelper, type: :helper do
     end
 
     context 'when data has more than one record' do
-      let(:data) { [['datetime', 10], ['datetime', 5]] }
+      let(:data) { [['datetime', 5], ['datetime', 10]] }
 
       it { is_expected.to eq 100 }
     end

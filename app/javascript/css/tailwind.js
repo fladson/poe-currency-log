@@ -45,6 +45,9 @@ View the full documentation at https://tailwindcss.com.
 
 let colors = {
   //CUSTOM
+  'primary': '#7952B3',
+  'primary-light': '#8663ba',
+  'primary-lighter': '#9374c2',
   'grey-bg': '#FAFAFA',
   'grey-text': '#4A4A4A',
   'grey-text-light': '#9B9B9B',
@@ -249,6 +252,22 @@ module.exports = {
       'monospace',
     ],
     'custom': [
+      'Open Sans',
+      'system-ui',
+      'BlinkMacSystemFont',
+      '-apple-system',
+      'Segoe UI',
+      'Roboto',
+      'Oxygen',
+      'Ubuntu',
+      'Cantarell',
+      'Fira Sans',
+      'Droid Sans',
+      'Helvetica Neue',
+      'sans-serif',
+    ],
+    'numbers': [
+      'Nunito',
       'Open Sans',
       'system-ui',
       'BlinkMacSystemFont',
@@ -726,8 +745,8 @@ module.exports = {
     'auto': 'auto',
     'px': '1px',
     '0': '0',
-    '05': '0.15rem',
     '1': '0.25rem',
+    '1/2': '0.35rem',
     '2': '0.5rem',
     '3': '0.75rem',
     '4': '1rem',
@@ -797,6 +816,7 @@ module.exports = {
 
   shadows: {
     default: '0 2px 4px 0 rgba(0,0,0,0.10)',
+    'bare': 'rgba(51, 51, 79, 0.07) 0px 2px 5px 0px',
     'custom': '0 0.75rem 1.5rem rgba(18,38,63,.03)',
     'md': '0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08)',
     'lg': '0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)',
@@ -921,7 +941,7 @@ module.exports = {
     borderRadius: ['responsive'],
     borderStyle: ['responsive'],
     borderWidths: ['responsive'],
-    cursor: ['responsive'],
+    cursor: ['responsive', 'hover'],
     display: ['responsive'],
     flexbox: ['responsive'],
     float: ['responsive'],

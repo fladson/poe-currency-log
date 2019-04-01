@@ -1,9 +1,9 @@
 <div class="py-4">
   <div class="flex flex-wrap justify-between flex-grow">
     <% @current_user.ordered_chart_preferences.each do |chart_preference| %>
-      <% unless chart_preference['hidden'] %>
+      <% unless chart_preference['hidden'] == "true" %>
         <% chart = @currency_stats[chart_preference['currency']] %>
-        <div class="bg-white rounded shadow-custom mb-6 border border-grey-border max-w-lg flex-grow">
+        <div class="bg-white rounded-lg shadow mb-6 max-w-lg flex-grow">
           <div class="flex justify-between">
             <div class="flex items-center -mt-4">
               <span class="inline-flex ml-4">
@@ -14,38 +14,38 @@
               </span>
             </div>
 
-            <div class="border rounded-sm mb-2 mt-4 mr-4">
+            <div class="border rounded-lg mb-2 mt-4 mr-4">
               <div class="flex">
                 <div class="w-24">
                   <ul class="list-reset leading-normal border-r h-16">
                     <li class="text-grey-text text-center p-1 text-xs uppercase">Current</li>
-                    <li class="text-grey-text text-center text-xl font-bold">
-                      <%= convert_thousand_to_human(chart.first.last) %>
+                    <li class="text-grey-text text-center text-xl font-bold font-numbers">
+                      <%= chart.last.last %>
                     </li>
                   </ul>
                 </div>
                 <div class="w-24">
                   <ul class="list-reset leading-normal border-r h-16">
                     <li class="text-grey-text text-center p-1 text-xs uppercase">Max</li>
-                    <li class="text-grey-text text-center text-xl font-bold">
-                      <%= convert_thousand_to_human(chart.flatten.reject{|i| i.is_a?(String)}.max) %>
+                    <li class="text-grey-text text-center text-xl font-bold font-numbers">
+                      <%= chart.flatten.reject{|i| i.is_a?(String)}.max %>
                     </li>
                   </ul>
                 </div>
                 <div class="w-24">
                   <ul class="list-reset leading-normal border-r h-16">
                     <li class="text-grey-text text-center p-1 text-xs uppercase">Diff</li>
-                    <li class="text-grey-text text-center text-xl font-bold">
+                    <li class="text-grey-text text-center text-xl font-bold font-numbers">
                       <% value = diff(chart) %>
                       <div class="inline-flex">
                         <% if value == '-' || value.zero? %>
-                          <p class="text-yellow-dark"><%= convert_thousand_to_human(value) %></p>
+                          <p class="text-yellow-dark">-</p>
                         <% elsif value.positive? %>
-                          <%= inline_svg "icons/chevron-up.svg", class: "mt-05 w-7 h-7 text-green" %>
-                          <p class="text-green"><%= convert_thousand_to_human(value) %></p>
+                          <%= inline_svg "icons/chevron-up.svg", class: "mt-1/2 w-6 h-6 text-green" %>
+                          <p class="text-green"><%= value %></p>
                         <% else %>
-                          <%= inline_svg "icons/chevron-down.svg", class: "mt-05 w-7 h-7 text-red" %>
-                          <p class="text-red"><%= convert_thousand_to_human(value) %></p>
+                          <%= inline_svg "icons/chevron-down.svg", class: "mt-1/2 w-6 h-6 text-red" %>
+                          <p class="text-red"><%= value.abs %></p>
                         <% end %>
                       </div>
                     </li>
@@ -54,20 +54,20 @@
                 <div class="w-24">
                   <ul class="list-reset leading-normal h-16">
                     <li class="text-grey-text text-center p-1 text-xs uppercase">% Diff</li>
-                    <li class="text-grey-text text-center text-xl font-bold">
+                    <li class="text-grey-text text-center text-xl font-bold font-numbers">
                       <% value = diff_percent(chart) %>
                       <div class="inline-flex">
                         <% if value == '-' || value.zero? %>
-                          <p class="text-yellow-dark"><%= convert_thousand_to_human(value) %></p>
+                          <p class="text-yellow-dark">-</p>
                         <% elsif value.positive? %>
-                          <%= inline_svg "icons/chevron-up.svg", class: "mt-05 w-7 h-7 text-green" %>
+                          <%= inline_svg "icons/chevron-up.svg", class: "mt-1/2 w-6 h-6 text-green" %>
                           <p class="text-green">
                             <%= convert_thousand_to_human(value) %>
                             <p class="text-xs text-green mt-2">%</p>
                           </p>
                         <% else %>
-                          <%= inline_svg "icons/chevron-down.svg", class: "mt-05 w-7 h-7 text-red" %>
-                          <p class="text-red"><%= convert_thousand_to_human(value) %></p>
+                          <%= inline_svg "icons/chevron-down.svg", class: "mt-1/2 w-6 h-6 text-red" %>
+                          <p class="text-red"><%= convert_thousand_to_human(value.abs) %></p>
                           <p class="text-xs text-red mt-2">%</p>
                         <% end %>
                       </div>
@@ -77,45 +77,78 @@
               </div>
             </div>
           </div>
-          <%= area_chart chart,
-          library: {
-            # colors: [color_for(chart_preference)],
-            plotOptions: {
-              series: {
-                fillColor: {
+
+          <div id="chart_div_<%= chart_preference['currency'].parameterize %>" class="overflow-hidden rounded"></div>
+
+          <script type="text/javascript">
+            Highcharts.chart("chart_div_<%= chart_preference['currency'].parameterize %>", {
+              chart: {
+                type: 'areaspline',
+                height: 180,
+                backgroundColor: null,
+                borderWidth: 0,
+                skipClone: true,
+                margin: [0, 0, 0, 0],
+                zoomType: 'x',
+              },
+              title: {
+                text: ''
+              },
+              credits: {
+                enabled: false,
+              },
+              legend: {
+                enabled: false
+              },
+              plotOptions: {
+                series: {
+                  marker: {
+                    enabled: false
+                  },
+                  fillColor: {
                     linearGradient: [0, 0, 0, 300],
                     stops: [
-                        [0, color_for(chart_preference).paint.lighten.to_hex],
-                        [1, color_for(chart_preference)]
+                      [0, "<%= color_for(chart_preference) %>"],
+                      [1, "<%= color_for(chart_preference).paint.lighten(15).to_hex %>"]
                     ]
+                  },
+                  lineWidth: 3.5,
+                  lineColor: "<%= color_for(chart_preference) %>",
+                  stickyTracking: false
+                }
+              },
+              tooltip: {
+                pointFormat: '<b>{point.y}</b>',
+                shape: 'square',
+                backgroundColor: '#FAFAFA',
+                borderColor: '#E5E5E5',
+                shadow: false
+              },
+              xAxis: {
+                minPadding: 0,
+                maxPadding: 0,
+                labels: {
+                  enabled: false
                 },
-                fillOpacity: 1,
-                lineWidth: 2,
-                lineColor: color_for(chart_preference).paint.desaturate.to_hex,
-                stickyTracking: false
-              }
-            },
-            chart: {
-              margin: [0, 0, 0, 0]
-            },
-            tooltip: {
-              pointFormat: '<b>{point.y}</b>',
-              shape: 'square',
-              backgroundColor: '#FAFAFA',
-              borderColor: '#E5E5E5',
-              shadow: false
-            },
-            xAxis: {
-              visible: false,
-              minPadding: 0,
-              maxPadding: 0
-            },
-            yAxis: {
-              visible: false,
-              minRange: 0.1 # this is to place the bar at the bottom when values are 0
-            }
-          }
-          %>
+                title: {
+                  text: null
+                },
+              },
+              yAxis: {
+                labels: {
+                  enabled: false
+                },
+                title: {
+                  text: null
+                },
+                visible: false,
+                min: 1, // hide the 0 lines
+              },
+              series: [{
+                data: <%= raw chart %>
+              }]
+            });
+          </script>
         </div>
       <% end %>
     <% end %>

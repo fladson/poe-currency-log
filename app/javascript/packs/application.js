@@ -7,13 +7,5 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 import "../css/tailwind.css"
-
-import Chartkick from "chartkick"
-window.Chartkick = Chartkick
-
-// for Chart.js
-// import Chart from "chart.js"
-// Chartkick.addAdapter(Chart)
-
 import Highcharts from "highcharts";
-Chartkick.addAdapter(Highcharts);
+window.Highcharts = Highcharts

@@ -30,7 +30,7 @@
 
           <div class="mb-8">
             <label class="block text-grey-darker text-sm font-bold mb-2 inline-flex items-center" for="password">
-              <%= f.label :session %>
+              POESESSID
               <a href="https://www.pathofexile.com/forum/view-thread/1989935/page/9#p14857124" target="_blank">
                 <%= inline_svg "icons/question.svg", class: "fill-current text-blue ml-2 w-4 h-4" %>
               </a>
@@ -38,7 +38,7 @@
             <%= f.text_field :session, required: true, autocomplete: "off", placeholder: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", class: "shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight"  %>
           </div>
 
-          <%= f.submit "Sign up now", class: "bg-purple-dark hover:bg-purple text-white font-semibold py-2 px-4 border border-purple-light rounded shadow w-full cursor-pointer" %>
+          <%= f.submit "Sign up now", class: "bg-primary hover:bg-purple text-white font-semibold py-2 px-4 border border-purple-light rounded shadow w-full cursor-pointer" %>
         <% end %>
 
         <div class="text-center text-sm">

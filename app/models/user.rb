@@ -38,8 +38,16 @@ class User < ApplicationRecord
     currency_logs.progression.by_league(deparametrize(league))
   end
 
+  def league_updated_at(league)
+    return '' unless league
+
+    currency_logs.where('lower(league) = ?', deparametrize(league).downcase).last.created_at
+  rescue ActiveRecord::RecordNotFound
+    ''
+  end
+
   def ordered_chart_preferences
-    chart_preferences.sort_by{ |k| k['sort'] }
+    chart_preferences.sort_by{ |k| k['sort'].to_i }
   end
 
   private

@@ -1,6 +1,6 @@
 <%= render "layouts/sidebar" %>
 
-<main class="w-full bg-grey-bg py-6 px-6 flex-shrink ml-60">
+<main class="w-full bg-grey-bg py-4 px-6 flex-shrink ml-60">
   <% if @current_user.valid_credentials %>
     <div class="flex justify-between text-center">
       <h2 class="text-grey-text">
@@ -16,18 +16,9 @@
           </form>
         </div>
 
-        <div class="inline-flex text-sm items-center mr-6">
-          <%= link_to "Manual sync", fetch_currency_path(league: @league.capitalize), method: :get, class: "text-xs uppercase bg-black-button text-white font-bold py-2 px-2 rounded-sm cursor-pointer text-center tracking-wide no-underline" %>
-        </div>
-
-        <div class="inline-flex text-sm items-center mr-6">
-          <%= inline_svg "icons/clock.svg", class: "stroke-current w-4 h-4 text-grey-text" %>
-          <p class="ml-2 text-grey-text-custom">Updated <%= time_ago_in_words @current_user.updated_at %> ago</p>
-        </div>
-
-        <div class="inline-flex text-sm items-center">
-          <%= inline_svg "icons/refresh-cw.svg", class: "stroke-current w-4 h-4 text-grey-text" %>
-          <p class="ml-2 text-grey-text-custom">Next update in <%= distance_of_time_in_words(@current_user.updated_at, @current_user.updated_at + 1.hour) %></p>
+        <div class="inline-flex text-sm items-center mr-2">
+          <%= inline_svg "icons/clock.svg", class: "stroke-current w-4 h-4 mr-2 text-grey-text" %>
+          <p class="text-grey-text-custom">Updated <%= time_ago_in_words @current_user.league_updated_at(@league) %> ago</p>
         </div>
       </div>
 
