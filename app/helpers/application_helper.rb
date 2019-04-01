@@ -9,4 +9,8 @@ module ApplicationHelper
     when 'alert'   then 'bg-orange-lightest border-orange'
     end
   end
+
+  def active_class?(league)
+    request.path == "/dashboard/#{league.parameterize}" ? 'font-bold' : ''
+  end
 end

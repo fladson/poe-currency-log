@@ -13,7 +13,7 @@
 
         <ul class="list-reset">
           <% current_user.standard_leagues.each do |league| %>
-            <li><%= link_to league, dashboard_path(league.parameterize), method: :get, class: "tracking-wide uppercase text-xs no-underline hover:text-grey-text text-grey-text-custom ml-12" %></li>
+            <li><%= link_to league, dashboard_path(league.parameterize), method: :get, class: "#{active_class?(league)} no-underline tracking-wide uppercase text-xs hover:text-grey-text text-grey-text-custom ml-12" %></li>
           <% end %>
         </ul>
       </div>
@@ -27,7 +27,7 @@
 
           <ul class="list-reset">
             <% current_user.past_temp_leagues.each do |league| %>
-              <li><%= link_to league, dashboard_path(league.parameterize), method: :get, class: "tracking-wide uppercase text-xs no-underline hover:text-grey-text text-grey-text-custom ml-12" %></li>
+              <li><%= link_to league, dashboard_path(league.parameterize), method: :get, class: "#{active_class?(league)} no-underline tracking-wide uppercase text-xs hover:text-grey-text text-grey-text-custom ml-12" %></li>
             <% end %>
           </ul>
         </div>
@@ -41,7 +41,7 @@
 
         <ul class="list-reset">
           <% current_user.current_temp_leagues.each do |league| %>
-            <li><%= link_to league, dashboard_path(league.parameterize), method: :get, class: "tracking-wide uppercase text-xs no-underline hover:text-grey-text text-grey-text-custom ml-12" %></li>
+            <li><%= link_to league, dashboard_path(league.parameterize), method: :get, class: "#{active_class?(league)} no-underline tracking-wide uppercase text-xs hover:text-grey-text text-grey-text-custom ml-12" %></li>
           <% end %>
         </ul>
       </div>
