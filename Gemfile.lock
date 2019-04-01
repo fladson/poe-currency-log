@@ -63,7 +63,6 @@ GEM
       uniform_notifier (~> 1.11)
     byebug (10.0.2)
     callsite (0.0.11)
-    chartkick (3.0.1)
     chroma (0.2.0)
     codeclimate-engine-rb (0.4.1)
       virtus (~> 1.0)
@@ -338,7 +337,6 @@ DEPENDENCIES
   binding_of_caller
   bullet
   byebug
-  chartkick (~> 3.0.1)
   chroma
   coffee-rails (~> 4.2)
   database_cleaner
