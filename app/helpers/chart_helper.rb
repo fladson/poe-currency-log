@@ -38,15 +38,15 @@ module ChartHelper
   end
 
   def diff(data)
-    return '-' if data.second.blank?
+    return '-' if data[-2].blank?
 
-    data.first.last - data.second.last
+    data.last.last - data[-2].last
   end
 
   def diff_percent(data)
-    return '-' if data.second.blank?
+    return '-' if data[-2].blank?
 
-    ((data.first.last - data.second.last).to_f / (data.second.last.zero? ? 1 : data.second.last.to_f) * 100.to_f).round
+    ((data.last.last - data[-2].last).to_f / (data[-2].last.zero? ? 1 : data[-2].last.to_f) * 100.to_f).round
   end
 
   def convert_thousand_to_human(value)

@@ -37,7 +37,7 @@ class CurrencyProgressionQuery
     end
 
     def timeline_order
-      order(:created_at)
+      order(created_at: :desc)
     end
 
     def formatted
