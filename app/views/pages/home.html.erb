@@ -78,35 +78,44 @@
                 </div>
               </div>
             </div>
-            <%= area_chart [["2018-08-10 12:48:23 UTC", 91],
-              ["2018-08-08 11:08:02 UTC", 74],
-              ["2018-08-07 21:18:01 UTC", 56],
-              ["2018-08-06 21:08:12 UTC", 112],
-              ["2018-08-06 11:08:12 UTC", 60],
-              ["2018-08-05 13:43:32 UTC", 35],
-              ["2018-08-04 14:31:43 UTC", 29],
-              ["2018-08-03 18:11:34 UTC", 18],
-              ["2018-08-02 18:11:52 UTC", 10],
-              ["2018-08-02 13:11:19 UTC", 4],
-              ["2018-08-01 13:00:09 UTC", 0]],
-              library: {
+            <div id="chart_div" class="overflow-hidden rounded"></div>
+
+            <script type="text/javascript">
+              Highcharts.chart("chart_div", {
+                chart: {
+                  type: 'areaspline',
+                  height: 180,
+                  backgroundColor: null,
+                  borderWidth: 0,
+                  skipClone: true,
+                  margin: [0, 0, 0, 0],
+                  zoomType: 'x',
+                },
+                title: {
+                  text: ''
+                },
+                credits: {
+                  enabled: false,
+                },
+                legend: {
+                  enabled: false
+                },
                 plotOptions: {
                   series: {
+                    marker: {
+                      enabled: false
+                    },
                     fillColor: {
                       linearGradient: [0, 0, 0, 300],
                       stops: [
-                        [0, "#f5cd79".paint.lighten.to_hex],
-                        [1, "#f5cd79"]
+                        [0, "#f5cd79"],
+                        [1, "<%= "#f5cd79".paint.lighten(15).to_hex %>"]
                       ]
                     },
-                    fillOpacity: 1,
-                    lineWidth: 2,
-                    lineColor: "#f5cd79".paint.desaturate.to_hex,
+                    lineWidth: 3.5,
+                    lineColor: "#f5cd79",
                     stickyTracking: false
                   }
-                },
-                chart: {
-                  margin: [0, 0, 0, 0]
                 },
                 tooltip: {
                   pointFormat: '<b>{point.y}</b>',
@@ -116,18 +125,45 @@
                   shadow: false
                 },
                 xAxis: {
-                  visible: false,
                   minPadding: 0,
-                  maxPadding: 0
+                  maxPadding: 0,
+                  labels: {
+                    enabled: false
+                  },
+                  title: {
+                    text: null
+                  },
                 },
                 yAxis: {
-                  visible: false
-                }
-              }
-            %>
+                  labels: {
+                    enabled: false
+                  },
+                  title: {
+                    text: null
+                  },
+                  visible: false,
+                  min: 1, // hide the 0 lines
+                },
+                series: [{
+                  data: [
+                    ["2018-08-01 13:00:09 UTC", 0],
+                    ["2018-08-02 13:11:19 UTC", 4],
+                    ["2018-08-02 18:11:52 UTC", 10],
+                    ["2018-08-03 18:11:34 UTC", 18],
+                    ["2018-08-04 14:31:43 UTC", 29],
+                    ["2018-08-05 13:43:32 UTC", 35],
+                    ["2018-08-06 11:08:12 UTC", 60],
+                    ["2018-08-06 21:08:12 UTC", 112],
+                    ["2018-08-07 21:18:01 UTC", 56],
+                    ["2018-08-08 11:08:02 UTC", 74],
+                    ["2018-08-10 12:48:23 UTC", 91]
+                  ]
+                }]
+              });
+            </script>
           </div>
         </div>
-        <div class="text-center py-4 hidden md:block">
+        <div class="text-center py-4 hidden md:block mt-4">
           <p class="text-lg mb-2">
             It's <strong>FREE</strong> but I am accepting donations
           </p>
@@ -139,7 +175,7 @@
             <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
           </form>
         </div>
-        <div class="max-w-md mx-auto mt-4 w-1/6">
+        <div class="max-w-md mx-auto mt-8 w-1/6">
           <%= link_to "Sign up now", new_user_registration_path, class: "no-underline bg-primary hover:bg-primary-light text-white text-2xl font-bold p-4 px-16 rounded shadow-md cursor-pointer uppercase text-center tracking-wide" %>
         </div>
       </div>
