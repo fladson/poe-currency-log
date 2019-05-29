@@ -7,7 +7,7 @@ RSpec.describe ChartPreferencesService do
     let(:user) { create(:user) }
 
     it 'creates the user settings' do
-      described_class.create(user.email)
+      described_class.create(user)
 
       expect(user.reload.chart_preferences.count)
         .to eq(POE::CurrencyParser.currency_names.count)

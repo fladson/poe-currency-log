@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 module ChartPreferencesService
-  def self.create(user_email)
-    user = User.find_by_email(user_email)
+  def self.create(user)
     default_chart_preferences = []
 
     POE::CurrencyParser.currency_names.each_with_index do |currency, index|
