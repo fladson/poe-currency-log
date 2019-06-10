@@ -28,7 +28,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update) do |user_params|
-      user_params.permit(:session, chart_preferences: [:currency, :sort, :color, :hidden])
+      user_params.permit(
+        :session,
+        chart_preferences: [:currency, :sort, :color, :hidden],
+        leagues: [:name, :type, :active, :finished, :inactive_retries]
+      )
     end
   end
 end

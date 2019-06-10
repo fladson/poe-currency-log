@@ -13,4 +13,8 @@ module ApplicationHelper
   def active_class?(league)
     request.path == "/dashboard/#{league.parameterize}" ? 'font-bold' : ''
   end
+
+  def deparametrize(str)
+    str.split('-').join(' ')
+  end
 end

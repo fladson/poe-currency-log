@@ -4,12 +4,16 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: :dashboard
 
   def dashboard
-    @league = params[:league] || current_user.default_league
-    @currency_stats = current_user.currency_stats(@league)
+    league = params[:league] || current_user.default_league
+    binding.pry
+    @league = @current_user.leagues.select { |league| league['name'].parameterize == league }
+    @currency_stats = current_user.currency_stats(@league['name'])
   end
 
   def fetch_currency
-    LeagueLogCurrencyWorker.perform_async(current_user.email, params[:league])
+    league = @current_user.leagues.select { |league| league['name'].parameterize == params[:league] }
+    SyncLeagueCurrencyWorker.perform_async(current_user.email, league)
+
     redirect_back(fallback_location: user_root_path)
   end
 

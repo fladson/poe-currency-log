@@ -7,8 +7,7 @@ class UpdateUserTempLeaguesWorker
 
   def perform(user_email)
     user = User.find_by_email(user_email)
-    temp_leagues = user.temp_leagues | user.current_temp_leagues
 
-    user.update(temp_leagues: temp_leagues)
+    InactiveTempLeaguesService.call(user)
   end
 end

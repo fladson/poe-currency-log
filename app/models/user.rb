@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include League
   serialize :chart_preferences
   has_many :currency_logs, dependent: :destroy
   devise :database_authenticatable, :registerable, :confirmable,
@@ -13,37 +14,10 @@ class User < ApplicationRecord
 
   validates :session, presence: true, length: { is: 32 }
 
-  def current_leagues
-    chars.map { |char| char['league'] }.uniq
-  end
-
-  def current_temp_leagues
-    current_leagues - POE::League::STANDARD_LEAGUES
-  end
-
-  def standard_leagues
-    current_leagues - POE::League.temp_leagues
-  end
-
-  def past_temp_leagues
-    temp_leagues - POE::League.temp_leagues
-  end
-
-  def default_league
-    current_temp_leagues.last
-  end
-
   def currency_stats(league)
     return unless league
+
     currency_logs.progression.by_league(deparametrize(league))
-  end
-
-  def league_updated_at(league)
-    return '' unless league
-
-    currency_logs.where('lower(league) = ?', deparametrize(league).downcase).last.created_at
-  rescue ActiveRecord::RecordNotFound
-    ''
   end
 
   def ordered_chart_preferences

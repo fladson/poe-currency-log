@@ -30,4 +30,14 @@ RSpec.describe ApplicationHelper, type: :helper do
       it { is_expected.to eq 'bg-orange-lightest border-orange' }
     end
   end
+
+  describe 'active_class?' do
+    subject { active_class?(league) }
+
+    context 'when request path is league' do
+      before do
+
+      end
+    end
+  end
 end

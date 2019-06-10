@@ -9,10 +9,25 @@ FactoryBot.define do
     session               { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }
     chars                 { [{ league: 'Standard' }, { league: 'Hardcore' }] }
     valid_credentials     { true }
+    leagues               { [] }
 
     trait :with_currency_logs do
       after(:create) do |user|
         create(:currency_log, user: user)
+      end
+    end
+
+    trait :with_league do
+      leagues do
+        [
+          {
+            'name'             => 'Standard',
+            'type'             => 'Permanent',
+            'active'           => 'true',
+            'finished'         => 'false',
+            'inactive_retries' => '0'
+          }
+        ]
       end
     end
 

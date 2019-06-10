@@ -14,13 +14,13 @@
         </div>
 
         <ul class="list-reset">
-          <% current_user.standard_leagues.each do |league| %>
-            <li><%= link_to league, dashboard_path(league.parameterize), method: :get, class: "#{active_class?(league)} no-underline tracking-wide uppercase text-xs hover:text-grey-text text-grey-text-custom ml-12" %></li>
+          <% current_user.permanent_leagues.each do |league| %>
+            <li><%= link_to league['name'], dashboard_path(league['name'].parameterize), method: :get, class: "#{active_class?(league['name'])} no-underline tracking-wide uppercase text-xs hover:text-grey-text text-grey-text-custom ml-12" %></li>
           <% end %>
         </ul>
       </div>
 
-      <% if current_user.past_temp_leagues.present? %>
+      <% if current_user.finished_temporary_leagues.present? %>
         <div class="mb-6">
           <div class="inline-flex px-4">
             <%= inline_svg "icons/archive.svg", class: "stroke-current w-5 h-5" %>
@@ -28,8 +28,8 @@
           </div>
 
           <ul class="list-reset">
-            <% current_user.past_temp_leagues.each do |league| %>
-              <li><%= link_to league, dashboard_path(league.parameterize), method: :get, class: "#{active_class?(league)} no-underline tracking-wide uppercase text-xs hover:text-grey-text text-grey-text-custom ml-12" %></li>
+            <% current_user.finished_temporary_leagues.each do |league| %>
+              <li><%= link_to league['name'], dashboard_path(league['name'].parameterize), method: :get, class: "#{active_class?(league['name'])} no-underline tracking-wide uppercase text-xs hover:text-grey-text text-grey-text-custom ml-12" %></li>
             <% end %>
           </ul>
         </div>
@@ -42,11 +42,41 @@
         </div>
 
         <ul class="list-reset">
-          <% current_user.current_temp_leagues.each do |league| %>
-            <li><%= link_to league, dashboard_path(league.parameterize), method: :get, class: "#{active_class?(league)} no-underline tracking-wide uppercase text-xs hover:text-grey-text text-grey-text-custom ml-12" %></li>
+          <% current_user.not_finished_temporary_leagues.each do |league| %>
+            <li><%= link_to league['name'], dashboard_path(league['name'].parameterize), method: :get, class: "#{active_class?(league['name'])} no-underline tracking-wide uppercase text-xs hover:text-grey-text text-grey-text-custom ml-12" %></li>
           <% end %>
         </ul>
       </div>
+
+      <% if current_user.not_finished_custom_leagues.present? %>
+        <div class="mb-6">
+          <div class="inline-flex px-4">
+            <%= inline_svg "icons/archive.svg", class: "stroke-current w-5 h-5" %>
+            <p class="ml-2">Custom Leagues</p>
+          </div>
+
+          <ul class="list-reset">
+            <% current_user.not_finished_custom_leagues.each do |league| %>
+              <li><%= link_to league['name'], dashboard_path(league['name'].parameterize), method: :get, class: "#{active_class?(league['name'])} no-underline tracking-wide uppercase text-xs hover:text-grey-text text-grey-text-custom ml-12" %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <% if current_user.finished_custom_leagues.present? %>
+        <div class="mb-6">
+          <div class="inline-flex px-4">
+            <%= inline_svg "icons/archive.svg", class: "stroke-current w-5 h-5" %>
+            <p class="ml-2">Past Custom Leagues</p>
+          </div>
+
+          <ul class="list-reset">
+            <% current_user.finished_custom_leagues.each do |league| %>
+              <li><%= link_to league['name'], dashboard_path(league['name'].parameterize), method: :get, class: "#{active_class?(league['name'])} no-underline tracking-wide uppercase text-xs hover:text-grey-text text-grey-text-custom ml-12" %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     </div>
 
     <div class="fixed pin-b mb-2 w-60">

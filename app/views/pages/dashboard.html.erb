@@ -4,7 +4,7 @@
   <% if @current_user.valid_credentials %>
     <div class="flex justify-between text-center">
       <h2 class="text-grey-text">
-        <%= @league.capitalize %>
+        <%= @league['name'] %>
       </h2>
       <div class="flex items-center">
         <div class="inline-flex text-sm items-center mr-6">
@@ -15,10 +15,17 @@
             <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
           </form>
         </div>
+        <% if @league['active'] && !@league['finished'] %>
+          <div class="inline-flex text-sm items-center mr-6">
+            <%= link_to "Start sync", fetch_currency_path(league: @league['name']), method: :get, class: "text-xs uppercase bg-black-button text-white font-bold py-2 px-2 rounded-sm cursor-pointer text-center tracking-wide no-underline" %>
+          </div>
+        <% end %>
 
         <div class="inline-flex text-sm items-center mr-2">
           <%= inline_svg "icons/clock.svg", class: "stroke-current w-4 h-4 mr-2 text-grey-text" %>
-          <p class="text-grey-text-custom">Updated <%= time_ago_in_words @current_user.league_updated_at(@league) %> ago</p>
+          <% if @currency_stats.present? %>
+            <p class="text-grey-text-custom">Updated <%= time_ago_in_words @current_user.league_updated_at(@league['name']) %> ago</p>
+          <% end %>
         </div>
       </div>
 

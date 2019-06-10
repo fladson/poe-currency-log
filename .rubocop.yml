@@ -12,6 +12,8 @@ AllCops:
 
 Style/Documentation:
   Enabled: false
+Layout/AlignHash:
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
   Exclude:
