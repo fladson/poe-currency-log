@@ -5,13 +5,28 @@ module POE
     STANDARD_CURRENCY = [
       'Chaos Orb', 'Orb of Fusing', 'Orb of Alchemy', 'Exalted Orb',
       'Orb of Annulment', "Jeweller's Orb", 'Chromatic Orb', 'Regal Orb',
-      'Blessed Orb', 'Divine Orb', "Glassblower's Bauble", "Gemcutter's Prism",
-      'Orb of Scouring', 'Orb of Regret', 'Vaal Orb', "Cartographer's Chisel",
+      'Blessed Orb', 'Divine Orb', 'Ancient Orb', "Glassblower's Bauble",
+      "Gemcutter's Prism", 'Orb of Scouring', 'Orb of Regret', 'Vaal Orb',
+      "Cartographer's Chisel", 'Orb of Horizons',
       "Apprentice Cartographer's Sextant", "Journeyman Cartographer's Sextant",
-      "Master Cartographer's Sextant", 'Mirror of Kalandra', 'Orb of Transmutation',
-      'Orb of Alteration', 'Orb of Chance', 'Orb of Augmentation', 'Silver Coin'
+      "Master Cartographer's Sextant", 'Mirror of Kalandra',
+      'Orb of Transmutation', 'Orb of Alteration', 'Orb of Chance',
+      'Orb of Augmentation', 'Silver Coin'
     ].freeze
-    CURRENT_LEAGUE_CURRENCY = [].freeze
+    CURRENT_LEAGUE_CURRENCY = [
+      'Sepia Oil',
+      'Clear Oil',
+      'Verdant Oil',
+      'Amber Oil',
+      'Teal Oil',
+      'Azure Oil',
+      'Violet Oil',
+      'Crimson Oil',
+      'Black Oil',
+      'Opalescent Oil',
+      'Silver Oil',
+      'Golden Oil',
+    ].freeze
     CURRENCY = (STANDARD_CURRENCY | CURRENT_LEAGUE_CURRENCY).freeze
 
     class << self
