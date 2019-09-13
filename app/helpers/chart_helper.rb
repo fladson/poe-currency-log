@@ -1,5 +1,6 @@
 module ChartHelper
   DEFAULT_COLORS = {
+    'Ancient Orb' => '#cd6133',
     "Apprentice Cartographer's Sextant" => '#ced4da',
     'Blessed Orb' => '#efd282',
     "Cartographer's Chisel" => '#a5b1c2',
@@ -19,12 +20,26 @@ module ChartHelper
     'Orb of Augmentation' => '#2779BD',
     'Orb of Chance' => '#1864ab',
     'Orb of Fusing' => '#B8C2CC',
+    'Orb of Horizons' => '#84817a',
     'Orb of Regret' => '#A5AAAB',
     'Orb of Scouring' => '#B5B7BF',
     'Orb of Transmutation' => '#1E64BB',
     'Regal Orb' => '#468AC8',
     'Silver Coin' => '#a287ca',
-    'Vaal Orb' => '#E3342F'
+    'Vaal Orb' => '#E3342F',
+    # league specific
+    'Sepia Oil' => '#945D25',
+    'Clear Oil' => '#ced6e0',
+    'Verdant Oil' => '#2ecc71',
+    'Amber Oil' => '#e67e22',
+    'Teal Oil' => '#1abc9c',
+    'Azure Oil' => '#3498db',
+    'Violet Oil' => '#9b59b6',
+    'Crimson Oil' => '#e74c3c',
+    'Black Oil' => '#2c3e50',
+    'Opalescent Oil' => '#f78fb3',
+    'Silver Oil' => '#95a5a6',
+    'Golden Oil' => '#f1c40f',
   }.freeze
 
   def color_for(chart_preference)
